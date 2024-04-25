@@ -1,7 +1,7 @@
 package userDTO;
 
 public class UserDTO {
-	//���̵�(�ߺ�üũ) , ��й�ȣ(����, ���� ȥ��), �̸���(�ߺ�Ȯ��), �̸�,  ����ó(�ߺ�Ȯ��), �ּ�,
+	 //아이디(중복체크) , 비밀번호(영문, 숫자 혼합), 이메일(중복확인), 이름,  연락처(중복확인), 주소
 	private String id;
 	private String pwd;
 	private String email;
