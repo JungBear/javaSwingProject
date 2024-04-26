@@ -32,7 +32,8 @@ public class JFrameCart extends JPanel {
 		   jsp = new JScrollPane(jTable);
 		   add(jsp);
 		   
-		   setSize(400,300);
+		   //setSize(400,300);
+		   setBounds(201, 0, 1280, 200);
 		   setVisible(true);
 		   
 		   
