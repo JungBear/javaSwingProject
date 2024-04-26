@@ -31,7 +31,7 @@ public class MainHeader {
 	
 	public JLabel setLogo(MainFrame mainF) {
 		logoIcon = new ImageIcon("src/img/logo.png"); // 로고 이미지 파일 경로에 따라 변경하세요
-		ImageIcon scaledLogoIcon = new ImageIcon(logoIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH))
+		ImageIcon scaledLogoIcon = new ImageIcon(logoIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 		JLabel logoLabel = new JLabel(scaledLogoIcon);
         // 로고 이미지 클릭 이벤트 처리
         logoLabel.addMouseListener(new MouseAdapter() {
