@@ -2,20 +2,20 @@ package shoppingCart;
 
 public class Orders {
 	
-	boolean select;
-	String info;
-	int  price;
-	String quantity;
-	String allPrice;
-	String delivery;
-	String delete;
+	private boolean select;
+	private String info;
+	private int  price;
+	private int quantity;
+	private int totalPrice;
+	private int delivery;
+	private boolean delete;
 	
-	public Orders(boolean select, String info, int price, String quantity, String allPrice, String delivery, String delete) {
+	public Orders(boolean select, String info, int price, int quantity, int totalrice, int delivery, boolean delete) {
 		this.select = select;
 		this.info = info;
 		this.price = price;
 		this.quantity = quantity;
-		this.allPrice = allPrice;
+		this.totalPrice = totalPrice;
 		this.delivery = delivery;
 		this.delete = delete;
 		
@@ -40,30 +40,41 @@ public class Orders {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getQuantity() {
+	public int getQuantity() {
 		
 		return quantity;
 	}
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		
 		this.quantity = quantity;
+		this.totalPrice = price * quantity;
 	}
-	public String getAllPrice() {
-		return allPrice;
+	public int getTotalPrice() {
+		return totalPrice;
 	}
-	public void setAllPrice(String allPrice) {
-		this.allPrice = allPrice;
+	public void setAllPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
 	}
-	public String getDelivery() {
+	public int getDelivery() {
 		return delivery;
 	}
-	public void setDelivery(String delivery) {
+	public void setDelivery(int delivery) {
 		this.delivery = delivery;
 	}
-	public String getDelete() {
+	
+	//배송비 계산하는 메서드 
+	public int calculateDelivery() {
+		if(totalPrice > 100000) {
+			return 0;
+		} else {
+			return 5000;
+		}
+		
+	}
+	public boolean getDelete() {
 		return delete;
 	}
-	public void setDelete(String delete) {
+	public void setDelete(boolean delete) {
 		this.delete = delete;
 	}
 	
