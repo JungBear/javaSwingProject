@@ -3,8 +3,9 @@ package login_form;
 
 
 import javax.swing.*;
+import java.awt.event.*;
 
-public class Login_form {
+public class LoginForm {
 	public static void main(String[] args) {
 		// 프레임 생성
 		JFrame f = new JFrame("로그인");
@@ -33,7 +34,7 @@ public class Login_form {
 		JButton pwsearch = new JButton("비밀번호 찾기");
 		pwsearch.setBounds(230, 200, 120, 30);
 		
-		f.add(li); // 아이디 라벨 
+		f.add(li); // 아이디 라벨              
 		f.add(id); // 아이디 입력창
 		f.add(pw); // 비밀번호 라벨
 		f.add(value); // 비밀번호 입력창
@@ -41,12 +42,27 @@ public class Login_form {
 		f.add(lb); //로그인 버튼
 		f.add(idsearch);//아이디 찾기 버튼
 		f.add(pwsearch);//비밀번호 찾기 버튼
-		f.setSize(400, 550); //프레임 사이즈
-		f.setLayout(null);
 		
+		// 프레임
+		f.setSize(400, 550); 
+		f.setLayout(null);
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+                
+		//회원가입 버튼 누를시 RegisterFrame클래스(회원가입 폼)으로 이동
+		sb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+             JFrame registerFrame = new RegisterFrame();
+             // 회원가입 폼 표시
+             registerFrame.setVisible(true);
+             // 로그인 화면 닫기
+             f.setVisible(false); // 로그인 화면 닫기
+      
+            }
+        });
 		
 				
 	
