@@ -8,12 +8,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MainHeader {
 	private JPanel mainHeader;
 	ImageIcon logoIcon;
+	TopNavBtn clothBtn = new TopNavBtn("의류", 20, 20);
+	TopNavBtn cosmeticsBtn = new TopNavBtn("화장품", 20, 20);
+	TopNavBtn shoesBtn = new TopNavBtn("신발", 20, 20);
+	TopNavBtn backpackBtn = new TopNavBtn("가방", 20, 20);
 	
 	
 	public Component setMainHeader(MainFrame mainF) {
@@ -24,6 +29,7 @@ public class MainHeader {
         mainHeader.setPreferredSize(mainHeader.getPreferredSize()); // 원래 크기로 설정
         // 로고 이미지 생성
         mainHeader.add(setLogo(mainF));
+        mainHeader.add(mainF);
         
         
 		return mainHeader;
@@ -44,6 +50,8 @@ public class MainHeader {
         mainHeader.add(logoLabel);
 		return logoLabel;
 	}
+	
+	
 	
 	
 }
