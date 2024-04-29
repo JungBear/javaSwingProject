@@ -70,7 +70,11 @@ public class JFrameCart extends JPanel {
 			   row[i+1]=orders.get(i).getInfo();
 			   row[i+2]=orders.get(i).getPrice();
 			   row[i+3]=orders.get(i).getQuantity();
-			   row[i+4]=orders.get(i).getAllPrice();
+			   // 지명님 코드
+			   // row[i+4]=orders.get(i).getAllPrice();
+			   
+			   // 내코드
+			   row[i+4]=orders.get(i).getTotalPrice();
 			   row[i+5]=orders.get(i).getDelivery();
 			   row[i+6]=orders.get(i).getDelete();
 //			   
@@ -91,7 +95,11 @@ public class JFrameCart extends JPanel {
 	   //데이터 임의 test
 	   public ArrayList<Orders> getOrders(){
 		   ArrayList<Orders> orders = new ArrayList<>();
-		   orders.add(new Orders(true,"아우터",90_000,"2개","180,000원","3,000원","삭제"));
+		   // 지명님 코드
+		   // orders.add(new Orders(true,"아우터",90_000,"2개","180,000원","3,000원","삭제"));
+		   
+		   // 내코드
+		   orders.add(new Orders(true,"아우터",90_000, 2,3000,false));
 		   return orders;
 	   }
 	   

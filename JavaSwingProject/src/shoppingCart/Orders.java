@@ -10,16 +10,26 @@ public class Orders {
 	private int delivery;
 	private boolean delete;
 	
-	public Orders(boolean select, String info, int price, int quantity, int totalrice, int delivery, boolean delete) {
+	// 지명님 코드
+//	public Orders(boolean select, String info, int price, int quantity, int totalPrice, int delivery, boolean delete) {
+//		this.select = select;
+//		this.info = info;
+//		this.price = price;
+//		this.quantity = quantity;
+//		this.totalPrice = totalPrice;
+//		this.delivery = delivery;
+//		this.delete = delete;
+//	}
+	
+	// 내코드
+	public Orders(boolean select, String info, int price, int quantity, int delivery, boolean delete) {
 		this.select = select;
 		this.info = info;
 		this.price = price;
 		this.quantity = quantity;
-		this.totalPrice = totalPrice;
+		this.totalPrice = price * quantity;
 		this.delivery = delivery;
 		this.delete = delete;
-		
-		
 	}
 	
 	public boolean getSelect() {
@@ -71,6 +81,10 @@ public class Orders {
 		}
 		
 	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	public boolean getDelete() {
 		return delete;
 	}

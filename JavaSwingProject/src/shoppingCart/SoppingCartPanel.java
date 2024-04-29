@@ -23,8 +23,13 @@ public class SoppingCartPanel extends JPanel{
 	
 	
 	//데이터 샘플
-	orders.add(new Orders(true, " 상품 1 ", 10, 2, 20, 5, false));
-	orders.add(new Orders(true, " 상품 2 ", 30, 2, 60, 5, false));
+	// 지명님 코드
+//	orders.add(new Orders(true, " 상품 1 ", 10, 2, 20, 5, false));
+//	orders.add(new Orders(true, " 상품 2 ", 30, 2, 60, 5, false));
+	
+	// 제코드
+	orders.add(new Orders(true, " 상품 1 ", 10, 2, 5, false));
+	orders.add(new Orders(true, " 상품 2 ", 30, 2, 5, false));
 	 
     //장바구니 컬럼명
     String[] cartHeader = {"선택", "상품 정보", "금액", "수량", "전체 금액", "배송비", "삭제"};
@@ -62,9 +67,15 @@ public class SoppingCartPanel extends JPanel{
     }
     
     //주문 데이터를 테이블에 추가 
+    // 지명님 코드
+//    for (Orders order : orders) {
+//        Object[] row = {order.getSelect(), order.getInfo(), order.getPrice(), order.getQuantity(),
+//                order.getTotalPrice(), order.calculateDelivery(), order.getDelete()};
+//        tableModel.addRow(row);
+//    }
     for (Orders order : orders) {
-        Object[] row = {order.getSelect(), order.getInfo(), order.getPrice(), order.getQuantity(),
-                order.getTotalPrice(), order.calculateDelivery(), order.getDelete()};
+        Object[] row = {order.getSelect(), order.getInfo(), order.getPrice() + "원", order.getQuantity() + "개",
+                order.getTotalPrice()+"원", order.calculateDelivery()+"원", order.getDelete()};
         tableModel.addRow(row);
     }
 

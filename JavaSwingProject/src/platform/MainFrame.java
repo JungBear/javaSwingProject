@@ -22,7 +22,7 @@ public class MainFrame extends JFrame {
 		mainF.setLayout(new BoxLayout(mainF.getContentPane(), BoxLayout.Y_AXIS));
 		mainF.add(mainHeader.setMainHeader(this));
 		//mainF.add(mainDetail.setMainDetail());
-		mainF.add(jFramCart);
+//		mainF.add(jFramCart);
 		mainF.setVisible(true);
 		mainF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
