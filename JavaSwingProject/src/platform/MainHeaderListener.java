@@ -1,5 +1,5 @@
 package platform;
 
 public interface MainHeaderListener {
-	 void onLogoClicked();
+	public void onLogoClicked();
 }

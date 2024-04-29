@@ -1,7 +1,6 @@
 package platform;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,31 +13,37 @@ import javax.swing.JPanel;
 
 public class MainHeader extends JPanel{
 	ImageIcon logoIcon;
-	TopNavBtn clothBtn = new TopNavBtn("의류", 500, 20);
-	TopNavBtn cosmeticsBtn = new TopNavBtn("화장품", 600, 20);
-	TopNavBtn shoesBtn = new TopNavBtn("신발", 700, 20);
-	TopNavBtn backpackBtn = new TopNavBtn("가방", 800, 20);
-	TopNavBtn cartBtn = new TopNavBtn("장바구니", 400, 200);
+	
+	// 버튼들의 위치를 오른쪽에 배치시킨다
+	// 메인 페이지 : 0, 의류 상세 페이지 : 1, 화장품 상세 페이지 : 2, 신발 상세페이지 : 3, 가방 상세피이지 : 4, 로그인 페이지는 : 5, 장바구니 페이지 : 6
+	TopNavBtn clothBtn = new TopNavBtn("의류", 900, 20, 1);
+	TopNavBtn cosmeticsBtn = new TopNavBtn("화장품",960, 20, 2);
+	TopNavBtn shoesBtn = new TopNavBtn("신발", 1020, 20, 3);
+	TopNavBtn bagBtn = new TopNavBtn("가방", 1080, 20, 4);
+	TopNavBtn loginBtn = new TopNavBtn("로그인",0, 150, 5);
+	TopNavBtn cartBtn = new TopNavBtn("장바구니",100, 150, 6);
 	
 
 	public MainHeader(MainFrame mainF) {
 		super();
+		setName("header");
 		setBounds(0, 0, 1280, 200);
 		setBackground(Color.gray);
-		setLayout(new FlowLayout()); // FlowLayout로 변경
+		setLayout(null); // FlowLayout로 변경
         setPreferredSize(getPreferredSize()); // 원래 크기로 설정
         // 로고 이미지 생성
         add(setLogo(mainF));
         add(clothBtn);
+        add(cosmeticsBtn);
         add(shoesBtn);
-        add(backpackBtn);
+        add(bagBtn);
         add(cartBtn);
+        add(loginBtn);
         
         cartBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // ShoppingCartPanel 표시
-                mainF.showShoppingCartPanel();
+            	mainF.showShoppingCartPanel();
             }
         });
         
@@ -56,9 +61,14 @@ public class MainHeader extends JPanel{
             @Override
             public void mouseClicked(MouseEvent e) {
                 // 로고 이미지가 클릭되었을 때 처리할 작업
-            	mainF.setMainFrame();
+            	
+            	// 현재 보이는 화면이 무엇인지 보여주는 함수
+            	mainF.hideVisiblePanelExceptHeader();
+            	mainF.MainPreView.setVisible(true);
+
             }
         });
+        // 이미지의 위치를 맨왼쪽 위에 위치시킨다
         logoLabel.setBounds(0, 0, scaledLogoIcon.getIconWidth(), scaledLogoIcon.getIconHeight());
         add(logoLabel);
 		return logoLabel;
