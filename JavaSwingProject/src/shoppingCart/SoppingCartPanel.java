@@ -29,7 +29,7 @@ public class SoppingCartPanel extends JPanel{
 	
 	// 제코드
 	orders.add(new Orders(true, " 상품 1 ", 10, 2, 5, false));
-	orders.add(new Orders(true, " 상품 2 ", 30, 2, 5, false));
+	orders.add(new Orders(true, " 상품 2 ", 30, 3, 5, false));
 	 
     //장바구니 컬럼명
     String[] cartHeader = {"선택", "상품 정보", "금액", "수량", "전체 금액", "배송비", "삭제"};
@@ -83,7 +83,7 @@ public class SoppingCartPanel extends JPanel{
     table = new JTable(tableModel);
     
     //수량에 콤보박스 추가 
-    table.getColumnModel().getColumn(3).setCellEditor(new QuantityComboBox());
+    table.getColumnModel().getColumn(3).setCellEditor(new QuantityComboBox(table, tableModel, orders));
     
     
     

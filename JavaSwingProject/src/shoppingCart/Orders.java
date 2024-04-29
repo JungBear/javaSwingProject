@@ -57,7 +57,6 @@ public class Orders {
 	public void setQuantity(int quantity) {
 		
 		this.quantity = quantity;
-		this.totalPrice = price * quantity;
 	}
 	public int getTotalPrice() {
 		return totalPrice;
