@@ -9,8 +9,8 @@ public class TopNavBtn extends JButton{
 	TopNavBtnEventListener eventListener;
 
 	public TopNavBtn(String btnName,int x, int y) {
-		this.setName(btnName);
-		this.setBounds(x, y, 40, 40);
+		super(btnName);
+		this.setBounds(x, y, 100, 80);
 		this.setBackground(Color.GRAY);
 		this.setBorder(new EmptyBorder(5,3,5,3));
 	}

@@ -94,16 +94,18 @@ public class SoppingCartPanel extends JPanel{
     setLayout(new BorderLayout());
     add(scrollPane, BorderLayout.CENTER);
 }
+	
+	
 
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("Shopping Cart");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(600, 400);
-
-		// Create an instance of ShoppingCartGUI and add it to the frame
-		SoppingCartPanel shoppingCartGUI = new SoppingCartPanel();
-		frame.getContentPane().add(shoppingCartGUI);
-
-		frame.setVisible(true);	
-	}
+//	public static void main(String[] args) {
+//		JFrame frame = new JFrame("Shopping Cart");
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setSize(600, 400);
+//
+//		// Create an instance of ShoppingCartGUI and add it to the frame
+//		SoppingCartPanel shoppingCartGUI = new SoppingCartPanel();
+//		frame.getContentPane().add(shoppingCartGUI);
+//
+//		frame.setVisible(true);	
+//	}
 }
