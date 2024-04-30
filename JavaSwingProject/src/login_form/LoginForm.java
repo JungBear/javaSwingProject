@@ -57,6 +57,7 @@ public class LoginForm extends JFrame {
                 
              JFrame registerFrame = new RegisterFrame();
              // 회원가입 폼 표시
+             registerFrame.setVisible(true);
              // 로그인 화면 닫기
              f.setVisible(false); // 로그인 화면 닫기
       
