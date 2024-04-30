@@ -24,6 +24,8 @@ public class MainHeader extends JPanel{
 	TopNavBtn loginBtn = new TopNavBtn("로그인",0, 150);
 	TopNavBtn cartBtn = new TopNavBtn("장바구니",100, 150);
 	
+	LoginForm loginFrame = new LoginForm();
+	
 
 	public MainHeader(MainFrame mainF) {
 		super();
@@ -51,7 +53,9 @@ public class MainHeader extends JPanel{
         loginBtn.addActionListener(new ActionListener() {
         	@Override
         	public void actionPerformed(ActionEvent e) {
-        	LoginForm loginFrame = new LoginForm();
+        	loginFrame.initializeUI();
+        	loginFrame.finalizeFrame();
+        	
         		
         	}
         });

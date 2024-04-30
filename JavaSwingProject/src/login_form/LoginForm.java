@@ -73,7 +73,7 @@ public class LoginForm extends JFrame {
         });
     }
    //프레임 설정
-    private void finalizeFrame() {
+    public void finalizeFrame() {
         setSize(400, 550);
         setLayout(null);
         setVisible(true);
