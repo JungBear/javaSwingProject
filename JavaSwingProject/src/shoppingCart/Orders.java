@@ -9,17 +9,7 @@ public class Orders {
 	private int totalPrice;
 	private int delivery;
 	private boolean delete;
-	
-	// 지명님 코드
-//	public Orders(boolean select, String info, int price, int quantity, int totalPrice, int delivery, boolean delete) {
-//		this.select = select;
-//		this.info = info;
-//		this.price = price;
-//		this.quantity = quantity;
-//		this.totalPrice = totalPrice;
-//		this.delivery = delivery;
-//		this.delete = delete;
-//	}
+
 	
 	// 내코드
 	public Orders(boolean select, String info, int price, int quantity, int delivery, boolean delete) {
@@ -64,22 +54,24 @@ public class Orders {
 	public void setAllPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	
+	//상품별 배송비는 기본값 2500원 
 	public int getDelivery() {
-		return delivery;
+		return 2500;
 	}
 	public void setDelivery(int delivery) {
 		this.delivery = delivery;
 	}
 	
-	//배송비 계산하는 메서드 
-	public int calculateDelivery() {
-		if(totalPrice > 100000) {
-			return 0;
-		} else {
-			return 5000;
-		}
-		
-	}
+//	//배송비 계산하는 메서드 
+//	public int calculateDelivery() {
+//		if(totalPrice > 100000) {
+//			return 0;
+//		} else {
+//			return 5000;
+//		}
+//		
+//	}
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}

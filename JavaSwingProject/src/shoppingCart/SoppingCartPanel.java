@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
 public class SoppingCartPanel extends JPanel{
@@ -60,8 +62,8 @@ public class SoppingCartPanel extends JPanel{
     	//order데이터가 있을 때 테이블 목록 생성
     	//주문 데이터를 테이블에 추가 
     	for (Orders order : orders) {
-    		Object[] row = {order.getSelect(), order.getInfo(), order.getPrice() + "원", order.getQuantity() + "개",
-    				order.getTotalPrice()+"원", order.calculateDelivery()+"원", order.getDelete()};
+    		Object[] row = {order.getSelect(), order.getInfo(), order.getPrice(), order.getQuantity(),
+    				order.getTotalPrice(), order.getDelivery(), order.getDelete()};
     		tableModel.addRow(row);
     	}
 
@@ -70,6 +72,51 @@ public class SoppingCartPanel extends JPanel{
 
     //장바구니 table 생성
     table = new JTable(tableModel);
+    
+    //선택한 상품들(혹은 전체 상품)의 총 결제금액 계산 
+    int totalProductPayment = 0;
+    //주문 데이터를 테이블에 추가하면서 선택한 상품 가격의 합 계산
+    for(Orders order : orders) {
+    	if(order.getSelect()) {
+    		totalProductPayment += order.getTotalPrice();
+    	}
+    }
+    
+    int totalDeliveryPayment = 0;
+    int totalPayment = 0;
+    
+    
+    //선택 열에 있는 주문정보의 select값 가져오기 -이벤트 리스너 추가
+    tableModel.addTableModelListener(new TableModelListener() {
+		
+		@Override
+		public void tableChanged(TableModelEvent e) {
+			int row = e.getFirstRow();
+			int cloumn = e.getColumn();
+			final int totalPayment;
+			
+			if(cloumn == 0 && row >= 0) {
+				boolean selected = (boolean) tableModel.getValueAt(row, cloumn);
+				
+				if(selected) { //selected의 값이 1인 경우(주문건이 선택 된 경우) 합산 
+					Orders order = orders.get(row);
+					
+					//TODO 오류 수정 필요
+				//	totalPayment += order.getTotalPrice();
+				}else {
+					Orders order = orders.get(row);
+				//	totalPayment -= order.getTotalPrice();
+				}
+				
+			//	TotalOrderPanel totalOrderPanel = new TotalOrderPanel(totalProductPayment, totalDeliveryPayment,totalPayment);
+			//	totalOrderPanel.updateTotalPayment(totalPayment);
+				
+			}
+			
+		}
+	});
+    
+
     
     //수량에 콤보박스 추가 
     table.getColumnModel().getColumn(3).setCellEditor(new QuantityComboBox(table, tableModel, orders));
@@ -80,17 +127,7 @@ public class SoppingCartPanel extends JPanel{
     setLayout(new BorderLayout());
     add(scrollPane, BorderLayout.CENTER);
  
-    //선택한 상품들(혹은 전체 상품)의 총 결제금액 계산 
-    
-    int totalProductPayment = 0;
-    int totalDeliveryPayment = 0;
-    int totalPayment = 0;
-    
-    for(Orders order : orders) {
-    	if(order.getSelect()) {
-    		totalPayment += order.getTotalPrice();
-    	}
-    }
+
     
     //총 결제 금액을 표시하는 totalOrderPanel을 생성해서 JPanel을 추가 
     TotalOrderPanel totalOrderPanel = new TotalOrderPanel(totalProductPayment, totalDeliveryPayment,totalPayment);
