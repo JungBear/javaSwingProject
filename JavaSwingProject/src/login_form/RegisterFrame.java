@@ -174,7 +174,7 @@ public class RegisterFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "주소를 입력하세요.");
             return;
         }
-        
+        UserDTO user = new UserDTO(id, pwd, email, name, Integer.parseInt(phone), address);
         
         // 회원가입 데이터 UserDataWriter로 저장
         try {
@@ -182,7 +182,7 @@ public class RegisterFrame extends JFrame {
             UserDTO newUser = new UserDTO(idField.getText(), new String(passwordField.getPassword()),
                 emailField.getText(), nameField.getText(), phoneNum1, addressField.getText());
             UserDataWriter.writeDataToFile(newUser); // 사용자 데이터를 파일로 저장
-            JOptionPane.showMessageDialog(this, "회원가입이 완료되었습니다.");
+            JOptionPane.showMessageDialog(this, "회원가입 하였습니다.");
             this.dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "회원가입이 완료되지 않았습니다. " + e.getMessage()); // 오류 메시지 표시

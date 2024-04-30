@@ -5,8 +5,8 @@ package login_form;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class LoginForm {
-	public static void main(String[] args) {
+public class LoginForm extends JFrame {
+	public LoginForm() {
 		// 프레임 생성
 		JFrame f = new JFrame("로그인");
 		// 아이디 라벨 = li
