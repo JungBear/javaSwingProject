@@ -15,9 +15,14 @@ import javax.swing.table.DefaultTableModel;
 
 public class SoppingCartPanel extends JPanel{
 	private JTable table;//장바구니 테이블 
-    private DefaultTableModel tableModel;
+    DefaultTableModel tableModel;
     private ArrayList<Orders> orders;
-	
+    private int totalPayment = 0;
+    
+    public ArrayList<Orders> getOrders() {
+		return orders;
+	}
+    
 	public SoppingCartPanel()    {   
 	
 	//주문 정보를 담을 ArrayList생성 
@@ -73,49 +78,8 @@ public class SoppingCartPanel extends JPanel{
     //장바구니 table 생성
     table = new JTable(tableModel);
     
-    //선택한 상품들(혹은 전체 상품)의 총 결제금액 계산 
-    int totalProductPayment = 0;
-    //주문 데이터를 테이블에 추가하면서 선택한 상품 가격의 합 계산
-    for(Orders order : orders) {
-    	if(order.getSelect()) {
-    		totalProductPayment += order.getTotalPrice();
-    	}
-    }
     
-    int totalDeliveryPayment = 0;
-    int totalPayment = 0;
-    
-    
-    //선택 열에 있는 주문정보의 select값 가져오기 -이벤트 리스너 추가
-    tableModel.addTableModelListener(new TableModelListener() {
-		
-		@Override
-		public void tableChanged(TableModelEvent e) {
-			int row = e.getFirstRow();
-			int cloumn = e.getColumn();
-			final int totalPayment;
-			
-			if(cloumn == 0 && row >= 0) {
-				boolean selected = (boolean) tableModel.getValueAt(row, cloumn);
-				
-				if(selected) { //selected의 값이 1인 경우(주문건이 선택 된 경우) 합산 
-					Orders order = orders.get(row);
-					
-					//TODO 오류 수정 필요
-				//	totalPayment += order.getTotalPrice();
-				}else {
-					Orders order = orders.get(row);
-				//	totalPayment -= order.getTotalPrice();
-				}
-				
-			//	TotalOrderPanel totalOrderPanel = new TotalOrderPanel(totalProductPayment, totalDeliveryPayment,totalPayment);
-			//	totalOrderPanel.updateTotalPayment(totalPayment);
-				
-			}
-			
-		}
-	});
-    
+   
 
     
     //수량에 콤보박스 추가 
@@ -127,12 +91,15 @@ public class SoppingCartPanel extends JPanel{
     setLayout(new BorderLayout());
     add(scrollPane, BorderLayout.CENTER);
  
-
+    TotalOrderPanel totalOrderPanel = new TotalOrderPanel(totalPayment);
+    
+    //tableModel 액션리스너 
+   // tableModel.addTableModelListener(new TableEventAdepter());2024.04.30수정중 
     
     //총 결제 금액을 표시하는 totalOrderPanel을 생성해서 JPanel을 추가 
-    TotalOrderPanel totalOrderPanel = new TotalOrderPanel(totalProductPayment, totalDeliveryPayment,totalPayment);
     add(totalOrderPanel, BorderLayout.SOUTH);
 	
+    
 	
 	}
 	
