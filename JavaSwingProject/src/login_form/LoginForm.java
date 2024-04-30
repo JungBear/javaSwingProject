@@ -63,6 +63,30 @@ public class LoginForm extends JFrame {
       
             }
         });
+		idsearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+             JFrame idFinder = new IdFinder();
+             // 회원가입 폼 표시
+             idFinder.setVisible(true);
+             // 로그인 화면 닫기
+             f.setVisible(false); // 로그인 화면 닫기
+      
+            }
+        });
+		pwsearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+             PwFinder pwFinder = new PwFinder();
+             // 회원가입 폼 표시
+             pwFinder.setVisible(true);
+             // 로그인 화면 닫기
+             f.setVisible(false); // 로그인 화면 닫기
+      
+            }
+        });
 		
 				
 	

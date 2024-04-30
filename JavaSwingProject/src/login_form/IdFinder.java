@@ -1,16 +1,15 @@
 package login_form;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class IdFinder extends JFrame{
-	   
+   
     public  IdFinder() {
         JFrame f = new JFrame("아이디찾기");
         // 이름 라벨 = nm
@@ -55,7 +54,10 @@ public class IdFinder extends JFrame{
              // 로그인 화면 닫기
              f.setVisible(false); // 로그인 화면 닫기
     }
-        }
+
+	
+        });
+	
     }
+	
 }
-        
