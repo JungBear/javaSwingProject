@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import login_form.LoginForm;
+
 public class MainHeader extends JPanel{
 	ImageIcon logoIcon;
 	
@@ -50,7 +52,7 @@ public class MainHeader extends JPanel{
         loginBtn.addActionListener(new ActionListener() {
         	@Override
         	public void actionPerformed(ActionEvent e) {
-        		
+        	LoginForm loginFrame = new LoginForm();
         		
         	}
         });
