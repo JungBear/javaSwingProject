@@ -8,6 +8,8 @@ public class ProductDTO {
 	private String imgSrc;
 	private int price;
 	
+	public ProductDTO() {;}
+	
 	public ProductDTO(String category, String productName, String productInfo, String imgSrc, int price) {
 		super();
 		Category = category;

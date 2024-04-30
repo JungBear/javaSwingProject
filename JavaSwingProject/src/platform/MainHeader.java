@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import login_form.LoginForm;
+import product.ProductService;
 
 public class MainHeader extends JPanel{
 	ImageIcon logoIcon;
@@ -25,6 +26,7 @@ public class MainHeader extends JPanel{
 	TopNavBtn cartBtn = new TopNavBtn("장바구니",100, 150);
 	
 	LoginForm loginFrame = new LoginForm();
+	ProductService productService = new ProductService();
 	
 
 	public MainHeader(MainFrame mainF) {
@@ -43,6 +45,16 @@ public class MainHeader extends JPanel{
         add(cartBtn);
         add(loginBtn);
         
+        clothBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(productService.readData(clothBtn.getText()));
+				
+			}
+		});
+        
+        // 장바구니 버튼을 누르면 장바구니 판넬이 뜨게 해주기
         cartBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

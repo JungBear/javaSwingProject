@@ -6,8 +6,8 @@
 숄더백, 져니 숄더백, 미니멀한 디자인으로 출근룩을 포함한 다양한 스타일에 어울리는 가방, src/img/shoulderbag2.jpg, 92500
 숄더백, Rene bag_Black, 검은색의 Rene bag, src/img/shoulderbag3.jpg, 219000
 숄더백, Very Shine Zipup (SilverLake), 가볍고 반짝이는 나일론 원단으로 제작된 기본에 충실한 숄더백, src/img/shoulderbag4.jpg, 68000
-토드백, 새틴 미니 토트백 핑크, 분홍색컬러와 분홍색 아밤 인형 키링이 포인트인 토드백, src/img/totebag1.jpg,124000
-토드백, NYLON ROUND HALF BAG-LIME, 라임색의 밝은 색과 emis로고의 조화가 이쁜 토드백, src/img/totebag2.jpg,69000
+토드백, 새틴 미니 토트백 핑크, 분홍색컬러와 분홍색 아밤 인형 키링이 포인트인 토드백, src/img/totebag1.jpg, 124000
+토드백, NYLON ROUND HALF BAG-LIME, 라임색의 밝은 색과 emis로고의 조화가 이쁜 토드백, src/img/totebag2.jpg, 69000
 토드백, BIG COATING TOTE BAG IN BLACK, 광택감 있는 원단에 Matin Kim만의 무드를 느낄 수 있는 입체 사선 모리와 스티치와 로고 각인 장식이 포인트인 디자인의 빅 토트백, src/img/totebag3.jpg, 178000
 토드백, SQUARE BAG MINI_BLACK, 비건 가죽 소재의 가방으로 부드러운 질감과 세련된 광택감이 특징인 가방, src/img/totebag4.jpg, 142000
 에코백, 플로리다 에코백 그레이, 지퍼가 달려있어 안전하게 사용할 수 있고 깜찍한 손잡이로 토트백으로 연출도 가능한 플로리다 에코백, src/img/echobag1.jpg, 89000
