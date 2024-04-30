@@ -17,13 +17,12 @@ public class MainHeader extends JPanel{
 	ImageIcon logoIcon;
 	
 	// 버튼들의 위치를 오른쪽에 배치시킨다
-	// 메인 페이지 : 0, 의류 상세 페이지 : 1, 화장품 상세 페이지 : 2, 신발 상세페이지 : 3, 가방 상세피이지 : 4, 로그인 페이지는 : 5, 장바구니 페이지 : 6
-	TopNavBtn clothBtn = new TopNavBtn("의류", 900, 20, 1);
-	TopNavBtn cosmeticsBtn = new TopNavBtn("화장품",960, 20, 2);
-	TopNavBtn shoesBtn = new TopNavBtn("신발", 1020, 20, 3);
-	TopNavBtn bagBtn = new TopNavBtn("가방", 1080, 20, 4);
-	TopNavBtn loginBtn = new TopNavBtn("로그인",0, 150, 5);
-	TopNavBtn cartBtn = new TopNavBtn("장바구니",100, 150, 6);
+	TopNavBtn clothBtn = new TopNavBtn("의류", 900, 20);
+	TopNavBtn cosmeticsBtn = new TopNavBtn("화장품",960, 20);
+	TopNavBtn shoesBtn = new TopNavBtn("신발", 1020, 20);
+	TopNavBtn bagBtn = new TopNavBtn("가방", 1080, 20);
+	TopNavBtn loginBtn = new TopNavBtn("로그인",0, 150);
+	TopNavBtn cartBtn = new TopNavBtn("장바구니",100, 150);
 	
 
 	public MainHeader(MainFrame mainF) {

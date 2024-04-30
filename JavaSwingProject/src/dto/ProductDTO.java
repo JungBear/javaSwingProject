@@ -66,6 +66,15 @@ public class ProductDTO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
+
+	@Override
+	public String toString() {
+		return "ProductDTO [Category=" + Category + ", productName=" + productName + ", productInfo=" + productInfo
+				+ ", imgSrc=" + imgSrc + ", price=" + price + "]";
+	}
+	
+	
 	
 	
 	
