@@ -2,49 +2,44 @@ package shoppingCart;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 public class TableEventAdepter extends JPanel implements MouseListener{
 	DefaultTableModel tableModel;
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-	int row = tableModel.getRowCount();
-	int clo = tableModel.getColumnCount();
+		int row = tableModel.getRowCount();
+		int clo = tableModel.getColumnCount();
+		
+		for(int i = 0; i < tableModel.getColumnCount(); i++) {
+			//System.out.println(tableModel.get);
+		}
 	
-	for(int i = 0; i < tableModel.getColumnCount(); i++) {
-		//System.out.println(tableModel.get);
-	}
-
-	}
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 		
-	}
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	//0501 수정 전 코드 
 	
 //	TableModel tableModel;

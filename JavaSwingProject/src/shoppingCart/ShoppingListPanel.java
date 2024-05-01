@@ -1,6 +1,8 @@
 package shoppingCart;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -79,7 +81,8 @@ public class ShoppingListPanel extends JPanel {
     		
     		// 스크롤에 테이블 추가
     		JScrollPane scrollPane = new JScrollPane(table);
-    		setLayout(new BorderLayout());
+    		scrollPane.setPreferredSize(new Dimension(1000,400));
+    		setBackground(Color.blue);
     		add(scrollPane, BorderLayout.CENTER);
 
     	}

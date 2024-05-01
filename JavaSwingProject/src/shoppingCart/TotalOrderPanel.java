@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 
 public class TotalOrderPanel extends JPanel{
 int totalProductPayment;//선택한or전체 상품의금액 
@@ -19,7 +17,7 @@ private JLabel totalDeliveryPaymentLabel;
 //기본값 
 	
 
-	public TotalOrderPanel(int totalProductPayment) {	
+	public TotalOrderPanel() {	
 		this.totalProductPayment = totalProductPayment;
 		this.totalDeliveryPayment = 2500;
 		this.totalPayment = totalProductPayment + totalDeliveryPayment;
@@ -30,6 +28,8 @@ private JLabel totalDeliveryPaymentLabel;
 		totalDeliveryPaymentLabel = new JLabel("배송비 : " + totalDeliveryPayment + "원     =");
 		// 총 결제 금액을 표시하는 부분 생성
 		totalPaymentLabel = new JLabel("총 결제 금액 : " + getTotalPayment() + "원");
+		
+		setBounds(0,600,900,100);
 
 	}
 	
@@ -51,8 +51,6 @@ private JLabel totalDeliveryPaymentLabel;
 	    
 	    
 	    //orders에 추가되는 열 만큼 arraylist에 넣는다. 
-	    
-	    
 	    for( Orders order : orders) {
 	    	if(order.getSelect()) {
 	   
