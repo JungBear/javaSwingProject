@@ -47,7 +47,7 @@ private JLabel totalDeliveryPaymentLabel;
 	    
 	    //선택된 상품의 금액 합산 
 	    
-	    orders = scp.getOrders();
+	   // orders = scp.getOrders();
 	    
 	    
 	    //orders에 추가되는 열 만큼 arraylist에 넣는다. 
