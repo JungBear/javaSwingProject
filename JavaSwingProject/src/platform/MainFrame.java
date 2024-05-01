@@ -54,6 +54,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
      * 
      * 사용하는 곳에서 보여주려는 panel을 setvisivle(true)를 통해 알려줘야한다
      */
+    @Override
     public void hideVisiblePanelExceptHeader() {
         Component[] components = getContentPane().getComponents();
         for (Component component : components) {

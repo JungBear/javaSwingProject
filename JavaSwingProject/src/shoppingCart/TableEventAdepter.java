@@ -42,7 +42,7 @@ public class TableEventAdepter implements TableModelListener {
 				
 			}
 			
-			totalOrderPanel.updateTotalPayment();
+//			totalOrderPanel.updateTotalPayment();
 			
 		}
 		

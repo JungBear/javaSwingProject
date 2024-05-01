@@ -18,19 +18,22 @@ public class MainHeader extends JPanel{
 	ImageIcon logoIcon;
 	
 	// 버튼들의 위치를 오른쪽에 배치시킨다
-	TopNavBtn clothBtn = new TopNavBtn( 900, 20);
-	TopNavBtn cosmeticsBtn = new TopNavBtn(960, 20);
-	TopNavBtn shoesBtn = new TopNavBtn(1020, 20);
-	TopNavBtn bagBtn = new TopNavBtn(1080, 20);
-	TopNavBtn loginBtn = new TopNavBtn(0, 150);
-	TopNavBtn cartBtn = new TopNavBtn(100, 150);
+	TopNavBtn clothBtn = new TopNavBtn("의류", 900, 20);
+	TopNavBtn cosmeticsBtn = new TopNavBtn("화장품",960, 20);
+	TopNavBtn shoesBtn = new TopNavBtn("신발",1020, 20);
+	TopNavBtn bagBtn = new TopNavBtn("가방",1080, 20);
+	TopNavBtn loginBtn = new TopNavBtn("로그인",0, 150);
+	TopNavBtn cartBtn = new TopNavBtn("장바구니",100, 150);
+	
+	MainDownPanel clothDownPanel = new MainDownPanel("cloth",900, 50);
+	MainDownPanel cosmeticsDownPanel = new MainDownPanel("cosmetics", 960, 50);
+	MainDownPanel shoesDownPanel = new MainDownPanel("shoes",1020, 50);
+	MainDownPanel bagDownPanel = new MainDownPanel("bag",1080, 50);
 	
 	LoginForm loginFrame = new LoginForm();
-	ProductService productService = new ProductService();
 	
 
 	public MainHeader(MainFrame mainF) {
-		super();
 		setName("header");
 		setBounds(0, 0, 1280, 200);
 		setBackground(Color.gray);
@@ -38,21 +41,38 @@ public class MainHeader extends JPanel{
         setPreferredSize(getPreferredSize()); // 원래 크기로 설정
         // 로고 이미지 생성
         add(setLogo(mainF));
+        // 버튼 panel에 부착
         add(clothBtn);
         add(cosmeticsBtn);
         add(shoesBtn);
         add(bagBtn);
         add(cartBtn);
         add(loginBtn);
+        add(clothDownPanel);
+        add(cosmeticsDownPanel);
+        add(shoesDownPanel);
+        add(bagDownPanel);
         
-        clothBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(productService.readData(clothBtn.getText()));
-				
-			}
-		});
+        TopNavBtn[] btnList = {clothBtn, cosmeticsBtn, shoesBtn, bagBtn};
+        for (TopNavBtn topNavBtn : btnList) {
+        	switch(topNavBtn.getText()) {
+        	case "의류":
+        		topNavBtn.addMouseListener(new BtnMouseAdapter(clothDownPanel));
+        		break;
+        	case "화장품":
+        		topNavBtn.addMouseListener(new BtnMouseAdapter(cosmeticsDownPanel));
+        		break;
+        	case "신발":
+        		topNavBtn.addMouseListener(new BtnMouseAdapter(shoesDownPanel));
+        		break;
+        	case "가방":
+        		topNavBtn.addMouseListener(new BtnMouseAdapter(bagDownPanel));
+        		break;
+        		
+        	}
+		}
+        
+
         
         // 장바구니 버튼을 누르면 장바구니 판넬이 뜨게 해주기
         cartBtn.addActionListener(new ActionListener() {
