@@ -37,13 +37,13 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 	
     public void showShoppingCartPanel() {
 	 	shoppingCartGUI = new SoppingCartPanel();
-	    shoppingCartGUI.setBounds(0, 1000, 1280, 760);
+
 
 	    // 현재 화면에 표시되고 있는 패널을 찾습니다.
 	    hideVisiblePanelExceptHeader();
 
 	    // 장바구니 패널을 화면에 추가합니다.
-	    setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+	    setLayout(null);
 	    getContentPane().add(shoppingCartGUI);
 	    setVisible(true);
     

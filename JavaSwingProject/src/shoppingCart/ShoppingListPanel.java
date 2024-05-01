@@ -81,8 +81,9 @@ public class ShoppingListPanel extends JPanel {
     		
     		// 스크롤에 테이블 추가
     		JScrollPane scrollPane = new JScrollPane(table);
-    		scrollPane.setPreferredSize(new Dimension(1000,400));
+//    		scrollPane.setPreferredSize(new Dimension(800,400));
     		setBackground(Color.blue);
+    		setBounds(0,0,1280,550);
     		add(scrollPane, BorderLayout.CENTER);
 
     	}

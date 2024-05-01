@@ -36,7 +36,7 @@ public class MainHeader extends JPanel{
 	public MainHeader(MainFrame mainF) {
 		setName("header");
 		setBounds(0, 0, 1280, 200);
-		setMaximumSize(new Dimension(1280, 200)); // maxSize 설정
+		setPreferredSize(new Dimension(1280, 200)); // maxSize 설정
 	    // 로고 이미지 생성
 		setBackground(Color.gray);
 		setLayout(null); // FlowLayout로 변경

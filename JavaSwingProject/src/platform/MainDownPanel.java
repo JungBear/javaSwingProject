@@ -15,7 +15,7 @@ public class MainDownPanel extends JPanel{
 	
 	public MainDownPanel(String name, int x, int y) {
 		setName(name);
-		setBounds(x, y, 60, 160);
+		setBounds(x, y, 60, 120);
 		setBackground(Color.GRAY);
 		setBorder(new EmptyBorder(5,3,5,3));
 		setVisible(false);

@@ -1,5 +1,6 @@
 package shoppingCart;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -18,7 +19,7 @@ private JLabel totalDeliveryPaymentLabel;
 	
 
 	public TotalOrderPanel() {	
-		this.totalProductPayment = totalProductPayment;
+		this.totalProductPayment = 0;
 		this.totalDeliveryPayment = 2500;
 		this.totalPayment = totalProductPayment + totalDeliveryPayment;
 		
@@ -29,7 +30,12 @@ private JLabel totalDeliveryPaymentLabel;
 		// 총 결제 금액을 표시하는 부분 생성
 		totalPaymentLabel = new JLabel("총 결제 금액 : " + getTotalPayment() + "원");
 		
-		setBounds(0,600,900,100);
+		setBounds(200,551,900,160);
+		setBackground(Color.yellow);
+		setVisible(true);
+		add(totalProductPaymentLabel);
+		add(totalDeliveryPaymentLabel);
+		add(totalPaymentLabel);
 
 	}
 	
