@@ -6,13 +6,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import shoppingCart.SoppingCartPanel;
+import shoppingCart.ShoppingCartPanel;
 
 public class MainFrame extends JFrame implements MainHeaderListener{
 
 	MainHeader mainHeader = new MainHeader(this);
 	MainPreView MainPreView = new MainPreView();
-	SoppingCartPanel shoppingCartGUI = new SoppingCartPanel();
+	ShoppingCartPanel shoppingCartGUI = new ShoppingCartPanel();
 		
 	public void setMainFrame() {
 		setBounds(150, 70, 1280, 960);
@@ -36,7 +36,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 	}
 	
     public void showShoppingCartPanel() {
-	 	shoppingCartGUI = new SoppingCartPanel();
+	 	shoppingCartGUI = new ShoppingCartPanel();
 
 
 	    // 현재 화면에 표시되고 있는 패널을 찾습니다.

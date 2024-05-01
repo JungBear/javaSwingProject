@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 
 public class TotalOrderPanel extends JPanel{
 int totalProductPayment;//선택한or전체 상품의금액 
@@ -14,12 +15,13 @@ private ArrayList<Orders> orders;//주문내역을 받아옴
 private JLabel totalProductPaymentLabel;
 private JLabel totalPaymentLabel;
 private JLabel totalDeliveryPaymentLabel;
+private TableEventAdepter tableEventAdepter;
 
 //기본값 
 	
 
 	public TotalOrderPanel() {	
-		this.totalProductPayment = 0;
+		this.totalProductPayment = totalProductPayment;
 		this.totalDeliveryPayment = 2500;
 		this.totalPayment = totalProductPayment + totalDeliveryPayment;
 		
@@ -39,9 +41,16 @@ private JLabel totalDeliveryPaymentLabel;
 
 	}
 	
+//	
+//	public TotalOrderPanel(JTable table) {
+//		// TableEventAdepter 객체 생성
+//		tableEventAdepter = new TableEventAdepter(table);
+//        // JTable에 MouseListener로 등록
+//        table.addMouseListener(tableEventAdepter);
+//	}
 	
 	//상품 금액이 합산되는 메서드 
-	public void updateTotalPayment(SoppingCartPanel scp) {
+	public void updateTotalPayment(ShoppingCartPanel scp) {
 		
 		//1. 선택 박스를 누르면 값을 변경해서 보여준다. 
 		//쇼핑카트에 들어있는 테이블체인지 메서드가 세트 메뉴가 됨 

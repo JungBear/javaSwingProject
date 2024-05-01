@@ -5,10 +5,10 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
-public class SoppingCartPanel extends JPanel{
+public class ShoppingCartPanel extends JPanel{
     private int totalPayment = 0;
 	
-	public SoppingCartPanel() {
+	public ShoppingCartPanel() {
 		ShoppingListPanel shoppingListPanel = new ShoppingListPanel();
 		
 		TotalOrderPanel totalOrderPanel = new TotalOrderPanel();
