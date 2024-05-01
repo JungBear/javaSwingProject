@@ -1,6 +1,7 @@
 package platform;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import login_form.LoginForm;
-import product.ProductService;
 
 public class MainHeader extends JPanel{
 	ImageIcon logoIcon;
@@ -36,6 +36,8 @@ public class MainHeader extends JPanel{
 	public MainHeader(MainFrame mainF) {
 		setName("header");
 		setBounds(0, 0, 1280, 200);
+		setMaximumSize(new Dimension(1280, 200)); // maxSize 설정
+	    // 로고 이미지 생성
 		setBackground(Color.gray);
 		setLayout(null); // FlowLayout로 변경
         setPreferredSize(getPreferredSize()); // 원래 크기로 설정
@@ -52,12 +54,12 @@ public class MainHeader extends JPanel{
         add(cosmeticsDownPanel);
         add(shoesDownPanel);
         add(bagDownPanel);
-        
         TopNavBtn[] btnList = {clothBtn, cosmeticsBtn, shoesBtn, bagBtn};
         for (TopNavBtn topNavBtn : btnList) {
         	switch(topNavBtn.getText()) {
         	case "의류":
         		topNavBtn.addMouseListener(new BtnMouseAdapter(clothDownPanel));
+        		topNavBtn.addActionListener(null);
         		break;
         	case "화장품":
         		topNavBtn.addMouseListener(new BtnMouseAdapter(cosmeticsDownPanel));

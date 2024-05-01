@@ -16,7 +16,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 		
 	public void setMainFrame() {
 		setBounds(150, 70, 1280, 960);
-		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+		setLayout(null);
 		add(mainHeader);
 		add(MainPreView);
 		add(shoppingCartGUI);
@@ -37,7 +37,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 	
     public void showShoppingCartPanel() {
 	 	shoppingCartGUI = new SoppingCartPanel();
-	    shoppingCartGUI.setBounds(0, 1000, 1280, 600);
+	    shoppingCartGUI.setBounds(0, 1000, 1280, 760);
 
 	    // 현재 화면에 표시되고 있는 패널을 찾습니다.
 	    hideVisiblePanelExceptHeader();

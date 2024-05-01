@@ -57,12 +57,6 @@ public class MainDownPanel extends JPanel{
         	switch(topNavBtn.getText()) {
         	case "의류":
         		topNavBtn.addMouseListener(new BtnMouseAdapter(this));
-        		topNavBtn.addActionListener(new ActionListener() {
-		            @Override
-		            public void actionPerformed(ActionEvent e) {
-		            	
-		            }
-		        });
         		break;
         	case "화장품":
         		topNavBtn.addMouseListener(new BtnMouseAdapter(this));
