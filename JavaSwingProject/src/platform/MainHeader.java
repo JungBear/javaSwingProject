@@ -16,6 +16,7 @@ import login_form.LoginForm;
 
 public class MainHeader extends JPanel{
 	ImageIcon logoIcon;
+	MainFrame mainF;
 	
 	// 버튼들의 위치를 오른쪽에 배치시킨다
 	TopNavBtn clothBtn = new TopNavBtn("의류", 900, 20);
@@ -25,15 +26,16 @@ public class MainHeader extends JPanel{
 	TopNavBtn loginBtn = new TopNavBtn("로그인",0, 150);
 	TopNavBtn cartBtn = new TopNavBtn("장바구니",100, 150);
 	
-	MainDownPanel clothDownPanel = new MainDownPanel("cloth",900, 50);
-	MainDownPanel cosmeticsDownPanel = new MainDownPanel("cosmetics", 960, 50);
-	MainDownPanel shoesDownPanel = new MainDownPanel("shoes",1020, 50);
-	MainDownPanel bagDownPanel = new MainDownPanel("bag",1080, 50);
+	MainDownPanel clothDownPanel = new MainDownPanel("cloth",900, 50, mainF);
+	MainDownPanel cosmeticsDownPanel = new MainDownPanel("cosmetic", 960, 50,mainF);
+	MainDownPanel shoesDownPanel = new MainDownPanel("shoes",1020, 50,mainF);
+	MainDownPanel bagDownPanel = new MainDownPanel("bag",1080, 50,mainF);
 	
 	LoginForm loginFrame = new LoginForm();
 	
 
 	public MainHeader(MainFrame mainF) {
+		this.mainF = mainF;
 		setName("header");
 		setBounds(0, 0, 1280, 200);
 		setPreferredSize(new Dimension(1280, 200)); // maxSize 설정
@@ -59,7 +61,6 @@ public class MainHeader extends JPanel{
         	switch(topNavBtn.getText()) {
         	case "의류":
         		topNavBtn.addMouseListener(new BtnMouseAdapter(clothDownPanel));
-        		topNavBtn.addActionListener(null);
         		break;
         	case "화장품":
         		topNavBtn.addMouseListener(new BtnMouseAdapter(cosmeticsDownPanel));

@@ -13,6 +13,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 	MainHeader mainHeader = new MainHeader(this);
 	MainPreView MainPreView = new MainPreView();
 	SoppingCartPanel shoppingCartGUI = new SoppingCartPanel();
+	
 		
 	public void setMainFrame() {
 		setBounds(150, 70, 1280, 960);
@@ -20,6 +21,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 		add(mainHeader);
 		add(MainPreView);
 		add(shoppingCartGUI);
+		
 		shoppingCartGUI.setVisible(false);
 		
 //		mainF.add(jFramCart);
