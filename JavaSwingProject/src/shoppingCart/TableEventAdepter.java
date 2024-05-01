@@ -4,19 +4,32 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class TableEventAdepter extends JPanel implements MouseListener{
-	DefaultTableModel tableModel;
+	JTable table;
+	
+	public TableEventAdepter(JTable table) {
+        this.table = table;
+
+    }
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		int row = tableModel.getRowCount();
-		int clo = tableModel.getColumnCount();
+		//선택한 셀의 행 번호 계산
+		int rowCount = table.getRowCount();
+		int totalPrice = 0;
 		
-		for(int i = 0; i < tableModel.getColumnCount(); i++) {
-			//System.out.println(tableModel.get);
-		}
+		for (int i = 0; i < rowCount; i++) {
+            boolean isSelected = (boolean) table.getValueAt(i, 0);
+            if (isSelected) {
+                int productPrice = (int) table.getValueAt(i, 2); // 상품 금액
+                int productQuantity = (int) table.getValueAt(i, 3); // 상품 수량
+                totalPrice += productPrice * productQuantity;
+            }
+        }
 	
 		}
 		@Override
