@@ -2,14 +2,15 @@ package platform;
 
 import java.awt.Component;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import shoppingCart.ShoppingCartPanel;
+import userDTO.UserDTO;
 
 public class MainFrame extends JFrame implements MainHeaderListener{
 
+	UserDTO user;
 	MainHeader mainHeader = new MainHeader(this);
 	MainPreView MainPreView = new MainPreView();
 

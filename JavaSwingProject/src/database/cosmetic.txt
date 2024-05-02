@@ -1,7 +1,7 @@
 skincare, 1025 독도 코팩 3ml, 블랙헤드 멜팅 독도 코팩, src/img/skincare1.jpg, 15000
 skincare, 레드 블레미쉬 클리어 수딩 크림 50ml 듀오, 수분 충전 & 수분진정 & 유분과 피지케어에 효과적인 수딩크림, src/img/skincare2.jpg, 62000
-skincare, 다이브인 저분자 히알루론산 세럼 50ml+40ml, 피부에 풍부한 수분을 채워주는 히알루론산 세럼, src/img/ skincare3.jpg, 42000
-skincare, 사각 네모 토너 패드 100매, N0.1 메디힐 티트리 트러블 패드,  src/img/skincare4.jpg, 26000
+skincare, 다이브인 저분자 히알루론산 세럼 50ml+40ml, 피부에 풍부한 수분을 채워주는 히알루론산 세럼, src/img/skincare3.jpg, 42000
+skincare, 사각 네모 토너 패드 100매, N0.1 메디힐 티트리 트러블 패드, src/img/skincare4.jpg, 26000
 skincare, 비건라이스 밀크 보습 크림 100ml, 24시간 피부지킴 탄탄 장벽크림 구달 비건 라이스 밀크 보습 크림, src/img/skincare5.jpg, 24000
 cleansing, 포어 퓨리파잉 살리실산 포밍 클렌저 120g, 염증성 여드름 4주개선 주미소 클렌징폼, src/img/cleansing1.jpg, 18000
 cleansing, 녹두 약산성 클렌징폼 80ml 2개, 피지까지 말끔모공 녹두 약산성 클렌징 폼, src/img/cleansing2.jpg, 15000
