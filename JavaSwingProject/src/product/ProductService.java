@@ -34,7 +34,7 @@ public class ProductService {
 		String temp = null;
 		StringBuilder copyTemp = new StringBuilder();
 		String[] databaseData = null; 
-		System.out.println(category);
+//		System.out.println(category);
 		try {
 			
 			br = new BufferedReader(new FileReader("C:\\Users\\mod45\\OneDrive\\바탕 화면\\javaswingproject\\JavaSwingProject\\src\\database/" + category + ".txt"));
