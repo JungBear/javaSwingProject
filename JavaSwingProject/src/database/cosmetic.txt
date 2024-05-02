@@ -1,20 +1,20 @@
-스킨케어, 1025 독도 코팩 3ml, 블랙헤드 멜팅 독도 코팩, src/img/skincare1.jpg, 15000
-스킨케어, 레드 블레미쉬 클리어 수딩 크림 50ml 듀오, 수분 충전 & 수분진정 & 유분과 피지케어에 효과적인 수딩크림, src/img/skincare2.jpg, 62000
-스킨케어, 다이브인 저분자 히알루론산 세럼 50ml+40ml, 피부에 풍부한 수분을 채워주는 히알루론산 세럼, src/img/ skincare3.jpg, 42000
-스킨케어, 사각 네모 토너 패드 100매, N0.1 메디힐 티트리 트러블 패드,  src/img/skincare4.jpg, 26000
-스킨케어, 비건라이스 밀크 보습 크림 100ml, 24시간 피부지킴 탄탄 장벽크림 구달 비건 라이스 밀크 보습 크림, src/img/skincare5.jpg, 24000
-클렌징, 포어 퓨리파잉 살리실산 포밍 클렌저 120g, 염증성 여드름 4주개선 주미소 클렌징폼, src/img/cleansing1.jpg, 18000
-클렌징, 녹두 약산성 클렌징폼 80ml 2개, 피지까지 말끔모공 녹두 약산성 클렌징 폼, src/img/cleansing2.jpg, 15000
-클렌징, AC 컨트롤 딥 그린 카밍 트러블 폼 클렌저 150ml, 초강력 시카 폼으로 트러블 원인까지 완벽세안하는 딥 폼클렌저, src/img/cleansing3.jpg, 16000
-클렌징, 청귤 비타C 클렌징폼 150ml, 피부를 맑고 깨긋하게 세안해주는 구달 청귤 비타C 클렌징 폼, src/img/cleansing4.jpg, 12000
-클렌징, 서양자두 비타캡슐 모공 클렌징폼 300g, 까만모공은 비워내고 비타민은 채워넣는 모공토닝 밀크터치 비타민폭탄폼, src/img/cleansing5.jpg, 25000
-네일, 프로페셔널 젤 폴리쉬 위드젤 시럽 라인, 위드젤 시럽라인 3종,  src/img/nail1.jpg, 8500
-네일, 캘럭시젤 10ml, 우주를 담은 듯 눈부시게 반짝이는 갤럭시 젤 네일, src/img/nail2.jpg, 16000
-네일, 프로페셔널 젤 폴리쉬 위드젤 트리플이펙트 라인, 마그넷으로 다양한 연출이 가능한 자석네일, src/img/nail3.jpg, 9900
-네일, 컬러 네일 내추럴리 미 컬렉션 15ml 7종, 컨템포러리 클래식 감성으로 표현되는 네일 폴리쉬, src/img/nail4.jpg, 15000
-네일, 비건 네일 매니큐어, 냄새없이 바르고 제울 땐 스티커처럼 간편한 미크릿 비건 메니큐어, src/img/nail5.jpg, 15000
-맨즈케어, 왁스스트립 맨, 빠르고 깔끔한 강력제모 바디네이처 왁스스트립 맨, src/img/manscare1.jpg.jpg, 7200
-맨즈케어, 에센셜 시카 쉐이빙 젤, 쉽고 편안한 면도를 도와주는 에센셜 시카 쉐이빙 젤, src/img/manscare2.jpg, 16900
-맨즈케어, 카밍부스터, 제모 후 피부에 쿨링효과를 주는 애프터케어, src/img/manscare3.jpg, 15900
-맨즈케어, 쿨링 애프터쉐이브 150ml, 델링그 애프터쉐이브 카밍 화이트닝 쿨 미스트, src/img/manscare4.jpg, 11900
-맨즈케어, 고보습 면도 크림 1oz, 리우젤 고보습 면도 크림, src/img/manscare5.jpg, 16000
+skincare, 1025 독도 코팩 3ml, 블랙헤드 멜팅 독도 코팩, src/img/skincare1.jpg, 15000
+skincare, 레드 블레미쉬 클리어 수딩 크림 50ml 듀오, 수분 충전 & 수분진정 & 유분과 피지케어에 효과적인 수딩크림, src/img/skincare2.jpg, 62000
+skincare, 다이브인 저분자 히알루론산 세럼 50ml+40ml, 피부에 풍부한 수분을 채워주는 히알루론산 세럼, src/img/ skincare3.jpg, 42000
+skincare, 사각 네모 토너 패드 100매, N0.1 메디힐 티트리 트러블 패드,  src/img/skincare4.jpg, 26000
+skincare, 비건라이스 밀크 보습 크림 100ml, 24시간 피부지킴 탄탄 장벽크림 구달 비건 라이스 밀크 보습 크림, src/img/skincare5.jpg, 24000
+cleansing, 포어 퓨리파잉 살리실산 포밍 클렌저 120g, 염증성 여드름 4주개선 주미소 클렌징폼, src/img/cleansing1.jpg, 18000
+cleansing, 녹두 약산성 클렌징폼 80ml 2개, 피지까지 말끔모공 녹두 약산성 클렌징 폼, src/img/cleansing2.jpg, 15000
+cleansing, AC 컨트롤 딥 그린 카밍 트러블 폼 클렌저 150ml, 초강력 시카 폼으로 트러블 원인까지 완벽세안하는 딥 폼클렌저, src/img/cleansing3.jpg, 16000
+cleansing, 청귤 비타C 클렌징폼 150ml, 피부를 맑고 깨긋하게 세안해주는 구달 청귤 비타C 클렌징 폼, src/img/cleansing4.jpg, 12000
+cleansing, 서양자두 비타캡슐 모공 클렌징폼 300g, 까만모공은 비워내고 비타민은 채워넣는 모공토닝 밀크터치 비타민폭탄폼, src/img/cleansing5.jpg, 25000
+nail, 프로페셔널 젤 폴리쉬 위드젤 시럽 라인, 위드젤 시럽라인 3종,  src/img/nail1.jpg, 8500
+nail, 캘럭시젤 10ml, 우주를 담은 듯 눈부시게 반짝이는 갤럭시 젤 네일, src/img/nail2.jpg, 16000
+nail, 프로페셔널 젤 폴리쉬 위드젤 트리플이펙트 라인, 마그넷으로 다양한 연출이 가능한 자석네일, src/img/nail3.jpg, 9900
+nail, 컬러 네일 내추럴리 미 컬렉션 15ml 7종, 컨템포러리 클래식 감성으로 표현되는 네일 폴리쉬, src/img/nail4.jpg, 15000
+nail, 비건 네일 매니큐어, 냄새없이 바르고 제울 땐 스티커처럼 간편한 미크릿 비건 메니큐어, src/img/nail5.jpg, 15000
+manscare, 왁스스트립 맨, 빠르고 깔끔한 강력제모 바디네이처 왁스스트립 맨, src/img/manscare1.jpg.jpg, 7200
+manscare, 에센셜 시카 쉐이빙 젤, 쉽고 편안한 면도를 도와주는 에센셜 시카 쉐이빙 젤, src/img/manscare2.jpg, 16900
+manscare, 카밍부스터, 제모 후 피부에 쿨링효과를 주는 애프터케어, src/img/manscare3.jpg, 15900
+manscare, 쿨링 애프터쉐이브 150ml, 델링그 애프터쉐이브 카밍 화이트닝 쿨 미스트, src/img/manscare4.jpg, 11900
+manscare, 고보습 면도 크림 1oz, 리우젤 고보습 면도 크림, src/img/manscare5.jpg, 16000

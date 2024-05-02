@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
 public class TopNavBtn extends JButton{
-	TopNavBtnEventListener eventListener;
 	
 	
 

@@ -12,7 +12,7 @@ public class MainPreView extends JPanel{
 	String[] kinds = {"의류", "화장품", "신발", "가방"};
 	
 	public MainPreView() {
-		setBounds(200, 0, 1280, 760);
+		setBounds(0, 200, 1280, 760);
 		for (String kind : kinds) {
 			TextArea title = new TextArea();
 			
