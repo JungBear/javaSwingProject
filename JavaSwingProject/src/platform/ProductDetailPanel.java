@@ -40,6 +40,7 @@ public class ProductDetailPanel extends JPanel{
 		}
 		
 		JButton cart = new JButton("장바구니에 넣기");
+//		cart.addActionListener(new );
 		
 		
 		add(productName);
