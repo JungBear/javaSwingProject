@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import userDTO.UserDTO;
-
 public class UserDataWriter {
 		
 	
@@ -25,7 +24,4 @@ public class UserDataWriter {
         }
         
     }
-
-	
-
 }

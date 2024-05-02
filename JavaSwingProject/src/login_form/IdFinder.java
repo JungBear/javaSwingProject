@@ -40,22 +40,6 @@ public class IdFinder extends JFrame {
         // 찾기 버튼
         findButton = new JButton("찾기");
         findButton.setBounds(100, 200, 200, 30);
-        findButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-                String name = nametf.getText();
-                String email = emailtf.getText();
-                if (name.isEmpty() || email.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "이름과 이메일을 모두 입력하세요.");
-                } else {
-                    String userId = UserDataReader.FindId(name, email);
-                    if (userId != null) {
-                        JOptionPane.showMessageDialog(null, "아이디는 : " + userId + "입니다");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "일치하는 사용자 정보가 없습니다.");
-                    }
-                }
-            }
-        });
 
         // 비밀번호 찾기 버튼
         pwfindbtn = new JButton("비밀번호 찾기");
@@ -77,6 +61,8 @@ public class IdFinder extends JFrame {
         		close();
         		pwFinder.PwFinderForm();
         		pwFinder.PwFinderFrame();
+        	
+        		
         	}
         });
         
@@ -86,7 +72,7 @@ public class IdFinder extends JFrame {
     //프레임
     public void IdFinderFrame() {
     	setTitle("아이디 찾기");
-    	setLocation(600,200);
+    	
         setSize(400, 550);
         setLayout(null);
         setVisible(true);
