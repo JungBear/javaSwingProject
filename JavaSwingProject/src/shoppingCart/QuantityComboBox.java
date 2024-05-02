@@ -19,7 +19,7 @@ public class QuantityComboBox extends DefaultCellEditor {
 
 	
 
-    public QuantityComboBox(JTable table, DefaultTableModel tableModel, ArrayList<Orders> orders) {
+    public QuantityComboBox(JTable table, DefaultTableModel tableModel, ArrayList<Orders> orders, TotalOrderPanel totalOrderPanel) {
         super(new JComboBox<Integer>());
         this.table = table;
         this.tableModel = tableModel;
@@ -46,9 +46,11 @@ public class QuantityComboBox extends DefaultCellEditor {
                     int totalPrice = orders.get(row).getPrice() * selectedQuantity;
                     System.out.println("totalPrice : " + totalPrice);
                     tableModel.setValueAt(totalPrice, row, 4);
-               }
+                    totalOrderPanel.updateTotalPayment(orders); // TotalOrderPanel의 결제 금액 업데이트
+               
             }
-        });
+
+        }});
         
     }
     

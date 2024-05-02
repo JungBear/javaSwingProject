@@ -3,8 +3,11 @@ package shoppingCart;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -16,13 +19,14 @@ public class ShoppingListPanel extends JPanel {
 	JTable table;//장바구니 헤더, 리스트를 담을 테이블 
     DefaultTableModel tableModel;
     private ArrayList<Orders> orders;
+    int selectOrdersAdd=0;
 
     
     	public ArrayList<Orders> getOrders() {
     		return orders;
     	}
     
-    	public ShoppingListPanel()    {   
+    	public ShoppingListPanel(TotalOrderPanel totalOrderPanel)    {   
 	
     		//주문 정보를 담을 ArrayList생성 
     		orders = new ArrayList<>();
@@ -31,7 +35,10 @@ public class ShoppingListPanel extends JPanel {
     		// 임의 데이터 
     		orders.add(new Orders(true, " 상품 1 ", 10000, 1, 5, false));
     		orders.add(new Orders(true, " 상품 2 ", 5000, 1, 5, false));
-	 
+    		System.out.println(orders);
+    		
+    		
+    		
     		//장바구니 컬럼명
     		String[] cartHeader = {"선택", "상품 정보", "금액", "수량", "전체 금액", "배송비", "삭제"};
     		tableModel = new DefaultTableModel(null, cartHeader ) {
@@ -77,16 +84,43 @@ public class ShoppingListPanel extends JPanel {
     		table = new JTable(tableModel);
     		
     		//수량에 콤보박스 추가 
-    		table.getColumnModel().getColumn(3).setCellEditor(new QuantityComboBox(table, tableModel, orders));
+    		table.getColumnModel().getColumn(3).setCellEditor(new QuantityComboBox(table, tableModel, orders, totalOrderPanel));
     		
     		// 스크롤에 테이블 추가
     		JScrollPane scrollPane = new JScrollPane(table);
-//    		scrollPane.setPreferredSize(new Dimension(800,400));
+    		scrollPane.setPreferredSize(new Dimension(800,400));
     		setBackground(Color.blue);
     		setBounds(0,0,1280,550);
     		add(scrollPane, BorderLayout.CENTER);
+    		
+    		//삭제 버튼 추가
+    		JButton deleteBtn = new JButton("선택한 상품 삭제");
+    		deleteBtn.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if(table.getSelectedRow() == -1) {
+						return;
+					} else {
+						tableModel.removeRow(table.getSelectedRow());
+					}
+					
+				}
+    		});
+    		
 
     	}
     	
-    	
+    	//장바구니 첫 화면에서 보이는 하단 상품의 결제 금액 부분 
+    	public int selectAdd() {
+    		
+    		for (Orders orders : orders) {
+    			if(orders.getSelect()) {
+    				selectOrdersAdd += orders.getTotalPrice();
+    			}
+			}
+    		
+    		return selectOrdersAdd;
+    	}
 }
