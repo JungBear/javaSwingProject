@@ -55,4 +55,9 @@ public class UserDTO {
 		this.address = address;
 	}
 
+	public static String loginUser(String id, String password) {
+		
+		return null;
+	}
+
 }

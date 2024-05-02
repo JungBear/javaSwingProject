@@ -1,7 +1,17 @@
 package login_form;
 
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import platform.MainHeader;
+import userDTO.UserDTO;
 
 public class LoginForm extends JFrame {
     private JTextField idtf;
@@ -57,6 +67,33 @@ public class LoginForm extends JFrame {
         add(idfindbtn);
         add(pwfindbtn);
         
+        // 로그인 버튼 누를시 userDTO login
+        loginbtn.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+                String id = idtf.getText();
+                String password = String.valueOf(pwpf.getPassword());
+               
+                if (id.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "아이디를 입력하세요");
+                } else if  (password.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "비밀번호를 입력하세요");
+                } else {
+                    UserDTO userLogin = UserDataReader.loginUser(id, password);
+                    if (userLogin != null) {
+                    	new MainHeader(null);
+                    	setVisible(false);
+                        JOptionPane.showMessageDialog(null, "로그인 했습니다");
+                    } 
+                    else {
+                        JOptionPane.showMessageDialog(null, "아이디와 비밀번호가 일치하지 않습니다");
+                    }
+                }
+                    
+                }
+            }
+        );
+        
+        
         // 아이디 찾기 버튼 누를시 아이디찾기로 이동
         idfindbtn.addActionListener(new ActionListener() {
         	@Override
@@ -96,10 +133,11 @@ public class LoginForm extends JFrame {
     public void finalizeFrame() {
     	setTitle("로그인");
         setSize(400, 550);
+        setLocation(600,200);
         setLayout(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-
+    
     
 }
