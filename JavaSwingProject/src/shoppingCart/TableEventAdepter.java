@@ -10,9 +10,11 @@ import javax.swing.table.TableModel;
 
 public class TableEventAdepter extends JPanel implements MouseListener{
 	JTable table;
+	TotalOrderPanel totalOrderPanel;
 	
-	public TableEventAdepter(JTable table) {
+	public TableEventAdepter(JTable table, TotalOrderPanel totalOrderPanel) {
         this.table = table;
+        this.totalOrderPanel = totalOrderPanel;
 
     }
 	
@@ -30,6 +32,9 @@ public class TableEventAdepter extends JPanel implements MouseListener{
                 totalPrice += productPrice * productQuantity;
             }
         }
+		// totalOrderPanel.setTotalProductPayment(totalProductPayment);
+	    // totalOrderPanel.updateTotalPayment();
+	    
 	
 		}
 		@Override

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 
 public class TotalOrderPanel extends JPanel{
 int totalProductPayment;//선택한or전체 상품의금액 
@@ -17,10 +16,13 @@ private JLabel totalPaymentLabel;
 private JLabel totalDeliveryPaymentLabel;
 private TableEventAdepter tableEventAdepter;
 
-//기본값 
+	
+	//기본값 
 	
 
 	public TotalOrderPanel() {	
+		//선택한 상품의 금액 + 배송비 = 전체 금액을 표시하는 영역 
+		
 		this.totalProductPayment = totalProductPayment;
 		this.totalDeliveryPayment = 2500;
 		this.totalPayment = totalProductPayment + totalDeliveryPayment;
@@ -30,8 +32,9 @@ private TableEventAdepter tableEventAdepter;
 		//선택한 or 전체 상품의 금액에 대한 배송비를 표시하는 부분 생성 
 		totalDeliveryPaymentLabel = new JLabel("배송비 : " + totalDeliveryPayment + "원     =");
 		// 총 결제 금액을 표시하는 부분 생성
-		totalPaymentLabel = new JLabel("총 결제 금액 : " + getTotalPayment() + "원");
+		totalPaymentLabel = new JLabel("총 결제 금액 : " + totalPayment + "원");
 		
+		//영역 설정 
 		setBounds(200,551,900,160);
 		setBackground(Color.yellow);
 		setVisible(true);
@@ -41,35 +44,22 @@ private TableEventAdepter tableEventAdepter;
 
 	}
 	
-//	
-//	public TotalOrderPanel(JTable table) {
-//		// TableEventAdepter 객체 생성
-//		tableEventAdepter = new TableEventAdepter(table);
-//        // JTable에 MouseListener로 등록
-//        table.addMouseListener(tableEventAdepter);
-//	}
 	
 	//상품 금액이 합산되는 메서드 
 	public void updateTotalPayment(ShoppingCartPanel scp) {
 		
 		//1. 선택 박스를 누르면 값을 변경해서 보여준다. 
-		//쇼핑카트에 들어있는 테이블체인지 메서드가 세트 메뉴가 됨 
+		//TavleEventAdepter 메서드가 세트 메뉴가 됨 
 
 	    //선택한 상품들(혹은 전체 상품)을 받아와서 상품 결제금액 계산 
-	    int defaultProductPayment = 0;
-	    int totalDeliveryPayment = 0;
-	    final int[] totalPayment = {0};
+	    int selectProductPayment = 0;
 	    
-	    //선택된 상품의 금액 합산 
-	    
-	   // orders = scp.getOrders();
-	    
-	    
+	   
 	    //orders에 추가되는 열 만큼 arraylist에 넣는다. 
 	    for( Orders order : orders) {
-	    	if(order.getSelect()) {
+	    	if(order.getSelect()) {//select값이 1일 때(주문건을 선택할 때) 금액을 totalProuctPaymen에 넣는다. 
 	   
-	    		totalPayment[0] += order.getTotalPrice();
+	    		selectProductPayment += order.getTotalPrice();//장바구니의 첫 창은 전체 상품이 선택되어있는게 default값임 
 	    	}
 	    }
 	    
@@ -89,15 +79,20 @@ private TableEventAdepter tableEventAdepter;
 		
 		
 	}
-
-
-	public int getTotalPayment() {
-		return totalPayment;
+	
+	public int getTotalProductPayment() {
+		return totalProductPayment;
 	}
 	
+	public void setTotalProductPayment(int totalProductPayment) {
+		this.totalProductPayment = totalProductPayment;
+	}
+
 	public void setTotalPayment(int totalPayment){
 		this.totalPayment = totalPayment;
 	}
+	
+
 	
 	
 	
