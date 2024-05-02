@@ -44,6 +44,7 @@ public class PwFinder extends JFrame {
         idfindbtn = new JButton("아이디 찾기");
         idfindbtn.setBounds(140, 240, 120, 30);
         
+        
         // 컴포넌트 추가
         add(idlb);
         add(idtf);
@@ -51,6 +52,26 @@ public class PwFinder extends JFrame {
         add(nametf);
         add(findButton);
         add(idfindbtn);
+        
+        findButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+                String id = idtf.getText();
+                String name = nametf.getText();
+                if (id.isEmpty() || name.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "아이디와 이름을 모두 입력하세요.");
+                } else {
+                    String userPw = UserDataReader.FindPw(id, name);
+                    if (userPw != null) {
+                        JOptionPane.showMessageDialog(null, "비밀번호는 : " + userPw + "입니다");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "일치하는 사용자 정보가 없습니다.");
+                    }
+                }
+            }
+        });
+        
+        
+        
         
         //아이디 찾기 버튼 누를시 아이디 찾기로 이동
         idfindbtn.addActionListener(new ActionListener() {
@@ -69,7 +90,7 @@ public class PwFinder extends JFrame {
     // 프레임
     public void PwFinderFrame() {
     	setTitle("비밀번호 찾기");
-    	
+    	setLocation(600,200);
         setSize(400, 550);
         setLayout(null);
         setVisible(true);

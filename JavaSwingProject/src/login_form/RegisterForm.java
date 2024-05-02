@@ -11,7 +11,8 @@ public class RegisterForm extends JFrame {
     private JTextField idtf, emailtf, nametf, addresstf, phonenumtf;
     private JPasswordField pwpf, pwcheckpf;
     private JLabel idlb ,pwlb ,pwchecklb ,emaillb ,name ,phonenumlb ,addresslb;
-    private JButton idcheckbtn ,emailcheckbtn ,phonecheckbtn ,registerbtn;
+    private boolean idCheck, emailCheck, phoneCheck = false;
+	private JButton emailcheckbtn , idcheckbtn ,phonecheckbtn ,registerbtn;
     
     public void RegisterForm() {
         
@@ -27,6 +28,20 @@ public class RegisterForm extends JFrame {
         // 아이디 중복확인버튼
         idcheckbtn = new JButton("중복 확인");
         idcheckbtn.setBounds(260, 60, 100, 30);
+        idcheckbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String id = idtf.getText();
+                if (id.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "아이디를 입력하세요.");
+                } else if (UserDataReader.checkDuplicate(id, 0)) { 
+                    JOptionPane.showMessageDialog(null, "이미 사용중인 아이디 입니다.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "사용 가능한 아이디 입니다.");
+                    idCheck = true;
+                }
+            }
+        });
+
 
         // 비밀번호 라벨
         pwlb = new JLabel("비밀번호");
@@ -55,6 +70,19 @@ public class RegisterForm extends JFrame {
         // 이메일 중복확인 버튼
         emailcheckbtn = new JButton("중복 확인");
         emailcheckbtn.setBounds(260, 300, 100, 30);
+        emailcheckbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String email = emailtf.getText();
+                if (email.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "이메일을 입력하세요.");
+                } else if (UserDataReader.checkDuplicate(email, 2)) { 
+                    JOptionPane.showMessageDialog(null, "이미 사용중인 이메일 입니다.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "사용 가능한 이메일 입니다.");
+                    emailCheck = true;
+                }
+            }
+        });
 
         // 이름 라벨
         name = new JLabel("이름");
@@ -75,6 +103,19 @@ public class RegisterForm extends JFrame {
         // 전화번호 중복확인 버튼
         phonecheckbtn = new JButton("중복 확인");
         phonecheckbtn.setBounds(260, 460, 100, 30);
+        phonecheckbtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String phonenum = phonenumtf.getText();
+                if (phonenum.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "연락처를 입력하세요.");
+                } else if (UserDataReader.checkDuplicate(phonenum, 4)) { 
+                    JOptionPane.showMessageDialog(null, "이미 사용중인 연락처 입니다.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "사용 가능한 연락처 입니다.");
+                    phoneCheck = true;
+                }
+            }
+        });
 
         // 주소 라벨과 입력창
         addresslb = new JLabel("주소");
@@ -86,7 +127,7 @@ public class RegisterForm extends JFrame {
 
         // 회원가입 버튼
         registerbtn = new JButton("회원가입");
-        registerbtn.setBounds(105, 590, 200, 30);
+        registerbtn.setBounds(105, 600, 200, 30);
         registerbtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 createUserAccount();
@@ -112,17 +153,18 @@ public class RegisterForm extends JFrame {
         add(addresslb);
         add(addresstf);
         add(registerbtn);
-
-        setVisible(true);
+        
     }
     //프레임 설정
     public void RegisterFrame() {
     	 setTitle("회원가입");
          setSize(410, 700);
+         setLocation(600,200);
          setLayout(null);
+         setVisible(true);
          setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
     }
-
+    // UserData 저장
     private void createUserAccount() {
         String id = idtf.getText(); // 아이디
         String pwd = new String(pwpf.getPassword());// 패스워드
@@ -131,7 +173,6 @@ public class RegisterForm extends JFrame {
         String name = nametf.getText();// 이름
         String phone = phonenumtf.getText();// 연락처
         String address = addresstf.getText(); // 주소
-       
         		
         
         
@@ -140,6 +181,13 @@ public class RegisterForm extends JFrame {
             JOptionPane.showMessageDialog(this, "아이디를 입력하세요.");
             return;
         }
+        
+        // 아이디 중복확인 버튼 클릭 확인
+        if (idCheck != true) {
+            JOptionPane.showMessageDialog(this, "아이디 중복확인을 하세요.");
+            return;
+        }
+        
         
         //비밀번호 입력 확인
         if (pwd.isEmpty()) {
@@ -177,6 +225,12 @@ public class RegisterForm extends JFrame {
             return;
         }
         
+        // 이메일 중복확인 버튼 클릭 확인
+        if (emailCheck != true) {
+            JOptionPane.showMessageDialog(this, "이메일 중복확인을 하세요.");
+            return;
+        }
+        
         // 이름 입력확인
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "이름을 입력하세요.");
@@ -193,6 +247,12 @@ public class RegisterForm extends JFrame {
             JOptionPane.showMessageDialog(this, "연락처는 번호만 입력하세요.");
             return;
         }
+        
+        // 연락처 중복확인 버튼 클릭 확인
+        if (phoneCheck != true) {
+            JOptionPane.showMessageDialog(this, "연락처 중복확인을 하세요.");
+            return;
+        }
 
         
         // 주소 입력 확인
@@ -200,6 +260,10 @@ public class RegisterForm extends JFrame {
             JOptionPane.showMessageDialog(this, "주소를 입력하세요.");
             return;
         }
+        
+        
+        
+        
         
         // 회원가입 정보 UserDTO로 보내기 (Phone int로 변환)
         UserDTO user = new UserDTO(id, pwd, email, name, Integer.parseInt(phone), address);
