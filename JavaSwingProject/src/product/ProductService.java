@@ -37,7 +37,7 @@ public class ProductService {
 //		System.out.println(category);
 		try {
 			
-			br = new BufferedReader(new FileReader("C:\\Users\\mod45\\OneDrive\\바탕 화면\\javaswingproject\\JavaSwingProject\\src\\database/" + category + ".txt"));
+			br = new BufferedReader(new FileReader("src/database/" + category + ".txt"));
 			while( (temp = br.readLine()) != null ) {
 //				System.out.println(temp);
 //				System.out.println("-----줄단위 읽기 확인");
