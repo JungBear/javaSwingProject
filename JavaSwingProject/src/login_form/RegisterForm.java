@@ -11,7 +11,7 @@ public class RegisterForm extends JFrame {
     private JTextField idtf, emailtf, nametf, addresstf, phonenumtf;
     private JPasswordField pwpf, pwcheckpf;
     private JLabel idlb ,pwlb ,pwchecklb ,emaillb ,name ,phonenumlb ,addresslb;
-    private boolean idCheck, emailCheck, phoneCheck = false;
+    private boolean idCheck, emailCheck, phoneCheck = false; // 중복확인 버튼 초기값 false 클릭시 true
 	private JButton emailcheckbtn , idcheckbtn ,phonecheckbtn ,registerbtn;
     
     public void RegisterForm() {
@@ -76,7 +76,7 @@ public class RegisterForm extends JFrame {
                 if (email.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "이메일을 입력하세요.");
                 } else if (UserDataReader.checkDuplicate(email, 2)) { 
-                    JOptionPane.showMessageDialog(null, "이미 사용중인 이메일 입니다.");
+                    JOptionPane.showMessageDialog(null, "사용중인 이메일 입니다.");
                 } else {
                     JOptionPane.showMessageDialog(null, "사용 가능한 이메일 입니다.");
                     emailCheck = true;
@@ -109,7 +109,7 @@ public class RegisterForm extends JFrame {
                 if (phonenum.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "연락처를 입력하세요.");
                 } else if (UserDataReader.checkDuplicate(phonenum, 4)) { 
-                    JOptionPane.showMessageDialog(null, "이미 사용중인 연락처 입니다.");
+                    JOptionPane.showMessageDialog(null, "사용중인 연락처 입니다.");
                 } else {
                     JOptionPane.showMessageDialog(null, "사용 가능한 연락처 입니다.");
                     phoneCheck = true;

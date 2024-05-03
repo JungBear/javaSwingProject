@@ -63,8 +63,9 @@ public class PwFinder extends JFrame {
                     String userPw = UserDataReader.FindPw(id, name);
                     if (userPw != null) {
                         JOptionPane.showMessageDialog(null, "비밀번호는 : " + userPw + "입니다");
+                        setVisible(false); 
                     } else {
-                        JOptionPane.showMessageDialog(null, "일치하는 사용자 정보가 없습니다.");
+                        JOptionPane.showMessageDialog(null, "userData와 일치하지 않습니다.");
                     }
                 }
             }

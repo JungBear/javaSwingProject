@@ -67,7 +67,7 @@ public class LoginForm extends JFrame {
         add(idfindbtn);
         add(pwfindbtn);
         
-        // 로그인 버튼 누를시 userDTO login
+        // 로그인 버튼 액션
         loginbtn.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
                 String id = idtf.getText();
@@ -85,7 +85,7 @@ public class LoginForm extends JFrame {
                         JOptionPane.showMessageDialog(null, "로그인 했습니다");
                     } 
                     else {
-                        JOptionPane.showMessageDialog(null, "아이디와 비밀번호가 일치하지 않습니다");
+                        JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 일치하지 않습니다");
                     }
                 }
                     

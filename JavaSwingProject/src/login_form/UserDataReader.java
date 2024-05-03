@@ -7,8 +7,9 @@ import java.io.IOException;
 import userDTO.UserDTO;
 
 
-// User_Data.txt 읽기
+// 회원가입 중복 데이터 확인
 public class UserDataReader {
+	//아이디,연락처,이메일을 String으로 받은뒤 user_data.txt의 해당 데이터 번호와 일치하는지 비교
 	public static boolean checkDuplicate(String id, int fieldIndex) {
 	    try (BufferedReader reader = new BufferedReader(new FileReader("user_data.txt"))) {
 	        String line;
@@ -63,7 +64,7 @@ public class UserDataReader {
 	            while ((line = reader.readLine()) != null) {
 	                String[] userData = line.split(",");
 	                if (userData[0].equals(id) && userData[1].equals(password)) {
-	                   
+	                   // userData에 있는 아이디와 비밀번호가 둘다 일치할 경우 user의 데이터 전부 리턴
 	                    return new UserDTO(userData[0], userData[1], userData[2], userData[3], Integer.parseInt(userData[4]), userData[5]);
 	                }
 	            }
