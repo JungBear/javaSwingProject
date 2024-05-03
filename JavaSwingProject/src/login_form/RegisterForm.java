@@ -34,6 +34,7 @@ public class RegisterForm extends JFrame {
                 if (id.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "아이디를 입력하세요.");
                 } else if (UserDataReader.checkDuplicate(id, 0)) { 
+                	idtf.setText(""); // // 아이디가 중복일 경우 텍스트 필드 비우기
                     JOptionPane.showMessageDialog(null, "이미 사용중인 아이디 입니다.");
                 } else {
                     JOptionPane.showMessageDialog(null, "사용 가능한 아이디 입니다.");
@@ -76,6 +77,7 @@ public class RegisterForm extends JFrame {
                 if (email.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "이메일을 입력하세요.");
                 } else if (UserDataReader.checkDuplicate(email, 2)) { 
+                	emailtf.setText(""); // 이메일이 중복일 경우 텍스트 필드 비우기
                     JOptionPane.showMessageDialog(null, "사용중인 이메일 입니다.");
                 } else {
                     JOptionPane.showMessageDialog(null, "사용 가능한 이메일 입니다.");
@@ -110,6 +112,7 @@ public class RegisterForm extends JFrame {
                     JOptionPane.showMessageDialog(null, "연락처를 입력하세요.");
                 } else if (UserDataReader.checkDuplicate(phonenum, 4)) { 
                     JOptionPane.showMessageDialog(null, "사용중인 연락처 입니다.");
+                    phonenumtf.setText(""); // 연락처가 중복일 경우 텍스트 필드 비우기
                 } else {
                     JOptionPane.showMessageDialog(null, "사용 가능한 연락처 입니다.");
                     phoneCheck = true;
@@ -174,7 +177,7 @@ public class RegisterForm extends JFrame {
         String phone = phonenumtf.getText();// 연락처
         String address = addresstf.getText(); // 주소
         		
-        
+//        if ()
         
         // 아이디 입력확인
         if (id.isEmpty()) {
@@ -265,16 +268,14 @@ public class RegisterForm extends JFrame {
         
         
         
-        // 회원가입 정보 UserDTO로 보내기 (Phone int로 변환)
-        UserDTO user = new UserDTO(id, pwd, email, name, Integer.parseInt(phone), address);
+        // 회원가입 정보 UserDTO로 보내기
         
-        // 회원가입 데이터 UserDataWriter로 저장
+       
         try {
-           
+          
             UserDTO newUser = new UserDTO(idtf.getText(), new String(pwpf.getPassword()),
-            		emailtf.getText(), nametf.getText(), 
-            		// 연락처 정수 변환후 넣기
-            		Integer.parseInt(phonenumtf.getText()), addresstf.getText());
+            		emailtf.getText(), nametf.getText(), phonenumtf.getText(), addresstf.getText());
+          
             UserDataWriter.writeDataToFile(newUser); // 회원가입 데이터를 UserDataWriter로 텍스트 저장
             JOptionPane.showMessageDialog(this, "회원가입 하였습니다.");
             this.dispose();

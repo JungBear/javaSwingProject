@@ -6,10 +6,10 @@ public class UserDTO {
 	private String pwd;
 	private String email;
 	private String name;
-	private int phoneNum;
+	private String phoneNum;
 	private String address;
 	
-	public UserDTO(String id, String pwd, String email, String name, int phoneNum, String address) {
+	public UserDTO(String id, String pwd, String email, String name, String phoneNum, String address) {
 		this.id = id;
 		this.pwd = pwd;
 		this.email = email;
@@ -42,10 +42,10 @@ public class UserDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPhoneNum() {
+	public String getPhoneNum() {
 		return phoneNum;
 	}
-	public void setPhoneNum(int phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 	public String getAddress() {

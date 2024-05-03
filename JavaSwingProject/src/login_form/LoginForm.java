@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import platform.MainFrame;
 import platform.MainHeader;
 import userDTO.UserDTO;
 
@@ -18,7 +19,16 @@ public class LoginForm extends JFrame {
     private JPasswordField pwpf;
     private JButton loginbtn, registerbtn, idfindbtn, pwfindbtn;
     private JLabel idlb, pwlb;
+    private static String logInUserId; 
+    private static String logInUserPassword;
     
+    public static String getLoggedInUserId() {
+        return logInUserId;
+    }
+    public static String getLoggedInPassword() {
+        return logInUserPassword;
+    }
+
 
     public void initializeUI() {
     	RegisterForm registerFrame = new RegisterForm();
@@ -80,7 +90,10 @@ public class LoginForm extends JFrame {
                 } else {
                     UserDTO userLogin = UserDataReader.loginUser(id, password);
                     if (userLogin != null) {
-                    	new MainHeader(null);
+                    	//로그인된 유저의 데이터
+                    	logInUserId = id;
+                    	logInUserPassword = password;
+						
                     	setVisible(false);
                         JOptionPane.showMessageDialog(null, "로그인 했습니다");
                     } 
