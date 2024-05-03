@@ -17,19 +17,25 @@ import javax.swing.table.DefaultTableModel;
 
 public class ShoppingListPanel extends JPanel {
 	JTable table;//장바구니 헤더, 리스트를 담을 테이블 
-    DefaultTableModel tableModel;
-    private ArrayList<Orders> orders;
+    public DefaultTableModel tableModel;
+    private ArrayList<Orders> orders = new ArrayList<>();
     int selectOrdersAdd=0;
-    	
+    
+	
+    
     
     	public ArrayList<Orders> getOrders() {
     		return orders;
+    	}
+    	
+    	public void add(Orders order) {
+    		orders.add(order);
     	}
     
     	public ShoppingListPanel(TotalOrderPanel totalOrderPanel)    {   
 	
     		//주문 정보를 담을 ArrayList생성 
-    		orders = new ArrayList<>();
+//    		orders = new ArrayList<>();
 	
 	
     		// 임의 데이터 
@@ -123,4 +129,6 @@ public class ShoppingListPanel extends JPanel {
     		
     		return selectOrdersAdd;
     	}
+    	
+    	
 }

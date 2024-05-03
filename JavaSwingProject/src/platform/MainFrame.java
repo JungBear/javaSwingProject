@@ -11,10 +11,10 @@ import userDTO.UserDTO;
 public class MainFrame extends JFrame implements MainHeaderListener{
 
 	UserDTO user;
+	ShoppingCartPanel shoppingCartGUI = new ShoppingCartPanel();
 	MainHeader mainHeader = new MainHeader(this);
 	MainPreView MainPreView = new MainPreView();
 
-	ShoppingCartPanel shoppingCartGUI = new ShoppingCartPanel();
 		
 	public void setMainFrame() {
 

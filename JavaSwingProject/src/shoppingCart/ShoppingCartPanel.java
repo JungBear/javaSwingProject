@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 public class ShoppingCartPanel extends JPanel{
     private int totalPayment = 0;
     DefaultTableModel tableModel;
-    TotalOrderPanel totalOrderPanel;
+    public TotalOrderPanel totalOrderPanel;
     ShoppingListPanel shoppingListPanel;
 	
 	public ShoppingCartPanel() {
@@ -39,6 +39,14 @@ public class ShoppingCartPanel extends JPanel{
 		setBounds(0,201,1280,760);
 		
 	}
+
+	public ShoppingListPanel getShoppingListPanel() {
+		return shoppingListPanel;
+	}
+
+
+	
+	
 	
 	
     
