@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class ShoppingListPanel extends JPanel {
 	JTable table;//장바구니 헤더, 리스트를 담을 테이블 
-    DefaultTableModel tableModel;
-    private ArrayList<Orders> orders;
+    public DefaultTableModel tableModel;
+    private ArrayList<Orders> orders = new ArrayList<>();
     int selectOrdersAdd=0;
     	
     
@@ -31,7 +31,7 @@ public class ShoppingListPanel extends JPanel {
     	public ShoppingListPanel(TotalOrderPanel totalOrderPanel)    {   
 	
     		//주문 정보를 담을 ArrayList생성 
-    		orders = new ArrayList<>();
+//    		orders = new ArrayList<>();
 	
 	
     		// 임의 데이터 
@@ -123,4 +123,51 @@ public class ShoppingListPanel extends JPanel {
 			}
     		return selectOrdersAdd;
     	}
+    	
+        public void updateTable() {
+            // 테이블 모델을 초기화합니다.
+            tableModel.setRowCount(0);
+
+            // orders 리스트에 있는 모든 주문을 테이블에 추가합니다.
+            for (Orders order : orders) {
+                Object[] row = new Object[]{order.getSelect(), order.getInfo(), order.getPrice(), order.getQuantity(),
+                        order.getTotalPrice(), order.getDelivery(), order.getDelete()};
+                tableModel.addRow(row);
+            }
+
+            // 테이블 모델 변경 사항을 알립니다.
+            tableModel.fireTableDataChanged();
+        }
+        
+        
+
+		public JTable getTable() {
+			return table;
+		}
+
+		public void setTable(JTable table) {
+			this.table = table;
+		}
+
+		public DefaultTableModel getTableModel() {
+			return tableModel;
+		}
+
+		public void setTableModel(DefaultTableModel tableModel) {
+			this.tableModel = tableModel;
+		}
+
+		public int getSelectOrdersAdd() {
+			return selectOrdersAdd;
+		}
+
+		public void setSelectOrdersAdd(int selectOrdersAdd) {
+			this.selectOrdersAdd = selectOrdersAdd;
+		}
+
+		public void setOrders(ArrayList<Orders> orders) {
+			this.orders = orders;
+		}
+    	
+    	
 }

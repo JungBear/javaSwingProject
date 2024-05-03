@@ -1,0 +1,11 @@
+diff a/JavaSwingProject/src/shoppingCart/QuantityComboBox.java b/JavaSwingProject/src/shoppingCart/QuantityComboBox.java	(rejected hunks)
+@@ -15,7 +15,9 @@
+ 	private JComboBox<Integer> comboBox;
+ 	private DefaultTableModel tableModel;
+     private ArrayList<Orders> orders;
++    private TotalOrderPanel totalOrderPanel;
+ 	protected JTable table;
++	
+ 
+ 	
+ 

@@ -32,15 +32,6 @@ private JLabel totalDeliveryPaymentLabel;
 		//주문건 선택이 수정될 때 
 		//1. orders.cloum의 값이 0이면(선택이 해제되면)--> (tableProductPayment)-=(선택된 행의 전체금액)
 		//2. orders.cloum의 값이 1이면(선택이 체크되면)--> (tableProductPayment)+=(선택된 행의 전체금액)
-
-		
-		
-		
-	}
-	
-	
-	//totalOrderPanel 화면을 보여주는 메서드(기본값) 
-	public void setTotalOrderPanel() {
 		this.totalPayment = totalProductPayment + totalDeliveryPayment;
 		this.totalDeliveryPayment = 2500;
 		System.out.println(totalProductPayment);
@@ -58,6 +49,15 @@ private JLabel totalDeliveryPaymentLabel;
 		add(totalProductPaymentLabel);
 		add(totalDeliveryPaymentLabel);
 		add(totalPaymentLabel);
+
+		
+		
+		
+	}
+	
+	
+	//totalOrderPanel 화면을 보여주는 메서드(기본값) 
+	public void setTotalOrderPanel() {
 	}
 	
 	public void setTotalProductPayment(int totalProductPayment) {
@@ -86,6 +86,31 @@ private JLabel totalDeliveryPaymentLabel;
         }
         totalDeliveryPaymentLabel.setText("배송비 : " + totalDeliveryPayment + "원     =");
         totalPaymentLabel.setText("총 결제 금액 : " + (totalProductPayment + totalDeliveryPayment) + "원");
+    }
+
+
+    public int getTotalDeliveryPayment() {
+        return totalDeliveryPayment;
+    }
+
+
+    public void setTotalDeliveryPayment(int totalDeliveryPayment) {
+        this.totalDeliveryPayment = totalDeliveryPayment;
+    }
+
+
+    public int getTotalPayment() {
+        return totalPayment;
+    }
+
+
+    public void setTotalPayment(int totalPayment) {
+        this.totalPayment = totalPayment;
+    }
+
+
+    public int getTotalProductPayment() {
+        return totalProductPayment;
     }
 	
 	

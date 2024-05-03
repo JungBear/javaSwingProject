@@ -15,9 +15,8 @@ public class QuantityComboBox extends DefaultCellEditor {
 	private JComboBox<Integer> comboBox;
 	private DefaultTableModel tableModel;
     private ArrayList<Orders> orders;
-    private TotalOrderPanel totalOrderPanel;
 	protected JTable table;
-	
+	private TotalOrderPanel totalOrderPanel;
 
 	
 
