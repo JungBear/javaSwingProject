@@ -17,20 +17,42 @@ private JLabel totalPaymentLabel;
 private JLabel totalDeliveryPaymentLabel;
 private TableEventAdepter tableEventAdepter;
 
-//기본값 
-	
 
-	public TotalOrderPanel() {	
-		this.totalProductPayment = totalProductPayment;
-		this.totalDeliveryPayment = 2500;
+	
+	
+	public TotalOrderPanel() {
+
+
+		
+
+		
+		//기본값
+		//1.orders에 들어온 값을 받아와서 변수에 저장한다. 
+		//2.행들의 전체금액을 모두 더한 값을 tableProductPayment에 저장해서 보여준다. 
+		
+		
+		//주문건 선택이 수정될 때 
+		//1. orders.cloum의 값이 0이면(선택이 해제되면)--> (tableProductPayment)-=(선택된 행의 전체금액)
+		//2. orders.cloum의 값이 1이면(선택이 체크되면)--> (tableProductPayment)+=(선택된 행의 전체금액)
+
+		
+		
+		
+	}
+	
+	
+	//totalOrderPanel 화면을 보여주는 메서드(기본값) 
+	public void setTotalOrderPanel() {
 		this.totalPayment = totalProductPayment + totalDeliveryPayment;
+		this.totalDeliveryPayment = 2500;
+		System.out.println(totalProductPayment);
 		
 		//선택한 or 전체 상품의 금액을 표시하는 부분 생성 
-		totalProductPaymentLabel = new JLabel("선택한 상품의 결제 금액 : " + totalProductPayment + "원     +");
+		totalProductPaymentLabel = new JLabel("선택한 상품의 결제 금액 : " + this.totalProductPayment + "원     +");
 		//선택한 or 전체 상품의 금액에 대한 배송비를 표시하는 부분 생성 
 		totalDeliveryPaymentLabel = new JLabel("배송비 : " + totalDeliveryPayment + "원     =");
 		// 총 결제 금액을 표시하는 부분 생성
-		totalPaymentLabel = new JLabel("총 결제 금액 : " + getTotalPayment() + "원");
+		totalPaymentLabel = new JLabel("총 결제 금액 : " + totalPayment + "원");
 		
 		setBounds(200,551,900,160);
 		setBackground(Color.yellow);
@@ -38,66 +60,29 @@ private TableEventAdepter tableEventAdepter;
 		add(totalProductPaymentLabel);
 		add(totalDeliveryPaymentLabel);
 		add(totalPaymentLabel);
-
 	}
 	
-//	
-//	public TotalOrderPanel(JTable table) {
-//		// TableEventAdepter 객체 생성
-//		tableEventAdepter = new TableEventAdepter(table);
-//        // JTable에 MouseListener로 등록
-//        table.addMouseListener(tableEventAdepter);
-//	}
-	
-	//상품 금액이 합산되는 메서드 
-	public void updateTotalPayment(ShoppingCartPanel scp) {
-		
-		//1. 선택 박스를 누르면 값을 변경해서 보여준다. 
-		//쇼핑카트에 들어있는 테이블체인지 메서드가 세트 메뉴가 됨 
-
-	    //선택한 상품들(혹은 전체 상품)을 받아와서 상품 결제금액 계산 
-	    int defaultProductPayment = 0;
-	    int totalDeliveryPayment = 0;
-	    final int[] totalPayment = {0};
-	    
-	    //선택된 상품의 금액 합산 
-	    
-	   // orders = scp.getOrders();
-	    
-	    
-	    //orders에 추가되는 열 만큼 arraylist에 넣는다. 
-	    for( Orders order : orders) {
-	    	if(order.getSelect()) {
-	   
-	    		totalPayment[0] += order.getTotalPrice();
-	    	}
-	    }
-	    
-		//2.1 에서 변경된 값을 합해서 보여주는 totalprice에 보여준다. 
-		
-		totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + totalProductPayment + "원         +");
-		//10만원 이상이면 0원,10만원 미만이면 배송비 2500원을 부과하는 조건문 
-		if (totalProductPayment >= 100000) {
-	        this.totalDeliveryPayment = 0; 
-	    } else {
-	        this.totalDeliveryPayment = 2500; 
-	    }
-		totalDeliveryPaymentLabel.setText("배송비 : " + totalDeliveryPayment + "원     =");
-		totalPaymentLabel.setText("총 결제 금액 : " + totalProductPayment + "원");
-		 
-		
-		
-		
-	}
-
-
-	public int getTotalPayment() {
-		return totalPayment;
+	public void setTotalProductPayment(int totalProductPayment) {
+		this.totalProductPayment = totalProductPayment;
 	}
 	
-	public void setTotalPayment(int totalPayment){
-		this.totalPayment = totalPayment;
-	}
+	 // 선택한 상품의 결제 금액을 업데이트하는 메서드
+    public void updateTotalPayment(ArrayList<Orders> orders) {
+        int totalProductPayment = 0;
+        for (Orders order : orders) {
+            totalProductPayment += order.getTotalPrice()*order.getQuantity();
+        }
+        
+        totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + totalProductPayment + "원     +");
+        // 배송비 업데이트
+        if (totalProductPayment >= 100000) {
+            this.totalDeliveryPayment = 0; 
+        } else {
+            this.totalDeliveryPayment = 2500; 
+        }
+        totalDeliveryPaymentLabel.setText("배송비 : " + totalDeliveryPayment + "원     =");
+        totalPaymentLabel.setText("총 결제 금액 : " + (totalProductPayment + totalDeliveryPayment) + "원");
+    }
 	
 	
 	

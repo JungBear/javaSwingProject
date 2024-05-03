@@ -5,53 +5,65 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-public class TableEventAdepter extends JPanel implements MouseListener{
-	JTable table;
-	
-	public TableEventAdepter(JTable table) {
-        this.table = table;
-
-    }
-	
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		//선택한 셀의 행 번호 계산
-		int rowCount = table.getRowCount();
-		int totalPrice = 0;
-		
-		for (int i = 0; i < rowCount; i++) {
-            boolean isSelected = (boolean) table.getValueAt(i, 0);
-            if (isSelected) {
-                int productPrice = (int) table.getValueAt(i, 2); // 상품 금액
-                int productQuantity = (int) table.getValueAt(i, 3); // 상품 수량
-                totalPrice += productPrice * productQuantity;
-            }
-        }
-	
-		}
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+public class TableEventAdepter extends JPanel /* TableModelListener*/{
+//	JTable table;
+//	TotalOrderPanel totalOrderPanel;
+//	
+//	
+//	public TableEventAdepter(JTable table) {
+//        this.table = table;
+//
+//    }
+//	
+//	@Override
+//	public void mouseClicked(MouseEvent e) {
+//		//선택한 셀의 행 번호 계산
+//		int rowCount = table.getRowCount();
+//		int totalPrice = 0;
+//		
+//		for (int i = 0; i < rowCount; i++) {
+//            boolean isSelected = (boolean) table.getValueAt(i, 0);
+//            if (isSelected) {
+//                int productPrice = (int) table.getValueAt(i, 2); // 상품 금액
+//                int productQuantity = (int) table.getValueAt(i, 3); // 상품 수량
+//                totalPrice += productPrice * productQuantity;
+//            }
+//        }
+//		
+//		
+//	
+//		}
+//		@Override
+//		public void mouseEntered(MouseEvent e) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//		@Override
+//		public void mouseExited(MouseEvent e) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//		@Override
+//		public void mousePressed(MouseEvent e) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//		@Override
+//		public void mouseReleased(MouseEvent e) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//
+//		@Override
+//		public void tableChanged(TableModelEvent e) {
+//			// TODO Auto-generated method stub
+//			
+//		}
 		
 	//0501 수정 전 코드 
 	
