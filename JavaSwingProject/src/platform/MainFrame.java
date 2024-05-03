@@ -25,6 +25,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 		add(shoppingCartGUI);
 		
 		
+		
 		shoppingCartGUI.setVisible(false);
 		
 //		mainF.add(jFramCart);
