@@ -25,82 +25,66 @@ public class MainDownPanel extends JPanel{
 		switch(name) {
 		case "cloth":
 			smallCategoryBtn1 = new TopNavBtn("상의", x, y);
-			smallCategoryBtn1.setName("tee");
 			
 			
 			smallCategoryBtn2 = new TopNavBtn("아우터", x, y);
-			smallCategoryBtn2.setName("outer");
 			
 			smallCategoryBtn3 = new TopNavBtn("바지", x, y);	
-			smallCategoryBtn3.setName("pants");
 			
 			smallCategoryBtn4 = new TopNavBtn("원피스", x, y);
-			smallCategoryBtn4.setName("onepiece");
 			
 			// 카테고리별 페이지 만들기
-			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getName()), mainF);
-			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getName()), mainF);
-			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getName()), mainF);
-			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getName()), mainF);
+			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getText()), mainF);
+			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getText()), mainF);
+			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getText()), mainF);
+			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getText()), mainF);
 			
 			
 			break;
 		case "cosmetic":
 			//스킨케어, 클렌징, 네일, 맨즈케어
-			smallCategoryBtn1 = new TopNavBtn("스킨케어", x, y);
-			smallCategoryBtn1.setName("skincare");
+			smallCategoryBtn1 = new TopNavBtn("스킨케어", x, y);		
 			
 			smallCategoryBtn2 = new TopNavBtn("클렌징", x, y);
-			smallCategoryBtn2.setName("cleansing");
 			
 			smallCategoryBtn3 = new TopNavBtn("네일", x, y);
-			smallCategoryBtn3.setName("nail");
 			
 			smallCategoryBtn4 = new TopNavBtn("맨즈케어", x, y);
-			smallCategoryBtn4.setName("manscare");
 			// 카테고리별 페이지 만들기
-			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getName()), mainF);
-			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getName()), mainF);
-			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getName()), mainF);
-			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getName()), mainF);
+			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getText()), mainF);
+			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getText()), mainF);
+			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getText()), mainF);
+			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getText()), mainF);
 			break;
 		case "shoes": 
 			//구두, 로퍼, 스니커즈, 샌들
 			smallCategoryBtn1 = new TopNavBtn("구두", x, y);
-			smallCategoryBtn1.setName("dressShoes");
 			
 			smallCategoryBtn2 = new TopNavBtn("로퍼", x, y);
-			smallCategoryBtn2.setName("loafers");
 			
 			smallCategoryBtn3 = new TopNavBtn("스니커즈", x, y);
-			smallCategoryBtn3.setName("sneakers");
 			
 			smallCategoryBtn4 = new TopNavBtn("샌들", x, y);
-			smallCategoryBtn4.setName("sandal");
 			// 카테고리별 페이지 만들기
-			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getName()), mainF);
-			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getName()), mainF);
-			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getName()), mainF);
-			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getName()), mainF);
+			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getText()), mainF);
+			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getText()), mainF);
+			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getText()), mainF);
+			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getText()), mainF);
 			break;
 		case "bag":
 			//백팩, 숄더백, 토트백, 에코백
 			smallCategoryBtn1 = new TopNavBtn("백팩", x, y);
-			smallCategoryBtn1.setName("backpack");
 			
 			smallCategoryBtn2 = new TopNavBtn("숄더백", x, y);
-			smallCategoryBtn2.setName("shoulderbag");
 			
 			smallCategoryBtn3 = new TopNavBtn("토트백", x, y);
-			smallCategoryBtn3.setName("totebag");
 			
 			smallCategoryBtn4 = new TopNavBtn("에코백", x, y);
-			smallCategoryBtn4.setName("echobag");
 			// 카테고리별 페이지 만들기
-			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getName()), mainF);
-			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getName()), mainF);
-			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getName()), mainF);
-			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getName()), mainF);
+			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getText()), mainF);
+			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getText()), mainF);
+			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getText()), mainF);
+			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getText()), mainF);
 			break;
 		}
 		add(smallCategoryBtn1);
@@ -114,58 +98,58 @@ public class MainDownPanel extends JPanel{
 		// 마우스 리스너 -> 마우스를 올리면 소분류 유지, 클릭하면 소분류에 맞는 상품들 나열되어있는 페이지로 이동, 마우스 나가면 안보이게
         for (TopNavBtn topNavBtn : btnList) {
         	topNavBtn.setVisible(true);
-        	outer:switch(topNavBtn.getName()) {
+        	outer:switch(topNavBtn.getText()) {
 
-			case "tee":
+			case "상의":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp1, this, mainF));
 				break outer;
-			case "outer":
+			case "아우터":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp2, this, mainF));
 				break outer;
-			case "pants":
+			case "바지":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp3, this, mainF));
 				break outer;
-			case "onepiece":
+			case "원피스":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp4, this, mainF));
 				break outer;
 
-			case "skincare":
+			case "스킨케어":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp1, this, mainF));
 				break;
-			case "cleansing":
+			case "클렌징":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp2, this, mainF));
 				break;
-			case "nail":
+			case "네일":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp3, this, mainF));
 				break;
-			case "manscare":
+			case "맨즈케어":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp4, this, mainF));
 				break;
 
 				
-			case "dressShoes":
+			case "구두":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp1, this, mainF));
 				break;
-			case "loafers":
+			case "로퍼":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp2, this, mainF));
 				break;
-			case "sneakers":
+			case "스니커즈":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp3, this, mainF));
 				break;
-			case "sandal":
+			case "샌들":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp4, this, mainF));
 				break;
 				
-			case "backpack":
+			case "백팩":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp1, this, mainF));
 				break;
-			case "shoulderbag":
+			case "숄더백":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp2, this, mainF));
 				break;
-			case "totebag":
+			case "토트백":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp3, this, mainF));
 				break;
-			case "echobag":
+			case "에코백":
 				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp4, this, mainF));
 				break;
 

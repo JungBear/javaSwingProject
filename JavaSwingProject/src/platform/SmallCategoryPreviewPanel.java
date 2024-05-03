@@ -23,7 +23,7 @@ public class SmallCategoryPreviewPanel extends JPanel{
         
 
         // Small Category 라벨 생성
-        JLabel smallCategory = new JLabel("상의");
+        JLabel smallCategory = new JLabel(pds.get(0).getCategory());
         smallCategory.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24)); // 폰트 설정
         smallCategory.setBounds(100, 00, 200, 100);
         add(smallCategory);
