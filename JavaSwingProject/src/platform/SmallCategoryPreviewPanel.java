@@ -30,11 +30,11 @@ public class SmallCategoryPreviewPanel extends JPanel{
 		int xOffset = 150; // 제품 미리보기 패널의 y축 위치 설정
 		int yOffset = 100;
         for (ProductDTO productDTO : pds) {
-        	
+        
         	
         	// 판넬 생성
             PreviewPanel pp = new PreviewPanel(productDTO);
-            ProductDetailPanel pdp = new ProductDetailPanel(productDTO);
+            ProductDetailPanel pdp = new ProductDetailPanel(productDTO, mainF);
             pp.setVisible(true);
             pp.setBounds(xOffset, yOffset, 300, 300); // 위치 설정
             // 판넬 추가

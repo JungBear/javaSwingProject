@@ -20,7 +20,7 @@ public class ShoppingListPanel extends JPanel {
     DefaultTableModel tableModel;
     private ArrayList<Orders> orders;
     int selectOrdersAdd=0;
-
+    	
     
     	public ArrayList<Orders> getOrders() {
     		return orders;

@@ -9,11 +9,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import dto.ProductDTO;
+import shoppingCart.Orders;
 
 public class ProductDetailPanel extends JPanel{
 	ProductDTO productDTO;
+	Orders order;
+	MainFrame mainF;
 	
-	public ProductDetailPanel(ProductDTO productDTO) {
+	public ProductDetailPanel(ProductDTO productDTO, MainFrame mainF) {
+		this.mainF = mainF;
 		this.productDTO = productDTO;
 		// 이 판넬의 설정
 		setBounds(0,200,1280,760);
