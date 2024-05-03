@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -71,16 +70,36 @@ public class ProductDetailPanel extends JPanel{
 	public void addOnCart() {
 		 Orders order = new Orders(true, productDTO.getProductName(), productDTO.getPrice(), 1, 1, false);
 		 
-		 // 만약 shoppingListPanel.getOrders()에 order가 없다면 shoppingListPanel.add(order), 있으면 알림창
+		  // Check if the order already exists in the shopping cart
+		 // 지금 장바구니에 이상품이 있는지 체크
+	        boolean orderExists = false;
+	        for (Orders existingOrder : shoppingListPanel.getOrders()) {
+	            if ((existingOrder.getInfo()).equals(order.getInfo())) {
+	                orderExists = true;
+	                break;
+	            }
+	        }
+
+	        if (orderExists) {
+	            // Display an alert message indicating the product is already in the cart
+	            JOptionPane.showMessageDialog(null, "이미 같은 상품이 장바구니에 있습니다.", "중복 상품", JOptionPane.WARNING_MESSAGE);
+	        } else {
+	            // Add the order to the shopping cart
+	        	System.out.println("추가전 장바구니 : " + shoppingListPanel.getOrders());
+	            shoppingListPanel.add(order);
+
+	            // Update the table model to reflect the added order
+	            shoppingListPanel.tableModel.fireTableDataChanged();
+	            System.out.println("추가후 장바구니 : " + shoppingListPanel.getOrders());
+
+	            // Update the total order panel
+	            mainF.shoppingCartGUI.totalOrderPanel.setTotalProductPayment(shoppingListPanel.selectAdd());
+	            mainF.shoppingCartGUI.totalOrderPanel.setTotalOrderPanel();
+	        }
+	    }
 		 
 		
-		 shoppingListPanel.add(order);
 
-		 System.out.println(shoppingListPanel.getOrders());
-		 
-		 // shoppingListPanel의 테이블 모델 업데이트
-		 shoppingListPanel.tableModel.fireTableDataChanged();
-	    // shoppingListPanel의 orders 목록에 order 추가
 	   
-	}
 }
+

@@ -131,4 +131,20 @@ public class ShoppingListPanel extends JPanel {
     	}
     	
     	
+    	public void updateTable() {
+    	    // 테이블 모델을 초기화합니다.
+    	    tableModel.setRowCount(0);
+
+    	    // orders 리스트에 있는 모든 주문을 테이블에 추가합니다.
+    	    for (Orders order : orders) {
+    	        Object[] row = new Object[]{order.getSelect(), order.getInfo(), order.getPrice(), order.getQuantity(),
+    	                order.getTotalPrice(), order.getDelivery(), order.getDelete()};
+    	        tableModel.addRow(row);
+    	    }
+
+    	    // 테이블 모델 변경 사항을 알립니다.
+    	    tableModel.fireTableDataChanged();
+    	}
+    	
+    	
 }

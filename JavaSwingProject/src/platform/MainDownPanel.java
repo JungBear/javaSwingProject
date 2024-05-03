@@ -27,6 +27,7 @@ public class MainDownPanel extends JPanel{
 			smallCategoryBtn1 = new TopNavBtn("상의", x, y);
 			smallCategoryBtn1.setName("tee");
 			
+			
 			smallCategoryBtn2 = new TopNavBtn("아우터", x, y);
 			smallCategoryBtn2.setName("outer");
 			
@@ -34,13 +35,15 @@ public class MainDownPanel extends JPanel{
 			smallCategoryBtn3.setName("pants");
 			
 			smallCategoryBtn4 = new TopNavBtn("원피스", x, y);
-			smallCategoryBtn4.setName("onepice");
+			smallCategoryBtn4.setName("onepiece");
 			
 			// 카테고리별 페이지 만들기
 			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getName()), mainF);
 			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getName()), mainF);
 			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getName()), mainF);
 			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getName()), mainF);
+			
+			
 			break;
 		case "cosmetic":
 			//스킨케어, 클렌징, 네일, 맨즈케어
@@ -64,9 +67,16 @@ public class MainDownPanel extends JPanel{
 		case "shoes": 
 			//구두, 로퍼, 스니커즈, 샌들
 			smallCategoryBtn1 = new TopNavBtn("구두", x, y);
+			smallCategoryBtn1.setName("dressShoes");
+			
 			smallCategoryBtn2 = new TopNavBtn("로퍼", x, y);
+			smallCategoryBtn2.setName("loafers");
+			
 			smallCategoryBtn3 = new TopNavBtn("스니커즈", x, y);
+			smallCategoryBtn3.setName("sneakers");
+			
 			smallCategoryBtn4 = new TopNavBtn("샌들", x, y);
+			smallCategoryBtn4.setName("sandal");
 			// 카테고리별 페이지 만들기
 			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getName()), mainF);
 			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getName()), mainF);
@@ -76,14 +86,21 @@ public class MainDownPanel extends JPanel{
 		case "bag":
 			//백팩, 숄더백, 토트백, 에코백
 			smallCategoryBtn1 = new TopNavBtn("백팩", x, y);
+			smallCategoryBtn1.setName("backpack");
+			
 			smallCategoryBtn2 = new TopNavBtn("숄더백", x, y);
+			smallCategoryBtn2.setName("shoulderbag");
+			
 			smallCategoryBtn3 = new TopNavBtn("토트백", x, y);
+			smallCategoryBtn3.setName("totebag");
+			
 			smallCategoryBtn4 = new TopNavBtn("에코백", x, y);
+			smallCategoryBtn4.setName("echobag");
 			// 카테고리별 페이지 만들기
-			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getText()), mainF);
-			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getText()), mainF);
-			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getText()), mainF);
-			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getText()), mainF);
+			scpp1 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn1.getName()), mainF);
+			scpp2 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn2.getName()), mainF);
+			scpp3 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn3.getName()), mainF);
+			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getName()), mainF);
 			break;
 		}
 		add(smallCategoryBtn1);
@@ -96,24 +113,63 @@ public class MainDownPanel extends JPanel{
 		// 각각의 소분류에 마우스리스너랑 마우스 엑션리스너 추가
 		// 마우스 리스너 -> 마우스를 올리면 소분류 유지, 클릭하면 소분류에 맞는 상품들 나열되어있는 페이지로 이동, 마우스 나가면 안보이게
         for (TopNavBtn topNavBtn : btnList) {
-        	topNavBtn.setEnabled(true);
         	topNavBtn.setVisible(true);
-        	switch(topNavBtn.getText()) {
-        	case "의류":
-        		topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp1, this, mainF));
-        		break;
-        	case "화장품":
-        		topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp2, this, mainF));
-        		break;
-        	case "신발":
-        		topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp3, this, mainF));
-        		break;
-        	case "가방":
-        		topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp4, this, mainF));
-        		break;
-        	default:
-        		topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp1, this, mainF));
-        		break;
+        	outer:switch(topNavBtn.getName()) {
+
+			case "tee":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp1, this, mainF));
+				break outer;
+			case "outer":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp2, this, mainF));
+				break outer;
+			case "pants":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp3, this, mainF));
+				break outer;
+			case "onepiece":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp4, this, mainF));
+				break outer;
+
+			case "skincare":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp1, this, mainF));
+				break;
+			case "cleansing":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp2, this, mainF));
+				break;
+			case "nail":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp3, this, mainF));
+				break;
+			case "manscare":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp4, this, mainF));
+				break;
+
+				
+			case "dressShoes":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp1, this, mainF));
+				break;
+			case "loafers":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp2, this, mainF));
+				break;
+			case "sneakers":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp3, this, mainF));
+				break;
+			case "sandal":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp4, this, mainF));
+				break;
+				
+			case "backpack":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp1, this, mainF));
+				break;
+			case "shoulderbag":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp2, this, mainF));
+				break;
+			case "totebag":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp3, this, mainF));
+				break;
+			case "echobag":
+				topNavBtn.addMouseListener(new SmallBtnMouseAdapter(scpp4, this, mainF));
+				break;
+
+
         	}
 		}
 		

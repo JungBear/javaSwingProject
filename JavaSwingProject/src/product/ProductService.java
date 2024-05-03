@@ -34,6 +34,7 @@ public class ProductService {
 		String temp = null;
 		StringBuilder copyTemp = new StringBuilder();
 		String[] databaseData = null; 
+//		System.out.println("category :" + category);
 //		System.out.println(category);
 		try {
 			
@@ -63,12 +64,15 @@ public class ProductService {
 		}
 		System.out.println(databaseData.length);
 		for (int i = 0; i < databaseData.length; i+=5) {
+			
+//			System.out.println("smallcategory :" + smallCategory);
 			int j =0;
 			if(databaseData[i].equals(smallCategory)) {
 				ProductDTO product = new ProductDTO();
 //				System.out.println("이름 : " + databaseData[i+1]);
 //				System.out.println("가격 : " + databaseData[i+4]);
 //				System.out.println("소분류 : " + databaseData[i]);
+//				System.out.println("주소 : " + databaseData[i+3]);
 				product.setCategory(databaseData[i]);
 				product.setProductName(databaseData[i+1]);
 				product.setProductInfo(databaseData[i+2]);

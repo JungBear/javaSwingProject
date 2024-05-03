@@ -24,6 +24,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 		add(MainPreView);
 		add(shoppingCartGUI);
 		
+		
 		shoppingCartGUI.setVisible(false);
 		
 //		mainF.add(jFramCart);
@@ -40,16 +41,18 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 	}
 	
     public void showShoppingCartPanel() {
-	 	shoppingCartGUI = new ShoppingCartPanel();
+//	 	shoppingCartGUI = new ShoppingCartPanel();
 
 
 	    // 현재 화면에 표시되고 있는 패널을 찾습니다.
 	    hideVisiblePanelExceptHeader();
-
 	    // 장바구니 패널을 화면에 추가합니다.
 	    setLayout(null);
 	    getContentPane().add(shoppingCartGUI);
-	    setVisible(true);
+	    shoppingCartGUI.setVisible(true);
+	    shoppingCartGUI.getShoppingListPanel().updateTable();
+	    shoppingCartGUI.totalOrderPanel.updateTotalPayment(shoppingCartGUI.getShoppingListPanel().getOrders());
+//	    System.out.println("장바구니리스트 : " + shoppingCartGUI.getShoppingListPanel().getOrders());
     
     }
     

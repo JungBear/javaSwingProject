@@ -14,12 +14,13 @@ import dto.ProductDTO;
 
 public class SmallCategoryPreviewPanel extends JPanel{
 	
-	
 	public SmallCategoryPreviewPanel(ArrayList<ProductDTO> pds, MainFrame mainF) {
 		setBounds(0, 200, 1280, 760);
         setVisible(false);
         setLayout(null);
         setBackground(Color.white);
+//        System.out.println("pds : " + pds);
+        
 
         // Small Category 라벨 생성
         JLabel smallCategory = new JLabel("상의");
@@ -30,7 +31,7 @@ public class SmallCategoryPreviewPanel extends JPanel{
 		int xOffset = 150; // 제품 미리보기 패널의 y축 위치 설정
 		int yOffset = 100;
         for (ProductDTO productDTO : pds) {
-        	
+//        	System.out.println(productDTO);
         	// 판넬 생성
             PreviewPanel pp = new PreviewPanel(productDTO);
             ProductDetailPanel pdp = new ProductDetailPanel(productDTO, mainF);
@@ -83,12 +84,7 @@ public class SmallCategoryPreviewPanel extends JPanel{
 				}
 			});
 
-            
         }
-        
-       
-		
-		
 		
 		
 		
