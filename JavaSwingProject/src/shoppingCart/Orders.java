@@ -74,12 +74,5 @@ public class Orders {
 	public void setDelete(boolean delete) {
 		this.delete = delete;
 	}
-
-	@Override
-	public String toString() {
-		return "Orders [select=" + select + ", info=" + info + ", price=" + price + ", quantity=" + quantity
-				+ ", totalPrice=" + totalPrice + ", delivery=" + delivery + ", delete=" + delete + "]";
-	}
-	
 	
 }

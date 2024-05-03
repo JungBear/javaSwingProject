@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 public class ShoppingCartPanel extends JPanel{
     private int totalPayment = 0;
     DefaultTableModel tableModel;
-    public TotalOrderPanel totalOrderPanel;
+    TotalOrderPanel totalOrderPanel;
     ShoppingListPanel shoppingListPanel;
 	
 	public ShoppingCartPanel() {
@@ -24,11 +24,7 @@ public class ShoppingCartPanel extends JPanel{
 		totalOrderPanel.setTotalOrderPanel();// Panel 그리기 
 		
 		
-		
-		
-		//tableModel 액션리스너 
-		//tableModel.addTableModelListener(new TableEventAdepter(shoppingListPanel.table));//2024.04.30수정중 
-		
+
 
 		//총 결제 금액을 표시하는 totalOrderPanel을 생성해서 JPanel을 추가 
 		setLayout(null);
@@ -39,14 +35,6 @@ public class ShoppingCartPanel extends JPanel{
 		setBounds(0,201,1280,760);
 		
 	}
-
-	public ShoppingListPanel getShoppingListPanel() {
-		return shoppingListPanel;
-	}
-
-
-	
-	
 	
 	
     

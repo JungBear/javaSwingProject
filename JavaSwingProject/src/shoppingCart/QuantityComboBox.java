@@ -15,7 +15,9 @@ public class QuantityComboBox extends DefaultCellEditor {
 	private JComboBox<Integer> comboBox;
 	private DefaultTableModel tableModel;
     private ArrayList<Orders> orders;
+    private TotalOrderPanel totalOrderPanel;
 	protected JTable table;
+	
 
 	
 
@@ -24,6 +26,7 @@ public class QuantityComboBox extends DefaultCellEditor {
         this.table = table;
         this.tableModel = tableModel;
         this.orders = orders;
+        this.totalOrderPanel = totalOrderPanel;
         
         comboBox = (JComboBox<Integer>) getComponent();
         

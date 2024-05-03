@@ -3,8 +3,6 @@ package shoppingCart;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -17,12 +15,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class ShoppingListPanel extends JPanel {
 	JTable table;//장바구니 헤더, 리스트를 담을 테이블 
-    public DefaultTableModel tableModel;
-    private ArrayList<Orders> orders = new ArrayList<>();
+    DefaultTableModel tableModel;
+    private ArrayList<Orders> orders;
     int selectOrdersAdd=0;
-    
-	
-    
+    	
     
     	public ArrayList<Orders> getOrders() {
     		return orders;
@@ -35,7 +31,7 @@ public class ShoppingListPanel extends JPanel {
     	public ShoppingListPanel(TotalOrderPanel totalOrderPanel)    {   
 	
     		//주문 정보를 담을 ArrayList생성 
-//    		orders = new ArrayList<>();
+    		orders = new ArrayList<>();
 	
 	
     		// 임의 데이터 
@@ -50,10 +46,12 @@ public class ShoppingListPanel extends JPanel {
     		tableModel = new DefaultTableModel(null, cartHeader ) {
     			@Override
     			public Class<?> getColumnClass(int columnIndex) {
-    				if (columnIndex == 0 || columnIndex == 6) {
-    					return Boolean.class; // 선택, 삭제 열은 불린타입
+    				if (columnIndex == 0) {
+    					return Boolean.class; // 선택열은 불린타입
     				} else if (columnIndex == 3) {
     					return Integer.class;//수량 열은 정수형 
+    				} else if(columnIndex == 6) {
+    					return JButton.class;//삭제 열은 버튼타입 
     				}
     				else {
     					return getValueAt(0, columnIndex).getClass(); 
@@ -67,7 +65,9 @@ public class ShoppingListPanel extends JPanel {
     				return column == 0 || column == 3 || column == 6;
     			}
     		};
-    
+    		
+    		
+    		
     		if(orders.size() == 0) {
     			//order데이터가 없을 때 나타내는 메세지 
     			setLayout(new BorderLayout());
@@ -92,6 +92,15 @@ public class ShoppingListPanel extends JPanel {
     		//수량에 콤보박스 추가 
     		table.getColumnModel().getColumn(3).setCellEditor(new QuantityComboBox(table, tableModel, orders, totalOrderPanel));
     		
+    		//삭제열에 삭제버튼 추가 
+    		DeleteButton deleteButtonAction = new DeleteButton(table, 6, totalOrderPanel,orders);
+    		
+    		//선택박스 
+    		// SelectBoxAdepter를 JTable에 추가
+            SelectBoxAdepter selectBoxAdepter = new SelectBoxAdepter(totalOrderPanel, orders);
+            //0503 오류 수정 중 
+            //table.getSelectionModel().addListSelectionListener(selectBoxAdepter);
+    		
     		// 스크롤에 테이블 추가
     		JScrollPane scrollPane = new JScrollPane(table);
     		scrollPane.setPreferredSize(new Dimension(800,400));
@@ -99,21 +108,7 @@ public class ShoppingListPanel extends JPanel {
     		setBounds(0,0,1280,550);
     		add(scrollPane, BorderLayout.CENTER);
     		
-    		//삭제 버튼 추가
-    		JButton deleteBtn = new JButton("선택한 상품 삭제");
-    		deleteBtn.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					if(table.getSelectedRow() == -1) {
-						return;
-					} else {
-						tableModel.removeRow(table.getSelectedRow());
-					}
-					
-				}
-    		});
+    		
     		
 
     	}
@@ -126,25 +121,6 @@ public class ShoppingListPanel extends JPanel {
     				selectOrdersAdd += orders.getTotalPrice();
     			}
 			}
-    		
     		return selectOrdersAdd;
     	}
-    	
-    	
-    	public void updateTable() {
-    	    // 테이블 모델을 초기화합니다.
-    	    tableModel.setRowCount(0);
-
-    	    // orders 리스트에 있는 모든 주문을 테이블에 추가합니다.
-    	    for (Orders order : orders) {
-    	        Object[] row = new Object[]{order.getSelect(), order.getInfo(), order.getPrice(), order.getQuantity(),
-    	                order.getTotalPrice(), order.getDelivery(), order.getDelete()};
-    	        tableModel.addRow(row);
-    	    }
-
-    	    // 테이블 모델 변경 사항을 알립니다.
-    	    tableModel.fireTableDataChanged();
-    	}
-    	
-    	
 }
