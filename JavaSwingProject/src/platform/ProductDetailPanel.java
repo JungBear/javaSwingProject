@@ -71,14 +71,7 @@ public class ProductDetailPanel extends JPanel{
 	public void addOnCart() {
 		 Orders order = new Orders(true, productDTO.getProductName(), productDTO.getPrice(), 1, 1, false);
 		 
-		 Iterator<Orders> iterator = shoppingListPanel.getOrders().iterator();
-		 while (iterator.hasNext()) {
-		        Orders existingOrder = iterator.next();
-//		        if(existingOrder.getProductName().equals(productDTO.getProductName())) {
-//					 JOptionPane.showMessageDialog(null, "이미 추가된 상품입니다");
-//					 break;
-//				 }
-		    }
+		 // 만약 shoppingListPanel.getOrders()에 order가 없다면 shoppingListPanel.add(order), 있으면 알림창
 		 
 		
 		 shoppingListPanel.add(order);
