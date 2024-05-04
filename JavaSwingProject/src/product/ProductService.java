@@ -62,13 +62,13 @@ public class ProductService {
 			}
 			
 		}
-		System.out.println(databaseData.length);
+//		System.out.println(databaseData.length);
 		for (int i = 0; i < databaseData.length; i+=5) {
 			
 //			System.out.println("smallcategory :" + smallCategory);
 			int j =0;
-			if(databaseData[i].equals(smallCategory)) {
-				ProductDTO product = new ProductDTO();
+			ProductDTO product = new ProductDTO();
+			if(databaseData[i].equals(smallCategory) || databaseData[i].equals(null)) {
 //				System.out.println("이름 : " + databaseData[i+1]);
 //				System.out.println("가격 : " + databaseData[i+4]);
 //				System.out.println("소분류 : " + databaseData[i]);

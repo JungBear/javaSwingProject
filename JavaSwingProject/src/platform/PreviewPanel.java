@@ -29,7 +29,6 @@ public class PreviewPanel extends JPanel{
 	    	  productImg.setBounds(0, 0, scaledLogoIcon.getIconWidth(), scaledLogoIcon.getIconHeight());
 	    	  
 	    	  Dimension panelSize = this.getSize();
-	    	  int labelWidth = panelSize.width; // 패널의 너비
 	    	  
 	    	  productName.setPreferredSize(new Dimension(300, 20)); // 높이는 20으로 설정하고 너비를 패널의 너비와 동일하게 설정// productName의 텍스트를 중앙으로 정렬
 	    	  productName.setHorizontalAlignment(JLabel.CENTER);

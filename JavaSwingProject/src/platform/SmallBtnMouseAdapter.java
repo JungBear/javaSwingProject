@@ -26,9 +26,7 @@ public class SmallBtnMouseAdapter extends MouseAdapter{
 	public void mouseClicked(MouseEvent e) {
 //		System.out.println("마우스 클릭!");
 		super.mouseClicked(e);
-		mainF.hideVisiblePanelExceptHeader();
-		mainF.add(scpp);
-		scpp.setVisible(true);
+		scpp.setSmallCatogrtyPreviewPanel();
 		
 	}
 	

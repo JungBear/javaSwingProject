@@ -16,7 +16,7 @@ import shoppingCart.Orders;
 import shoppingCart.ShoppingListPanel;
 
 public class ProductDetailPanel extends JPanel{
-	ProductDTO productDTO;
+	private ProductDTO productDTO;
 	Orders order;
 	ShoppingListPanel shoppingListPanel;
 	MainFrame mainF;
@@ -97,6 +97,14 @@ public class ProductDetailPanel extends JPanel{
 	            mainF.shoppingCartGUI.totalOrderPanel.setTotalOrderPanel();
 	        }
 	    }
+
+	public ProductDTO getProductDTO() {
+		return productDTO;
+	}
+
+	public void setProductDTO(ProductDTO productDTO) {
+		this.productDTO = productDTO;
+	}
 		 
 		
 

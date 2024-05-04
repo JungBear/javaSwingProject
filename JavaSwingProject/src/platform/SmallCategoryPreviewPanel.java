@@ -14,7 +14,10 @@ import dto.ProductDTO;
 
 public class SmallCategoryPreviewPanel extends JPanel{
 	
+	MainFrame mainF;
+	
 	public SmallCategoryPreviewPanel(ArrayList<ProductDTO> pds, MainFrame mainF) {
+		this.mainF = mainF;
 		setBounds(0, 200, 1280, 760);
         setVisible(false);
         setLayout(null);
@@ -86,8 +89,14 @@ public class SmallCategoryPreviewPanel extends JPanel{
 
         }
 		
+		mainF.add(this);
 		
 		
+	}
+	
+	public void setSmallCatogrtyPreviewPanel() {
+		mainF.hideVisiblePanelExceptHeader();
+		this.setVisible(true);
 		
 	}
 

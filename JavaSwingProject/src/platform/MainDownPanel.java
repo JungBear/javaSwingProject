@@ -26,7 +26,6 @@ public class MainDownPanel extends JPanel{
 		case "cloth":
 			smallCategoryBtn1 = new TopNavBtn("상의", x, y);
 			
-			
 			smallCategoryBtn2 = new TopNavBtn("아우터", x, y);
 			
 			smallCategoryBtn3 = new TopNavBtn("바지", x, y);	
