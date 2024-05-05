@@ -19,7 +19,8 @@ public class ShoppingCartPanel extends JPanel{
 		shoppingListPanel = new ShoppingListPanel(totalOrderPanel);//수량이 변경될 때 마우스이벤트에 기본 Panel추가 
 		
 		
-		int priceAdd = shoppingListPanel.selectAdd();//마우스 이벤트 발생한 값을 priceAdd에 넣기 
+		int priceAdd = shoppingListPanel.selectAdd();//마우스 이벤트 발생한 값을 priceAdd에 넣기
+		
 		totalOrderPanel.setTotalProductPayment(priceAdd);	//그 값을 totalOrderPanel로 보내주기 
 		totalOrderPanel.setTotalOrderPanel();// Panel 그리기 
 		

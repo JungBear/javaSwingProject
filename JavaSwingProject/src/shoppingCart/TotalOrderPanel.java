@@ -70,23 +70,27 @@ private JLabel totalDeliveryPaymentLabel;
         for (Orders order : orders) {
         	if(order.getSelect()) {
         		totalProductPayment += order.getTotalPrice() * order.getQuantity();        	           		
-        	} else {
-        		totalProductPayment -= order.getTotalPrice() * order.getQuantity();        	           		
-        		
-        	}
+        	} 
         }
-        
-        
+          
         totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + totalProductPayment + "원     +");
+        
+        
         // 배송비 업데이트
         if (totalProductPayment >= 100000) {
             this.totalDeliveryPayment = 0; 
         } else {
             this.totalDeliveryPayment = 2500; 
         }
+        
+        // 총 결제 금액 업데이트 
         totalDeliveryPaymentLabel.setText("배송비 : " + totalDeliveryPayment + "원     =");
         totalPaymentLabel.setText("총 결제 금액 : " + (totalProductPayment + totalDeliveryPayment) + "원");
     }
+    
+    
+    
+    
 	
 	
 	

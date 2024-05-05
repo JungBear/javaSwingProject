@@ -2,37 +2,51 @@ package shoppingCart;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 public class ShoppingListPanel extends JPanel {
 	JTable table;//장바구니 헤더, 리스트를 담을 테이블 
     DefaultTableModel tableModel;
     private ArrayList<Orders> orders;
     int selectOrdersAdd=0;
+	private TotalOrderPanel totalOrderPanel;
     	
     
     	public ArrayList<Orders> getOrders() {
     		return orders;
     	}
     	
+ 
+    	
     	public void add(Orders order) {
     		orders.add(order);
     	}
-    
+    	
+
     	public ShoppingListPanel(TotalOrderPanel totalOrderPanel)    {   
-	
     		//주문 정보를 담을 ArrayList생성 
     		orders = new ArrayList<>();
-	
+    		
 	
     		// 임의 데이터 
     		orders.add(new Orders(true, " 상품 1 ", 10000, 1, 5, false));
@@ -47,7 +61,7 @@ public class ShoppingListPanel extends JPanel {
     			@Override
     			public Class<?> getColumnClass(int columnIndex) {
     				if (columnIndex == 0) {
-    					return Boolean.class; // 선택열은 불린타입
+    					return Boolean.class; // 선택열은 불린형
     				} else if (columnIndex == 3) {
     					return Integer.class;//수량 열은 정수형 
     				} else if(columnIndex == 6) {
@@ -64,7 +78,10 @@ public class ShoppingListPanel extends JPanel {
     				//선택, 수량, 삭제 열만 편집 가능
     				return column == 0 || column == 3 || column == 6;
     			}
+    			
     		};
+    		
+    		
     		
     		
     		
@@ -79,15 +96,42 @@ public class ShoppingListPanel extends JPanel {
     			//order데이터가 있을 때 테이블 목록 생성
     			//주문 데이터를 테이블에 추가 
     			for (Orders order : orders) {
+    			    
     				Object[] row = {order.getSelect(), order.getInfo(), order.getPrice(), order.getQuantity(),
     						order.getTotalPrice(), order.getDelivery(), order.getDelete()};
     				tableModel.addRow(row);
     			}
+    			
+    			
 
     		}
     		
+    		
+    		
     		//장바구니 table 생성
     		table = new JTable(tableModel);
+ 
+    		//선택열 체크박스 생성 및 추가
+    		table.getColumnModel().getColumn(0).setCellRenderer(new CheckBoxRenderer());
+    		table.getColumnModel().getColumn(0).setCellEditor(new CheckBoxEditor());
+    		table.getColumnModel().getColumn(0).getCellEditor().addCellEditorListener(new CellEditorListener() {
+				
+				@Override
+				public void editingStopped(ChangeEvent e) {
+					 int row = table.getSelectedRow();
+				        boolean isSelected = (Boolean) table.getValueAt(row, 0);
+				        orders.get(row).setSelect(isSelected);
+				        totalOrderPanel.updateTotalPayment(orders); // 선택 변경 후 총 결제 금액 업데이트
+					
+				}
+				
+				@Override
+				public void editingCanceled(ChangeEvent e) {
+					
+					
+				}
+			});
+    		
     		
     		//수량에 콤보박스 추가 
     		table.getColumnModel().getColumn(3).setCellEditor(new QuantityComboBox(table, tableModel, orders, totalOrderPanel));
@@ -95,11 +139,7 @@ public class ShoppingListPanel extends JPanel {
     		//삭제열에 삭제버튼 추가 
     		DeleteButton deleteButtonAction = new DeleteButton(table, 6, totalOrderPanel,orders);
     		
-    		//선택박스 
-    		// SelectBoxAdepter를 JTable에 추가
-            SelectBoxAdepter selectBoxAdepter = new SelectBoxAdepter(totalOrderPanel, orders);
-            //0503 오류 수정 중 
-            //table.getSelectionModel().addListSelectionListener(selectBoxAdepter);
+
     		
     		// 스크롤에 테이블 추가
     		JScrollPane scrollPane = new JScrollPane(table);
@@ -113,6 +153,9 @@ public class ShoppingListPanel extends JPanel {
 
     	}
     	
+    	
+    	
+    	
     	//장바구니 첫 화면에서 보이는 하단 상품의 결제 금액 부분 
     	public int selectAdd() {
     		
@@ -123,4 +166,5 @@ public class ShoppingListPanel extends JPanel {
 			}
     		return selectOrdersAdd;
     	}
+    	
 }
