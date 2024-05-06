@@ -115,7 +115,7 @@ public class MainHeader extends JPanel{
             	
             	// 현재 보이는 화면이 무엇인지 보여주는 함수
             	mainF.hideVisiblePanelExceptHeader();
-            	mainF.MainPreView.setVisible(true);
+            	mainF.mainPreView.setVisible(true);
 
             }
         });

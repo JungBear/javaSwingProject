@@ -88,7 +88,77 @@ public class ProductService {
 		return products;
 	}
 	
-	
+	public ArrayList<ProductDTO> getLastProduct(String category) {
+		products.clear();
+		switch(category) {
+		case "의류":
+			category = "cloth";
+			break;
+		case "화장품":
+			category = "cosmetic";
+			break;
+		case "신발":
+			category = "shoes";
+			break;
+		case "가방":
+			category = "bag";
+			break;
+		
+		}
+		BufferedReader br = null;
+		String temp = null;
+		StringBuilder copyTemp = new StringBuilder();
+		String[] databaseData = null; 
+//		System.out.println("category :" + category);
+//		System.out.println(category);
+		try {
+			
+			br = new BufferedReader(new FileReader("src/database/" + category + ".txt"));
+			while( (temp = br.readLine()) != null ) {
+//				System.out.println(temp);
+//				System.out.println("-----줄단위 읽기 확인");
+				copyTemp.append(temp).append(", ");
+				}
+			databaseData = copyTemp.toString().split(", ");
+//			System.out.println(databaseData.length);
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			try {
+				if(br != null) {
+					
+					br.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+//		System.out.println(databaseData.length);
+		for (int i = databaseData.length-1; i > databaseData.length-16; i-=5) {
+			
+
+		ProductDTO product = new ProductDTO();
+//				System.out.println("이름 : " + databaseData[i+1]);
+//				System.out.println("가격 : " + databaseData[i+4]);
+//				System.out.println("소분류 : " + databaseData[i]);
+//				System.out.println("주소 : " + databaseData[i+3]);
+			product.setCategory(databaseData[i-4]);
+			product.setProductName(databaseData[i-3]);
+			product.setProductInfo(databaseData[i-2]);
+			product.setImgSrc(databaseData[i-1]);
+			product.setPrice(Integer.parseInt(databaseData[i]));
+			System.out.println(databaseData[i-3]);
+			products.add(product);
+			
+			
+		}
+		
+		return products;
+	}
 	
 
 }
