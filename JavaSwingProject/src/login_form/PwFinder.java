@@ -53,7 +53,6 @@ public class PwFinder extends JFrame {
         add(findButton);
         add(idfindbtn);
         
-        // 찾기 버튼 액션
         findButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
                 String id = idtf.getText();
@@ -64,10 +63,9 @@ public class PwFinder extends JFrame {
                     String userPw = UserDataReader.FindPw(id, name);
                     if (userPw != null) {
                         JOptionPane.showMessageDialog(null, "비밀번호는 : " + userPw + "입니다");
-                        //비밀번호는 찾은후 로그인 창으로 바로 들어가게끔 설정
                         setVisible(false); 
                     } else {
-                        JOptionPane.showMessageDialog(null, "가입 정보와 일치하지 않습니다.");
+                        JOptionPane.showMessageDialog(null, "userData와 일치하지 않습니다.");
                     }
                 }
             }
