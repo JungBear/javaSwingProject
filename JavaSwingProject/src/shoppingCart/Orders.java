@@ -2,13 +2,15 @@ package shoppingCart;
 
 public class Orders {
 	
-	private boolean select;
+	private boolean select = true;//체크박스의 기본값을 true로 설정
 	private String info;
 	private int  price;
 	private int quantity;
 	private int totalPrice;
 	private int delivery;
 	private boolean delete;
+	
+
 
 	
 	// 내코드
