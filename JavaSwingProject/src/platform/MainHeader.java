@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import login_form.LoginForm;
+import userDTO.UserDTO;
 
 public class MainHeader extends JPanel{
 	ImageIcon logoIcon;
@@ -23,9 +24,11 @@ public class MainHeader extends JPanel{
 	TopNavBtn cosmeticsBtn = new TopNavBtn("화장품",960, 20);
 	TopNavBtn shoesBtn = new TopNavBtn("신발",1020, 20);
 	TopNavBtn bagBtn = new TopNavBtn("가방",1080, 20);
-	TopNavBtn loginBtn = new TopNavBtn("로그인",0, 150);
+	TopNavBtn loginBtn = new TopNavBtn("로그인", 0, 150);
+//	TopNavBtn loginedUser = new TopNavBtn(LoginForm.getLoginUser().getName()+"님", 0, 150);
 	TopNavBtn cartBtn = new TopNavBtn("장바구니",100, 150);
 	MainDownPanel clothDownPanel, cosmeticsDownPanel, shoesDownPanel, bagDownPanel;
+	private UserDTO user; // 로그인된 사용자 정보를 저장할 UserDTO 객체
 
 
 	public MainHeader(MainFrame mainF) {
@@ -51,7 +54,9 @@ public class MainHeader extends JPanel{
         add(shoesBtn);
         add(bagBtn);
         add(cartBtn);
+        setUserDTOInfo(LoginForm.getLoginUser());
         add(loginBtn);
+        
         add(clothDownPanel);
         add(cosmeticsDownPanel);
         add(shoesDownPanel);
@@ -75,6 +80,7 @@ public class MainHeader extends JPanel{
         	}
 		}
         
+        
 
         
         // 장바구니 버튼을 누르면 장바구니 판넬이 뜨게 해주기
@@ -88,7 +94,6 @@ public class MainHeader extends JPanel{
         loginBtn.addActionListener(new ActionListener() {
         	@Override
         	public void actionPerformed(ActionEvent e) {
-        	mainF.loginFrame.initializeUI();
         	mainF.loginFrame.finalizeFrame();
         	
         		
@@ -97,6 +102,17 @@ public class MainHeader extends JPanel{
         
         
 	}
+	
+	public void setUserDTOInfo(UserDTO user) {
+        this.user = user;
+
+        // 사용자 이름 업데이트
+        if (user != null) {
+            loginBtn.setText(user.getName() + "님");
+        } else {
+            loginBtn.setText("로그인");
+        }
+    }
 	
 	
 	
@@ -121,7 +137,12 @@ public class MainHeader extends JPanel{
         add(logoLabel);
 		return logoLabel;
 	}
-	
+	public void refresh() {
+        // UserDTO 정보 다시 로드
+        setUserDTOInfo(LoginForm.getLoginUser());
+
+        // ... (기타 새로고침 작업)
+    }
 	
 	
 	

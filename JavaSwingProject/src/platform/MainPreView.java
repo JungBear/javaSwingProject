@@ -2,8 +2,11 @@ package platform;
 
 
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -25,11 +28,11 @@ public class MainPreView extends JPanel{
 	public MainPreView(MainHeader mainHeader, MainFrame mainF) {
 		
 		setLayout(null);
-		setPreferredSize(new Dimension(1280, 3000)); // 높이 조정 필요에 따라
-		setMaximumSize(new Dimension(1280, 3000));// 높이 조정 필요에 따라
+		setPreferredSize(new Dimension(1280, 1700)); // 높이 조정 필요에 따라
+		setMaximumSize(new Dimension(1280, 1700));// 높이 조정 필요에 따라
 		setVisible(true);
 		
-		  // JScrollPane 생성 및 추가
+//		   JScrollPane 생성 및 추가
 //        JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 //        scrollPane.setBounds(0, 0, 1280, 3000); // JScrollPane의 크기 설정
 //        add(scrollPane);
@@ -50,7 +53,41 @@ public class MainPreView extends JPanel{
         	for(int j = 0; j < products.size(); j++) {
         		PreviewPanel pp = new PreviewPanel(products.get(j));
         		pp.setBounds(xOffset, yOffsetOfPanel, 300, 300); // 위치 설정
+        		
+        		pp.addMouseListener(new MouseListener() {
+    				@Override
+    				public void mouseClicked(MouseEvent e) {
+    					// 클릭 이벤트 처리
+    					mainF.hideVisiblePanelExceptHeader();
+    					SmallCategoryPreviewPanel.pdp.setVisible(true);
+//    					System.out.println(productDTO);
+    				}
+
+    				@Override
+    				public void mousePressed(MouseEvent e) {
+    					// 눌림 이벤트 처리
+    				}
+
+    				@Override
+    				public void mouseReleased(MouseEvent e) {
+    					// 릴리스 이벤트 처리
+    				}
+
+    				@Override
+    				public void mouseEntered(MouseEvent e) {
+    					// 마우스가 패널에 들어왔을 때 처리
+    					pp.setBackground(Color.LIGHT_GRAY); // 배경색 변경
+    				}
+
+    				@Override
+    				public void mouseExited(MouseEvent e) {
+    					// 마우스가 패널에서 나갔을 때 처리
+    					pp.setBackground(Color.WHITE); // 배경색 변경
+    				}
+    			});
+        		
         		add(pp);
+        		
         		xOffset += 350;
         		
         	}

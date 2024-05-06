@@ -11,7 +11,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import platform.MainFrame;
-import platform.MainHeader;
 import userDTO.UserDTO;
 
 public class LoginForm extends JFrame {
@@ -19,12 +18,15 @@ public class LoginForm extends JFrame {
     private JPasswordField pwpf;
     private JButton loginbtn, registerbtn, idfindbtn, pwfindbtn;
     private JLabel idlb, pwlb;
-    private static UserDTO LoginUser;
+    private static UserDTO LoginUser = null;
+    MainFrame mainF;
 
-    public void initializeUI() {
+    public LoginForm(MainFrame mainF) {
     	RegisterForm registerFrame = new RegisterForm();
     	IdFinder idFinder = new IdFinder();
     	PwFinder pwFinder = new PwFinder();
+    	
+    	this.mainF = mainF;
     	
     	//아이디 라벨
         idlb = new JLabel("아이디");
@@ -90,9 +92,15 @@ public class LoginForm extends JFrame {
                         JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호가 일치하지 않습니다");
                     }
                 }
+                mainF.getMainHeader().refresh();
+                mainF.revalidate();
+                mainF.repaint();
                     
+                
                 }
             }
+        
+        
         );
         
         
@@ -140,6 +148,16 @@ public class LoginForm extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
+
+
+	public static UserDTO getLoginUser() {
+		return LoginUser;
+	}
+
+
+	public static void setLoginUser(UserDTO loginUser) {
+		LoginUser = loginUser;
+	}
     
     
 }
