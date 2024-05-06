@@ -51,7 +51,7 @@ public class IdFinder extends JFrame {
                     if (userId != null) {
                         JOptionPane.showMessageDialog(null, "아이디는 : " + userId + "입니다");
                     } else {
-                        JOptionPane.showMessageDialog(null, "userData와 일치하지 않습니다.");
+                        JOptionPane.showMessageDialog(null, "가입 정보와 일치하지 않습니다.");
                     }
                 }
             }
