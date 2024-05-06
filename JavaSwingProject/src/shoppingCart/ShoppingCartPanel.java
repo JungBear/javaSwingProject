@@ -2,7 +2,11 @@ package shoppingCart;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +21,7 @@ public class ShoppingCartPanel extends JPanel{
 		//1. 마우스 이벤트에 추가하기 위한 기본 Panel생성 
 		this.totalOrderPanel = new TotalOrderPanel();
 		this.shoppingListPanel = new ShoppingListPanel(totalOrderPanel);//수량이 변경될 때 마우스이벤트에 기본 Panel추가 
-		
+		totalOrderPanel.setOrders(shoppingListPanel.getOrders());
 		
 		int priceAdd = shoppingListPanel.selectAdd();//마우스 이벤트 발생한 값을 priceAdd에 넣기
 		
@@ -34,6 +38,10 @@ public class ShoppingCartPanel extends JPanel{
 		
 		setBackground(Color.black);//장바구니panel전체 
 		setBounds(0,201,1280,760);
+	
+		
+		
+		
 		
 	}
 

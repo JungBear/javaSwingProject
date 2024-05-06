@@ -80,7 +80,7 @@ public class DeleteButton extends AbstractCellEditor implements TableCellRendere
             orders.remove(row); // 주문 리스트에서 해당 주문 삭제
             DefaultTableModel model = (DefaultTableModel) table.getModel(); // 테이블 데이터 변경 이벤트 발생
             model.fireTableDataChanged();
-            totalOrderPanel.updateTotalPayment(orders); // TotalOrderPanel에 변경된 주문 정보 반영
+            totalOrderPanel.updateSelectPayment(orders); // TotalOrderPanel에 변경된 주문 정보 반영
         }
     }
     

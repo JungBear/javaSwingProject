@@ -17,8 +17,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class ShoppingListPanel extends JPanel {
 	JTable table;//장바구니 헤더, 리스트를 담을 테이블 
-    public DefaultTableModel tableModel;
-    private ArrayList<Orders> orders = new ArrayList<>();
+    public static DefaultTableModel tableModel;
+     static ArrayList<Orders> orders = new ArrayList<>();
     int selectOrdersAdd=0;
 	private TotalOrderPanel totalOrderPanel;
     	
@@ -27,10 +27,13 @@ public class ShoppingListPanel extends JPanel {
     		return orders;
     	}
     	
- 
-    	
+   
     	public void add(Orders order) {
     		orders.add(order);
+    	}
+    	
+    	public static void clear() {
+    		orders.clear();
     	}
     	
 
@@ -40,9 +43,9 @@ public class ShoppingListPanel extends JPanel {
 
 	
     		// 임의 데이터 
-    		orders.add(new Orders(true, " 상품 1 ", 10000, 1, 5, false));
-    		orders.add(new Orders(true, " 상품 2 ", 5000, 1, 5, false));
-    		System.out.println(orders);
+//    		orders.add(new Orders(true, " 상품 1 ", 10000, 1, 5, false));
+//    		orders.add(new Orders(true, " 상품 2 ", 5000, 1, 5, false));
+//    		System.out.println(orders);
     		
     		
     		
@@ -76,14 +79,7 @@ public class ShoppingListPanel extends JPanel {
     		
     		
     		
-    		if(orders.size() == 0) {
-    			//order데이터가 없을 때 나타내는 메세지 
-    			setLayout(new BorderLayout());
-    			JLabel nullMessageLabel = new JLabel("장바구니에 넣은 상품이 없습니다.");
-    			nullMessageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-    			add(nullMessageLabel, BorderLayout.CENTER);
-    	
-    		} else {
+    		
     			//order데이터가 있을 때 테이블 목록 생성
     			//주문 데이터를 테이블에 추가 
     			for (Orders order : orders) {
@@ -95,7 +91,7 @@ public class ShoppingListPanel extends JPanel {
     			
     			
 
-    		}
+    		
     		
     		
     		
@@ -112,7 +108,9 @@ public class ShoppingListPanel extends JPanel {
 					 int row = table.getSelectedRow();
 				        boolean isSelected = (Boolean) table.getValueAt(row, 0);
 				        orders.get(row).setSelect(isSelected);
-				        totalOrderPanel.updateTotalPayment(orders); // 선택 변경 후 총 결제 금액 업데이트
+				        System.out.println(orders);
+				        totalOrderPanel.updateSelectPayment(orders); // 선택 변경 후 총 결제 금액 업데이트
+//				        totalOrderPanel.updateTotalPayment(orders); // 선택 변경 후 총 결제 금액 업데이트
 					
 				}
 				
@@ -158,7 +156,7 @@ public class ShoppingListPanel extends JPanel {
     		return selectOrdersAdd;
     	}
 
-        public void updateTable() {
+        public static void updateTable() {
             // 테이블 모델을 초기화합니다.
             tableModel.setRowCount(0);
 
