@@ -30,9 +30,9 @@ public class MainPreView extends JPanel{
 		setVisible(true);
 		
 		  // JScrollPane 생성 및 추가
-        JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBounds(0, 0, 1280, 3000); // JScrollPane의 크기 설정
-        add(scrollPane);
+//        JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+//        scrollPane.setBounds(0, 0, 1280, 3000); // JScrollPane의 크기 설정
+//        add(scrollPane);
 		
 		
 		
@@ -43,19 +43,19 @@ public class MainPreView extends JPanel{
         	products= productService.getLastProduct(kinds[i]);
         	int xOffset = 100;
         	
-        	JPanel categoryPanel = new JPanel();
-            categoryPanel.setLayout(null); // FlowLayout 사용하여 가로 방향 배치
+//        	JPanel categoryPanel = new JPanel();
+//            categoryPanel.setLayout(null); // FlowLayout 사용하여 가로 방향 배치
 
         	
         	for(int j = 0; j < products.size(); j++) {
         		PreviewPanel pp = new PreviewPanel(products.get(j));
         		pp.setBounds(xOffset, yOffsetOfPanel, 300, 300); // 위치 설정
-        		categoryPanel.add(pp);
+        		add(pp);
         		xOffset += 350;
         		
         	}
         	
-        	scrollPane.setViewportView(categoryPanel);
+//        	scrollPane.setViewportView(categoryPanel);
         	JLabel bigCategory = new JLabel(kinds[i]);
         	bigCategory.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 18));
         	bigCategory.setBounds(100, yOffsetOfLable, 900, 100); // 첫 번째 레이블을 (100, 100)에 위치시킵니다.

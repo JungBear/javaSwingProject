@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+import login_form.LoginForm;
 import shoppingCart.ShoppingCartPanel;
 import userDTO.UserDTO;
 
@@ -19,7 +20,13 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 	MainPreView mainPreView = new MainPreView(mainHeader, this);
 	private JScrollPane scrollPane;
 	
+	
+	LoginForm loginFrame = new LoginForm();
+	
+	
 	public MainFrame() {
+		
+		loginFrame.setVisible(false);
 		setBounds(150, 70, 1280, 960);
 		setLayout(null);
 		add(mainHeader);
