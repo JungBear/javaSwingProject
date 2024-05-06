@@ -37,8 +37,7 @@ public class ShoppingListPanel extends JPanel {
     	public ShoppingListPanel(TotalOrderPanel totalOrderPanel)    {   
     		//주문 정보를 담을 ArrayList생성 
     		orders = new ArrayList<>();
-//    		
-//>>>>>>> origin/YUJIMYUNG
+
 	
     		// 임의 데이터 
     		orders.add(new Orders(true, " 상품 1 ", 10000, 1, 5, false));
@@ -158,8 +157,7 @@ public class ShoppingListPanel extends JPanel {
 			}
     		return selectOrdersAdd;
     	}
-    	
-//<<<<<<< HEAD
+
         public void updateTable() {
             // 테이블 모델을 초기화합니다.
             tableModel.setRowCount(0);
@@ -204,8 +202,5 @@ public class ShoppingListPanel extends JPanel {
 		public void setOrders(ArrayList<Orders> orders) {
 			this.orders = orders;
 		}
-//    	
-//    	
-//=======
-//>>>>>>> origin/YUJIMYUNG
+
 }
