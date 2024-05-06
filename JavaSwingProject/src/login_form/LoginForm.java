@@ -19,16 +19,7 @@ public class LoginForm extends JFrame {
     private JPasswordField pwpf;
     private JButton loginbtn, registerbtn, idfindbtn, pwfindbtn;
     private JLabel idlb, pwlb;
-    private static String logInUserId; 
-    private static String logInUserPassword;
-    
-    public static String getLoggedInUserId() {
-        return logInUserId;
-    }
-    public static String getLoggedInPassword() {
-        return logInUserPassword;
-    }
-
+    private static UserDTO LoginUser;
 
     public void initializeUI() {
     	RegisterForm registerFrame = new RegisterForm();
@@ -54,6 +45,7 @@ public class LoginForm extends JFrame {
         // 로그인 버튼
         loginbtn = new JButton("로그인");
         loginbtn.setBounds(100, 150, 200, 30);
+        
         
         //회원 가입 버튼
         registerbtn = new JButton("회원가입");
@@ -88,12 +80,9 @@ public class LoginForm extends JFrame {
                 } else if  (password.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "비밀번호를 입력하세요");
                 } else {
-                    UserDTO userLogin = UserDataReader.loginUser(id, password);
-                    if (userLogin != null) {
+                	LoginUser = UserDataReader.loginUser(id, password);
+                    if (LoginUser != null) {
                     	//로그인된 유저의 데이터
-                    	logInUserId = id;
-                    	logInUserPassword = password;
-						
                     	setVisible(false);
                         JOptionPane.showMessageDialog(null, "로그인 했습니다");
                     } 

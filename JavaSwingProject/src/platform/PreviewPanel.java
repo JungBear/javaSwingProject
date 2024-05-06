@@ -37,6 +37,8 @@ public class PreviewPanel extends JPanel{
 	    	  add(productName);
 	    	  add(productPrice);
 	        }
+	      
+
 	}
 	
 }

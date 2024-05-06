@@ -26,10 +26,7 @@ public class MainHeader extends JPanel{
 	TopNavBtn loginBtn = new TopNavBtn("로그인",0, 150);
 	TopNavBtn cartBtn = new TopNavBtn("장바구니",100, 150);
 	MainDownPanel clothDownPanel, cosmeticsDownPanel, shoesDownPanel, bagDownPanel;
-	
-	
-	LoginForm loginFrame = new LoginForm();
-	
+
 
 	public MainHeader(MainFrame mainF) {
 		clothDownPanel = new MainDownPanel("cloth",900, 50, mainF);
@@ -91,8 +88,8 @@ public class MainHeader extends JPanel{
         loginBtn.addActionListener(new ActionListener() {
         	@Override
         	public void actionPerformed(ActionEvent e) {
-        	loginFrame.initializeUI();
-        	loginFrame.finalizeFrame();
+        	mainF.loginFrame.initializeUI();
+        	mainF.loginFrame.finalizeFrame();
         	
         		
         	}
@@ -115,7 +112,7 @@ public class MainHeader extends JPanel{
             	
             	// 현재 보이는 화면이 무엇인지 보여주는 함수
             	mainF.hideVisiblePanelExceptHeader();
-            	mainF.MainPreView.setVisible(true);
+            	mainF.mainPreView.setVisible(true);
 
             }
         });

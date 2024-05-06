@@ -1,12 +1,14 @@
 package platform;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
+import login_form.LoginForm;
 import shoppingCart.ShoppingCartPanel;
 import userDTO.UserDTO;
 
@@ -15,27 +17,33 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 	UserDTO user;
 	ShoppingCartPanel shoppingCartGUI = new ShoppingCartPanel();
 	MainHeader mainHeader = new MainHeader(this);
-	MainPreView MainPreView = new MainPreView(mainHeader, this);
+	MainPreView mainPreView = new MainPreView(mainHeader, this);
+	private JScrollPane scrollPane;
+	
+	
+	LoginForm loginFrame = new LoginForm();
+	
 	
 	public MainFrame() {
+		
+		loginFrame.setVisible(false);
 		setBounds(150, 70, 1280, 960);
 		setLayout(null);
 		add(mainHeader);
-		add(MainPreView);
+		add(mainPreView);
 		add(shoppingCartGUI);
 		
-//		JScrollPane scrollPane = new JScrollPane(MainPreView);   //<- 생성자에 추가해주는 방법이있고
-//		scrollPane.setViewportView(MainPreView);  //setViewportView() 메서드로 추가해주는 방법이있다.
-//		add(scrollPane);
-		
+//		scrollPane = new JScrollPane(mainPreView, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+//		mainPreView.setBounds(0, 200, 1270, 2000);
+//		scrollPane.setBounds(0, 200, 1270, 3000);
+//		add(scrollPane);		
 		
 		shoppingCartGUI.setVisible(false);
 		
-//		mainF.add(jFramCart);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		System.out.println(MainPreView.isVisible());
+		System.out.println(mainPreView.isVisible());
 		System.out.println(mainHeader.isVisible());
 	
 	}
