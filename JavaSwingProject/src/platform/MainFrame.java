@@ -37,11 +37,11 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 		add(mainPreView);
 		add(shoppingCartGUI);
 		
-		scrollPane = new JScrollPane(mainPreView, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		mainPreView.setBounds(0, 0, 1280, 200);
-		mainPreView.setBounds(0, 1000, 1270, 760);
-		scrollPane.setBounds(0, 200, 1270, 760);
-		add(scrollPane);		
+//		scrollPane = new JScrollPane(mainPreView, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+//		mainPreView.setBounds(0, 0, 1280, 200);
+//		mainPreView.setBounds(0, 1000, 1270, 760);
+//		scrollPane.setBounds(0, 200, 1270, 760);
+//		add(scrollPane);		
 		
 		shoppingCartGUI.setVisible(false);
 		
@@ -63,6 +63,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 	public void onLogoClicked() {
 		hideVisiblePanelExceptHeader();
 	    setMainFrame(); // 메인 프레임 설정만 실행
+	    mainPreView.setVisible(true);
 
 	}
 	
@@ -97,7 +98,6 @@ public class MainFrame extends JFrame implements MainHeaderListener{
                 // 현재 보여지는 패널을 숨깁니다.
                 visiblePanel.setVisible(false);
             }
-            scrollPane.setVisible(false);
         }
     }
 	
