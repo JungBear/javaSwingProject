@@ -14,6 +14,7 @@ public class TopNavBtn extends JButton{
 		setBounds(x, y, 60, 30);
 		setBackground(Color.GRAY);
 		setBorder(new EmptyBorder(5,3,5,3));
+		setFont(getFont());
 		
 		setVisible(true);
 	}

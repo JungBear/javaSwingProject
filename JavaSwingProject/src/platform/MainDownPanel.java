@@ -97,6 +97,7 @@ public class MainDownPanel extends JPanel{
 		// 마우스 리스너 -> 마우스를 올리면 소분류 유지, 클릭하면 소분류에 맞는 상품들 나열되어있는 페이지로 이동, 마우스 나가면 안보이게
         for (TopNavBtn topNavBtn : btnList) {
         	topNavBtn.setVisible(true);
+        	
         	outer:switch(topNavBtn.getText()) {
 
 			case "상의":

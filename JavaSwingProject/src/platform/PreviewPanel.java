@@ -2,6 +2,7 @@ package platform;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -17,6 +18,8 @@ public class PreviewPanel extends JPanel{
 	public PreviewPanel(ProductDTO product) {
 		this.product = product;
 		setBackground(Color.WHITE);
+		
+		
 		ImageIcon logoIcon = new ImageIcon(product.getImgSrc());
 		Image image = logoIcon.getImage();
         
@@ -25,7 +28,10 @@ public class PreviewPanel extends JPanel{
     	  
 			JLabel productImg = new JLabel(scaledLogoIcon);
 			JLabel productName = new JLabel(product.getProductName());
+			productName.setFont(new Font("맑은 고딕", Font.BOLD, 13));
+			
 			JLabel productPrice = new JLabel(product.getPrice()+"원");
+			productPrice.setFont(new Font("맑은 고딕", Font.BOLD, 12));
     	  
 			productImg.setBounds(0, 0, scaledLogoIcon.getIconWidth(), scaledLogoIcon.getIconHeight());
     	  
