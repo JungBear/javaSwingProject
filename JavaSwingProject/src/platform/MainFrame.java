@@ -1,14 +1,10 @@
 package platform;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 import login_form.LoginForm;
 import shoppingCart.ShoppingCartPanel;
@@ -21,7 +17,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 	MainPreView mainPreView = new MainPreView(mainHeader, this);
 	LoginForm loginFrame = new LoginForm(this);
 	UserDTO user = LoginForm.getLoginUser();
-	private JScrollPane scrollPane;
+//	ProductDetailPanel pdp;
 	
 
 
@@ -36,7 +32,6 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 		add(mainHeader);
 		add(mainPreView);
 		add(shoppingCartGUI);
-		
 //		scrollPane = new JScrollPane(mainPreView, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 //		mainPreView.setBounds(0, 0, 1280, 200);
 //		mainPreView.setBounds(0, 1000, 1270, 760);

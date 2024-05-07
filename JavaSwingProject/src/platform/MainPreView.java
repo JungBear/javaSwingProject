@@ -71,7 +71,7 @@ public class MainPreView extends JPanel{
     				public void mouseClicked(MouseEvent e) {
     					// 클릭 이벤트 처리
     					mainF.hideVisiblePanelExceptHeader();
-    					SmallCategoryPreviewPanel.pdp.setVisible(true);
+//    					mainF.pdp.setVisible(true);
 //    					System.out.println(productDTO);
     				}
 

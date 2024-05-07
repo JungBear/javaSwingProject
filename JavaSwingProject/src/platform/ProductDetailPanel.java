@@ -1,15 +1,19 @@
 package platform;
 
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import dto.ProductDTO;
 import shoppingCart.Orders;
@@ -20,6 +24,7 @@ public class ProductDetailPanel extends JPanel{
 	Orders order;
 	ShoppingListPanel shoppingListPanel;
 	MainFrame mainF;
+	Font font = new Font("Arial", Font.BOLD, 15);
 
 	
 	public ProductDetailPanel(ProductDTO productDTO, MainFrame mainF) {
@@ -30,6 +35,7 @@ public class ProductDetailPanel extends JPanel{
 		// 이 판넬의 설정
 		setBounds(0,200,1280,760);
 		setVisible(false);
+		setBackground(Color.WHITE);
 		setLayout(null);
 		
 		// 상품의 이름 
@@ -39,37 +45,81 @@ public class ProductDetailPanel extends JPanel{
 		
 		// 이미지 보여주기
 		ImageIcon logoIcon = new ImageIcon(productDTO.getImgSrc());
-	     Image image = logoIcon.getImage();
+	    Image image = logoIcon.getImage();
 	        
 		if (image != null) {
 			ImageIcon scaledLogoIcon = new ImageIcon(image.getScaledInstance(400, 400, Image.SCALE_SMOOTH));
 
-			JLabel productImg = new JLabel(scaledLogoIcon);
+			JLabel productImg = new JLabel(scaledLogoIcon) {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    // 테두리 그리기
+                    g.setColor(Color.BLACK);
+                    g.drawRect(0, 0, getWidth(), getHeight()-1);
+                }
+            };
+
 			
 			productImg.setBounds(100, 200, scaledLogoIcon.getIconWidth(), scaledLogoIcon.getIconHeight());
 			add(productImg);
 		}
 		
+		JLabel productInfo = new JLabel("Product Info");
+		productInfo.setBounds(600, 200, 100, 100);
+		productInfo.setFont(font);
+		
+//		JLabel productInfoText = new JLabel(productDTO.getProductInfo());
+		JLabel productInfoText = new JLabel("<html>" + productDTO.getProductInfo() + "</html>");
+		productInfoText.setBounds(760, 240, 400, 200);
+//		productInfoText.setPreferredSize(new Dimension(400, 300));
+		productInfoText.setVerticalAlignment(SwingConstants.TOP);
+		
+		JLabel count = new JLabel("구매 수량");
+		count.setBounds(600, 340, 100, 100);
+		count.setFont(new Font("나눔고딕", Font.BOLD, 15));
+		
+		Integer[] quantities = {1, 2, 3, 4, 5};
+		JComboBox<Integer> quantityComboBox = new JComboBox<>(quantities);
+		quantityComboBox.setBounds(760, 380, 100, 30);
+		
+		// 가로줄 추가
+        JLabel horizontalLine = new JLabel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.setColor(Color.BLACK);
+                g.drawLine(600, 440, 1000, 440);
+            }
+        };
+        horizontalLine.setBounds(600, 380, 400, 5);
+
+		
 		JButton cart = new JButton("장바구니에 넣기");
-		cart.setBounds(600,600,200,100);
+		cart.setBounds(700,480,200,100);
 		cart.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				addOnCart();
+				int selectedQuantity = (int) quantityComboBox.getSelectedItem();
+				addOnCart(selectedQuantity);
 				
 			}
 		});
 //		cart.addActionListener(new );
-		
+		add(productInfo);
+		add(productInfoText);
+		add(count);
+		add(quantityComboBox);
 		add(cart);
 		add(productName);
+		add(horizontalLine);
 		
 		
 	}
 	
-	public void addOnCart() {
-		 Orders order = new Orders(true, productDTO.getProductName(), productDTO.getPrice(), 1, 1, false);
+	public void addOnCart(int quantity) {
+		 Orders order = new Orders(true, productDTO.getProductName(), productDTO.getPrice(), quantity, 1, false);
 		 
 		  // Check if the order already exists in the shopping cart
 		 // 지금 장바구니에 이상품이 있는지 체크
