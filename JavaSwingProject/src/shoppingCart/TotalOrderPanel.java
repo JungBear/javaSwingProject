@@ -21,21 +21,6 @@ private JLabel totalDeliveryPaymentLabel;
 	public TotalOrderPanel() {
 		
 
-		
-
-		
-		//기본값
-		//1.orders에 들어온 값을 받아와서 변수에 저장한다. 
-		//2.행들의 전체금액을 모두 더한 값을 tableProductPayment에 저장해서 보여준다. 
-		
-		
-		//주문건 선택이 수정될 때 
-		//1. orders.cloum의 값이 0이면(선택이 해제되면)--> (tableProductPayment)-=(선택된 행의 전체금액)
-		//2. orders.cloum의 값이 1이면(선택이 체크되면)--> (tableProductPayment)+=(선택된 행의 전체금액)
-
-		
-		
-		
 	}
 	
 	
