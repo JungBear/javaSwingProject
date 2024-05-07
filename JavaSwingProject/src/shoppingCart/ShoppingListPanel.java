@@ -4,15 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
@@ -83,13 +82,13 @@ public class ShoppingListPanel extends JPanel {
     			
     		table = new JTable(tableModel);//장바구니 table 생성
     		
+    		
 
     	    JTableHeader header = table.getTableHeader();
     	    header.setPreferredSize(new Dimension(header.getWidth(), 40)); // 헤더의 높이
-    	    JTableHeader CenterHeaderRenderer = table.getTableHeader();
-    	    Font headerFont = new Font("Arial", Font.BOLD, 14); // 헤더의 폰트 설정
+    	    Font headerFont = new Font("나눔고딕", Font.BOLD, 14); // 헤더의 폰트 설정
     	    header.setDefaultRenderer(new CenterHeaderRenderer(headerFont));
-
+    	    header.setReorderingAllowed(false);
     	    
     		table.setRowHeight(50);//각 행의 높이
     			
@@ -138,25 +137,28 @@ public class ShoppingListPanel extends JPanel {
     		table.getColumnModel().getColumn(6).setPreferredWidth(10);//삭제버튼 열의 넓이
     		
     		//모든 셀의 폰트는 중앙정렬
-    		for (int i = 0; i < table.getColumnCount(); i++) {
+    		for (int i = 1; i < table.getColumnCount()-1; i++) {
     	        table.getColumnModel().getColumn(i).setCellRenderer(new CenterRenderer());
     	    }
     		
+    		
+    		
     		// 스크롤에 테이블 추가
     		JScrollPane scrollPane = new JScrollPane(table);
-    		scrollPane.setPreferredSize(new Dimension(800,400));
+    		scrollPane.setPreferredSize(new Dimension(900,500));// 테이블 사이즈
     		scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // JScrollPane에 테두리 설정
     		setBackground(Color.blue);
-    		setBounds(0,0,1280,450);
-    		add(scrollPane, BorderLayout.CENTER);
+    		setBounds(0,0,1280,550);//ShoppingList 영역 사이즈
     		
-
+    		// JPanel에 테두리 설정
+    	    Border border = BorderFactory.createLineBorder(Color.BLACK);
+    	    setBorder(border);
+    	    
+    		add(scrollPane, BorderLayout.CENTER);
 
     	}
     	
-    	
-    	
-    	
+
     	//장바구니 첫 화면에서 보이는 하단 상품의 결제 금액 부분 
     	public int selectAdd() {
     		
@@ -174,8 +176,15 @@ public class ShoppingListPanel extends JPanel {
 
             // orders 리스트에 있는 모든 주문을 테이블에 추가합니다.
             for (Orders order : orders) {
-                Object[] row = new Object[]{order.getSelect(), order.getInfo(), order.getPrice(), order.getQuantity(),
-                        order.getTotalPrice(), order.getDelivery(), order.getDelete()};
+                Object[] row = {
+                        order.getSelect(),
+                        order.getInfo(),
+                        formatNumber(order.getPrice()),
+                        order.getQuantity(),
+                        formatNumber(order.getTotalPrice()),
+                        formatNumber(order.getDelivery()),
+                        order.getDelete()
+                };
                 tableModel.addRow(row);
             }
 
@@ -222,5 +231,11 @@ public class ShoppingListPanel extends JPanel {
 		public void setOrders(ArrayList<Orders> orders) {
 			this.orders = orders;
 		}
+		
+		// 콤마를 포함한 숫자로 변환하는 메서드
+	    private static String formatNumber(int number) {
+	        DecimalFormat formatter = new DecimalFormat("#,###");
+	        return formatter.format(number);
+	    }
 
 }

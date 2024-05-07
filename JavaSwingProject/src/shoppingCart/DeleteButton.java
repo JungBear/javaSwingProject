@@ -1,5 +1,6 @@
 package shoppingCart;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +38,7 @@ public class DeleteButton extends AbstractCellEditor implements TableCellRendere
         editButton = new JButton("삭제");
         editButton.setFocusPainted(false);
         editButton.addActionListener(this);
+        editButton.setForeground(Color.BLACK); // 폰트 색상을 검정색으로 설정
 
         TableColumnModel columnModel = table.getColumnModel();
         columnModel.getColumn(column).setCellRenderer(this);
@@ -48,13 +50,13 @@ public class DeleteButton extends AbstractCellEditor implements TableCellRendere
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
     		int row, int column) {
     	if (hasFocus) {
-            renderButton.setForeground(table.getForeground());
+            renderButton.setForeground(Color.BLACK);
             renderButton.setBackground(UIManager.getColor("Button.background"));
         } else if (isSelected) {
-            renderButton.setForeground(table.getSelectionForeground());
+            renderButton.setForeground(Color.gray);
             renderButton.setBackground(table.getSelectionBackground());
         } else {
-            renderButton.setForeground(table.getForeground());
+            renderButton.setForeground(Color.BLACK);
             renderButton.setBackground(UIManager.getColor("Button.background"));
         }
 

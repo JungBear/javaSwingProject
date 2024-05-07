@@ -2,14 +2,16 @@ package shoppingCart;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 
 public class TotalOrderPanel extends JPanel{
 int totalProductPayment;//선택한or전체 상품의금액 
@@ -28,14 +30,22 @@ private JLabel totalDeliveryPaymentLabel;
 
 		
 		//선택한 or 전체 상품의 금액을 표시하는 부분 생성 
-		totalProductPaymentLabel = new JLabel("선택한 상품의 결제 금액 : " + this.totalProductPayment + "원     +       ");
+		totalProductPaymentLabel = new JLabel("선택한 상품의 결제 금액 : " + formatNumber(this.totalProductPayment) + "원     +       ");
 		//선택한 or 전체 상품의 금액에 대한 배송비를 표시하는 부분 생성 
-		totalDeliveryPaymentLabel = new JLabel("       배송비 : " + totalDeliveryPayment + "원     =");
+		totalDeliveryPaymentLabel = new JLabel("       배송비 : " + formatNumber(totalDeliveryPayment) + "원     =");
 		// 총 결제 금액을 표시하는 부분 생성
-		totalPaymentLabel = new JLabel("총 결제 금액 : " + totalPayment + "원"+"\n");
+		totalPaymentLabel = new JLabel("총 결제 금액 : " + formatNumber(totalPayment) + "원"+"\n");
 		
+		
+		//폰트 사이즈 설정
+        Font font = new Font("Arial", Font.PLAIN, 16);
+        totalProductPaymentLabel.setFont(font);
+        totalDeliveryPaymentLabel.setFont(font);
+        totalPaymentLabel.setFont(font);
+        
+        
 		//totalOrderPanel의 영역 사이즈 설정
-		setBounds(400,451,500,150);
+		setBounds(350,551,600,100);
 		setBackground(Color.yellow);
 		setVisible(true);
 		setLayout(new BorderLayout());
@@ -51,7 +61,8 @@ private JLabel totalDeliveryPaymentLabel;
         buttonPanel.add(totalOrderbtn);
         add(buttonPanel, BorderLayout.SOUTH); // 하단에 버튼 패널 추가
         buttonPanel.setBackground(Color.WHITE);
-        buttonPanel.setBounds(400,100,500,100);
+        buttonPanel.setPreferredSize(new Dimension(500, 50));
+
 		
 		//선택한 상품 주문버튼 누를 때 작동하는 리스너 
 		selectOrderbtn.addActionListener(new ActionListener() {	
@@ -100,6 +111,7 @@ private JLabel totalDeliveryPaymentLabel;
 	
 	//totalOrderPanel 화면을 보여주는 메서드(기본값) 
 	public void setTotalOrderPanel() {
+		
 	}
 	
 	public void setTotalProductPayment(int totalProductPayment) {
@@ -115,7 +127,7 @@ private JLabel totalDeliveryPaymentLabel;
         	} 
         }
           
-        totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + totalProductPayment + "원     +       ");
+        totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + formatNumber(totalProductPayment)  + "원     +       ");
         
         
         // 배송비 업데이트
@@ -126,8 +138,8 @@ private JLabel totalDeliveryPaymentLabel;
         }
         
         // 총 결제 금액 업데이트 
-        totalDeliveryPaymentLabel.setText("       배송비 : " + totalDeliveryPayment + "원     =");
-        totalPaymentLabel.setText("총 결제 금액 : " + (totalProductPayment + totalDeliveryPayment) + "원"+"\n");
+        totalDeliveryPaymentLabel.setText("       배송비 : " + formatNumber(totalDeliveryPayment) + "원     =");
+        totalPaymentLabel.setText("총 결제 금액 : " + formatNumber(totalProductPayment + totalDeliveryPayment) + "원"+"\n");
     }
     
     //전체 상품의 결제 금액을 업데이트하는 메서드
@@ -138,7 +150,7 @@ private JLabel totalDeliveryPaymentLabel;
     			totalProductPayment += order.getTotalPrice() * order.getQuantity();        	           		
     	}
     	
-    	totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + totalProductPayment + "원     +");
+    	totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + formatNumber(totalProductPayment) + "원     +");
     	
     	
     	// 배송비 업데이트
@@ -149,8 +161,8 @@ private JLabel totalDeliveryPaymentLabel;
     	}
     	
     	// 총 결제 금액 업데이트 
-    	totalDeliveryPaymentLabel.setText("       배송비 : " + totalDeliveryPayment + "원     =");
-    	totalPaymentLabel.setText("총 결제 금액 : " + (totalProductPayment + totalDeliveryPayment) + "원"+"\n");
+    	totalDeliveryPaymentLabel.setText("       배송비 : " + formatNumber(totalDeliveryPayment) + "원     =");
+    	totalPaymentLabel.setText("총 결제 금액 : " +formatNumber(totalProductPayment + totalDeliveryPayment) + "원"+"\n");
     }
 
 
@@ -170,7 +182,7 @@ private JLabel totalDeliveryPaymentLabel;
     }
 
 
-    public void setTotalPayment(int totalPayment) {
+    public void setTotaPayment(int totalPayment) {
         this.totalPayment = totalPayment;
     }
 
@@ -186,8 +198,12 @@ private JLabel totalDeliveryPaymentLabel;
 	public void setOrders(ArrayList<Orders> orders) {
 		this.orders = orders;
 	}
-
 	
+	//금액에 콤마를 찍어서 표시하게 하는 메서드
+	private String formatNumber(int number) {
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return formatter.format(number);
+    }
 	
 	
 }

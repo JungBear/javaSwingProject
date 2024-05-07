@@ -1,8 +1,10 @@
 package shoppingCart;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,7 +26,10 @@ public class TotalBtnFrame extends JFrame{
 	      setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 닫기 버튼을 누르면 창이 닫히도록 설정
 	      setLocationRelativeTo(null); // 화면 중앙에 위치하도록 설정
 
-	      JLabel label = new JLabel("전체 상품의 주문이 완료되었습니다.\n 결제 금액은 " + value + "원 입니다.");
+	      JLabel label = new JLabel("전체 상품의 주문이 완료되었습니다.\n 결제 금액은 " + formatNumber(value) + "원 입니다.");
+	      label.setHorizontalAlignment(JLabel.CENTER); // 수평 정렬 설정
+	      label.setVerticalAlignment(JLabel.CENTER); // 수직 정렬 설정
+	      label.setFont(new Font("Arial", Font.PLAIN, 15)); // 폰트 설정
 	      JButton closeButton = new JButton("닫기");
 	      
 	      closeButton.addActionListener(new ActionListener() {
@@ -45,4 +50,10 @@ public class TotalBtnFrame extends JFrame{
 	      getContentPane().add(closeButton, BorderLayout.SOUTH);
 
 	}
+	
+	private String formatNumber(int number) {
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return formatter.format(number);
+    }
+	
 }
