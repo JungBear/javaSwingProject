@@ -107,7 +107,7 @@ public class ProductDetailPanel extends JPanel{
 
         JLabel PaymentLabel = new JLabel("가격");
         PaymentLabel.setBounds(600, 340, 100, 100);
-        PaymentLabel.setFont(new Font("나눔고딕", Font.BOLD, 15));
+        PaymentLabel.setFont(new Font("Arial", Font.BOLD, 15));
         
         JLabel PaymentText = new JLabel((productDTO.getPrice() * (int) quantityComboBox.getSelectedItem()) + "원");
         PaymentText.setBounds(760, 340, 100, 100);
