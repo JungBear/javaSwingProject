@@ -15,7 +15,7 @@ import dto.ProductDTO;
 public class SmallCategoryPreviewPanel extends JPanel{
 	
 	MainFrame mainF;
-	ProductDetailPanel pdp;
+	
 	
 	public SmallCategoryPreviewPanel(ArrayList<ProductDTO> pds, MainFrame mainF) {
 		this.mainF = mainF;
@@ -35,17 +35,20 @@ public class SmallCategoryPreviewPanel extends JPanel{
 		int xOffset = 150; // 제품 미리보기 패널의 y축 위치 설정
 		int yOffset = 100;
         for (ProductDTO productDTO : pds) {
+        	final ProductDTO currentProduct = productDTO;
+//        	System.out.println(currentProduct);
+//        	System.out.println("pds : " + pds);
 //        	System.out.println(productDTO);
 //        	System.out.println("product : " + pds);
         	// 판넬 생성
-            PreviewPanel pp = new PreviewPanel(productDTO);
+            PreviewPanel pp = new PreviewPanel(currentProduct);
             pp.setVisible(true);
             pp.setBounds(xOffset, yOffset, 300, 300); // 위치 설정
             // 판넬 추가
             add(pp);
             
-         // 각 제품에 대해 새로운 ProductDetailPanel 생성
-            pdp = new ProductDetailPanel(productDTO, mainF);
+            // 각 제품에 대해 새로운 ProductDetailPanel 생성
+            ProductDetailPanel pdp = new ProductDetailPanel(currentProduct, mainF);
             mainF.add(pdp);
             
             pp.setVisible(true);
@@ -64,9 +67,12 @@ public class SmallCategoryPreviewPanel extends JPanel{
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					// 클릭 이벤트 처리
-					mainF.hideVisiblePanelExceptHeader();
-					pdp.setVisible(true);
-//					System.out.println(productDTO);
+			        mainF.hideVisiblePanelExceptHeader();
+			        pdp.setProductDTO(currentProduct); // 올바른 ProductDTO 설정
+			        
+			        pdp.setVisible(true);
+			        pdp.repaint();
+			        System.out.println(currentProduct);
 				}
 
 				@Override
@@ -91,9 +97,9 @@ public class SmallCategoryPreviewPanel extends JPanel{
 					pp.setBackground(Color.WHITE); // 배경색 변경
 				}
 			});
-
+            
+            
         }
-		
 		mainF.add(this);
 		
 		

@@ -41,14 +41,17 @@ public class MainHeader extends JPanel{
 		setName("header");
 		setBounds(0, 0, 1280, 200);
 		setPreferredSize(new Dimension(1280, 200)); // maxSize 설정
+		
 	    // 로고 이미지 생성
 		setBackground(Color.gray);
 		setLayout(null); // FlowLayout로 변경
         setPreferredSize(getPreferredSize()); // 원래 크기로 설정
         setVisible(true);
         // 로고 이미지 생성
+        
         add(setLogo(mainF));
         // 버튼 panel에 부착
+        
         add(clothBtn);
         add(cosmeticsBtn);
         add(shoesBtn);
@@ -66,15 +69,19 @@ public class MainHeader extends JPanel{
         	switch(topNavBtn.getText()) {
         	case "의류":
         		topNavBtn.addMouseListener(new BtnMouseAdapter(clothDownPanel, mainF));
+        		clothDownPanel.addMouseListener(new BtnExitAdapter(clothDownPanel));
         		break;
         	case "화장품":
         		topNavBtn.addMouseListener(new BtnMouseAdapter(cosmeticsDownPanel, mainF));
+        		cosmeticsDownPanel.addMouseListener(new BtnExitAdapter(cosmeticsDownPanel));
         		break;
         	case "신발":
         		topNavBtn.addMouseListener(new BtnMouseAdapter(shoesDownPanel, mainF));
+        		shoesDownPanel.addMouseListener(new BtnExitAdapter(shoesDownPanel));
         		break;
         	case "가방":
         		topNavBtn.addMouseListener(new BtnMouseAdapter(bagDownPanel, mainF));
+        		bagDownPanel.addMouseListener(new BtnExitAdapter(bagDownPanel));
         		break;
         		
         	}
@@ -118,7 +125,7 @@ public class MainHeader extends JPanel{
 	
 	public JLabel setLogo(MainFrame mainF) {
 		logoIcon = new ImageIcon("src/img/logo.png"); // 로고 이미지 파일 경로에 따라 변경하세요
-		ImageIcon scaledLogoIcon = new ImageIcon(logoIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+		ImageIcon scaledLogoIcon = new ImageIcon(logoIcon.getImage().getScaledInstance(300, 100, Image.SCALE_SMOOTH));
 		JLabel logoLabel = new JLabel(scaledLogoIcon);
         // 로고 이미지 클릭 이벤트 처리
         logoLabel.addMouseListener(new MouseAdapter() {
@@ -133,7 +140,7 @@ public class MainHeader extends JPanel{
             }
         });
         // 이미지의 위치를 맨왼쪽 위에 위치시킨다
-        logoLabel.setBounds(0, 0, scaledLogoIcon.getIconWidth(), scaledLogoIcon.getIconHeight());
+        logoLabel.setBounds(500, 50, scaledLogoIcon.getIconWidth(), scaledLogoIcon.getIconHeight());
         add(logoLabel);
 		return logoLabel;
 	}

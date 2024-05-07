@@ -29,7 +29,7 @@ public class SmallBtnMouseAdapter extends MouseAdapter{
 		scpp.setSmallCatogrtyPreviewPanel();
 		
 	}
-	
+
 	
 	
 }

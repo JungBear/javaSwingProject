@@ -41,7 +41,7 @@ public class ProductDetailPanel extends JPanel{
 		// 상품의 이름 
 		JLabel productName = new JLabel(productDTO.getProductName());
 		productName.setBounds(100, 0, 600, 200);
-		productName.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24)); // 폰트 설정
+		productName.setFont(new Font("맑은 고딕", Font.BOLD, 24)); // 폰트 설정
 		
 		// 이미지 보여주기
 		ImageIcon logoIcon = new ImageIcon(productDTO.getImgSrc());
@@ -68,10 +68,12 @@ public class ProductDetailPanel extends JPanel{
 		JLabel productInfo = new JLabel("Product Info");
 		productInfo.setBounds(600, 160, 100, 100);
 		productInfo.setFont(font);
+		productInfo.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		
 //		JLabel productInfoText = new JLabel(productDTO.getProductInfo());
 		JLabel productInfoText = new JLabel("<html>" + productDTO.getProductInfo() + "</html>");
 		productInfoText.setBounds(760, 200, 400, 200);
+		productInfoText.setFont(new Font("맑은 고딕", Font.PLAIN, 12));
 //		productInfoText.setPreferredSize(new Dimension(400, 300));
 		productInfoText.setVerticalAlignment(SwingConstants.TOP);
 		
@@ -88,9 +90,13 @@ public class ProductDetailPanel extends JPanel{
 		
 		JLabel count = new JLabel("구매 수량");
 		count.setBounds(600, 240, 100, 100);
-		count.setFont(new Font("나눔고딕", Font.BOLD, 15));
+		count.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		
-		Integer[] quantities = {1, 2, 3, 4, 5};
+		//셀렉트 박스
+		Integer[] quantities = new Integer[99];
+		for (int i = 0; i < quantities.length; i++) {
+			quantities[i]= i+1;
+		}
 		JComboBox<Integer> quantityComboBox = new JComboBox<>(quantities);
 		quantityComboBox.setBounds(760, 280, 100, 30);
 		
@@ -107,11 +113,11 @@ public class ProductDetailPanel extends JPanel{
 
         JLabel PaymentLabel = new JLabel("가격");
         PaymentLabel.setBounds(600, 340, 100, 100);
-        PaymentLabel.setFont(new Font("Arial", Font.BOLD, 15));
+        PaymentLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
         
         JLabel PaymentText = new JLabel((productDTO.getPrice() * (int) quantityComboBox.getSelectedItem()) + "원");
         PaymentText.setBounds(760, 340, 100, 100);
-        PaymentText.setFont(new Font("나눔고딕", Font.BOLD, 15));
+        PaymentText.setFont(new Font("맑은 고딕", Font.BOLD, 15));
         
 		
 		JButton cart = new JButton("장바구니에 넣기");
