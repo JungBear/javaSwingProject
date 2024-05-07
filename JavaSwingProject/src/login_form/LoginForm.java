@@ -18,8 +18,9 @@ public class LoginForm extends JFrame {
     private JPasswordField pwpf;
     private JButton loginbtn, registerbtn, idfindbtn, pwfindbtn;
     private JLabel idlb, pwlb;
-    private static UserDTO LoginUser = null;
     MainFrame mainF;
+    //로그인한 유저의 데이터
+    private static UserDTO LoginUser;
 
     public LoginForm(MainFrame mainF) {
     	RegisterForm registerFrame = new RegisterForm();
@@ -84,7 +85,7 @@ public class LoginForm extends JFrame {
                 } else {
                 	LoginUser = UserDataReader.loginUser(id, password);
                     if (LoginUser != null) {
-                    	//로그인된 유저의 데이터
+                    	
                     	setVisible(false);
                         JOptionPane.showMessageDialog(null, "로그인 했습니다");
                     } 

@@ -34,7 +34,7 @@ public class RegisterForm extends JFrame {
                 if (id.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "아이디를 입력하세요.");
                 } else if (UserDataReader.checkDuplicate(id, 0)) { 
-                	idtf.setText(""); // // 아이디가 중복일 경우 텍스트 필드 비우기
+                	idtf.setText(""); // 아이디가 중복일 경우 텍스트 필드 비우기
                     JOptionPane.showMessageDialog(null, "이미 사용중인 아이디 입니다.");
                 } else {
                     JOptionPane.showMessageDialog(null, "사용 가능한 아이디 입니다.");
