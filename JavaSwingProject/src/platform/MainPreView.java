@@ -21,6 +21,8 @@ public class MainPreView extends JPanel{
 	ProductService productService = new ProductService();
 	SmallCategoryPreviewPanel sccp;
 	ArrayList<ProductDTO> products;
+	JPanel container;
+	JScrollPane scrollPane;
 	
 	final int KIND = 4;
 	String[] kinds = {"의류", "화장품", "신발", "가방"};
@@ -28,14 +30,24 @@ public class MainPreView extends JPanel{
 	public MainPreView(MainHeader mainHeader, MainFrame mainF) {
 		
 		setLayout(null);
-		setPreferredSize(new Dimension(1280, 1700)); // 높이 조정 필요에 따라
-		setMaximumSize(new Dimension(1280, 1700));// 높이 조정 필요에 따라
+//		setPreferredSize(new Dimension(1280, 1700)); // 높이 조정 필요에 따라
+//		setMaximumSize(new Dimension(1280, 1700));// 높이 조정 필요에 따라
+		setBounds(0, 200, 1280, 760);
 		setVisible(true);
 		
-//		   JScrollPane 생성 및 추가
-//        JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-//        scrollPane.setBounds(0, 0, 1280, 3000); // JScrollPane의 크기 설정
-//        add(scrollPane);
+		
+		
+		// 판넬을 새로만들어서 거기에다가 스크롤과 내용 붙히기.
+		container = new JPanel();
+		container.setLayout(null);
+		container.setPreferredSize(new Dimension(1280, 1700)); // 높이 조정 필요에 따라
+		container.setMaximumSize(new Dimension(1280, 1700));// 높이 조정 필요에 따라
+		
+    	//JScrollPane 생성 및 추가
+		scrollPane = new JScrollPane(container,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		// JScrollPane의 크기 설정
+		scrollPane.setBounds(0, 0, 1270, 760);
+		add(scrollPane);
 		
 		
 		
@@ -86,11 +98,14 @@ public class MainPreView extends JPanel{
     				}
     			});
         		
-        		add(pp);
+        		container.add(pp);
         		
         		xOffset += 350;
         		
         	}
+        	
+
+    		
         	
 //        	scrollPane.setViewportView(categoryPanel);
         	JLabel bigCategory = new JLabel(kinds[i]);
@@ -100,10 +115,12 @@ public class MainPreView extends JPanel{
         	
         	
         	
-            add(bigCategory);
+            container.add(bigCategory);
             yOffsetOfLable += 400;
             yOffsetOfPanel += 400;
         }
+        
+
 		
 	}
 	
