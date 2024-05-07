@@ -20,11 +20,13 @@ public class ProductDetailPanel extends JPanel{
 	Orders order;
 	ShoppingListPanel shoppingListPanel;
 	MainFrame mainF;
+
 	
 	public ProductDetailPanel(ProductDTO productDTO, MainFrame mainF) {
 		this.productDTO = productDTO;
 		this.mainF = mainF;
 		shoppingListPanel = mainF.shoppingCartGUI.getShoppingListPanel();
+//		System.out.println("간다" + productDTO.getImgSrc());
 		// 이 판넬의 설정
 		setBounds(0,200,1280,760);
 		setVisible(false);
@@ -37,16 +39,15 @@ public class ProductDetailPanel extends JPanel{
 		
 		// 이미지 보여주기
 		ImageIcon logoIcon = new ImageIcon(productDTO.getImgSrc());
-		Image image = logoIcon.getImage();
-		ImageIcon scaledLogoIcon;
-		JLabel productImg = null;
+	     Image image = logoIcon.getImage();
 	        
 		if (image != null) {
-			scaledLogoIcon = new ImageIcon(image.getScaledInstance(400, 400, Image.SCALE_SMOOTH));
-	  
-			productImg = new JLabel(scaledLogoIcon);
-			productImg.setBounds(100, 200, scaledLogoIcon.getIconWidth(), scaledLogoIcon.getIconHeight());
+			ImageIcon scaledLogoIcon = new ImageIcon(image.getScaledInstance(400, 400, Image.SCALE_SMOOTH));
 
+			JLabel productImg = new JLabel(scaledLogoIcon);
+			
+			productImg.setBounds(100, 200, scaledLogoIcon.getIconWidth(), scaledLogoIcon.getIconHeight());
+			add(productImg);
 		}
 		
 		JButton cart = new JButton("장바구니에 넣기");
@@ -63,7 +64,7 @@ public class ProductDetailPanel extends JPanel{
 		
 		add(cart);
 		add(productName);
-		add(productImg);
+		
 		
 	}
 	
@@ -85,12 +86,12 @@ public class ProductDetailPanel extends JPanel{
 	            JOptionPane.showMessageDialog(null, "이미 같은 상품이 장바구니에 있습니다.", "중복 상품", JOptionPane.WARNING_MESSAGE);
 	        } else {
 	            // Add the order to the shopping cart
-	        	System.out.println("추가전 장바구니 : " + shoppingListPanel.getOrders());
+//	        	System.out.println("추가전 장바구니 : " + shoppingListPanel.getOrders());
 	            shoppingListPanel.add(order);
 
 	            // Update the table model to reflect the added order
 	            shoppingListPanel.tableModel.fireTableDataChanged();
-	            System.out.println("추가후 장바구니 : " + shoppingListPanel.getOrders());
+//	            System.out.println("추가후 장바구니 : " + shoppingListPanel.getOrders());
 
 	            // Update the total order panel
 	            mainF.shoppingCartGUI.totalOrderPanel.setTotalProductPayment(shoppingListPanel.selectAdd());

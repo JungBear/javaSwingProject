@@ -36,6 +36,7 @@ public class SmallCategoryPreviewPanel extends JPanel{
 		int yOffset = 100;
         for (ProductDTO productDTO : pds) {
 //        	System.out.println(productDTO);
+//        	System.out.println("product : " + pds);
         	// 판넬 생성
             PreviewPanel pp = new PreviewPanel(productDTO);
             pdp = new ProductDetailPanel(productDTO, mainF);
@@ -43,7 +44,12 @@ public class SmallCategoryPreviewPanel extends JPanel{
             pp.setBounds(xOffset, yOffset, 300, 300); // 위치 설정
             // 판넬 추가
             add(pp);
+            
+         // 각 제품에 대해 새로운 ProductDetailPanel 생성
+            ProductDetailPanel pdp = new ProductDetailPanel(productDTO, mainF);
             mainF.add(pdp);
+            mainF.add(pdp);
+            
             pp.setVisible(true);
             pp.setLayout(new FlowLayout(FlowLayout.CENTER));
             pp.setBackground(Color.white);
@@ -62,7 +68,7 @@ public class SmallCategoryPreviewPanel extends JPanel{
 					// 클릭 이벤트 처리
 					mainF.hideVisiblePanelExceptHeader();
 					pdp.setVisible(true);
-					System.out.println(productDTO);
+//					System.out.println(productDTO);
 				}
 
 				@Override

@@ -55,7 +55,7 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 
 		
 	public void setMainFrame() {
-	    scrollPane.setVisible(true);
+//	    scrollPane.setVisible(true);
 	    mainPreView.setVisible(true);
 	}
 
