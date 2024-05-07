@@ -3,6 +3,7 @@ package shoppingCart;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -82,13 +83,13 @@ public class ShoppingListPanel extends JPanel {
     			
     		table = new JTable(tableModel);//장바구니 table 생성
     		
-    		 // 테이블에 테두리 설정
-            Border tableBorder = BorderFactory.createLineBorder(Color.BLACK); // 테두리 색을 검정색으로 설정
-            table.setBorder(tableBorder);
 
     	    JTableHeader header = table.getTableHeader();
     	    header.setPreferredSize(new Dimension(header.getWidth(), 40)); // 헤더의 높이
-    	    header.setDefaultRenderer(new CenterHeaderRenderer());
+    	    JTableHeader CenterHeaderRenderer = table.getTableHeader();
+    	    Font headerFont = new Font("Arial", Font.BOLD, 14); // 헤더의 폰트 설정
+    	    header.setDefaultRenderer(new CenterHeaderRenderer(headerFont));
+
     	    
     		table.setRowHeight(50);//각 행의 높이
     			
@@ -105,7 +106,6 @@ public class ShoppingListPanel extends JPanel {
 				        orders.get(row).setSelect(isSelected);
 				        System.out.println(orders);
 				        totalOrderPanel.updateSelectPayment(orders); // 선택 변경 후 총 결제 금액 업데이트
-//				        totalOrderPanel.updateTotalPayment(orders); // 선택 변경 후 총 결제 금액 업데이트
 					
 				}
 				
@@ -145,6 +145,7 @@ public class ShoppingListPanel extends JPanel {
     		// 스크롤에 테이블 추가
     		JScrollPane scrollPane = new JScrollPane(table);
     		scrollPane.setPreferredSize(new Dimension(800,400));
+    		scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // JScrollPane에 테두리 설정
     		setBackground(Color.blue);
     		setBounds(0,0,1280,450);
     		add(scrollPane, BorderLayout.CENTER);
