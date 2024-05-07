@@ -15,7 +15,7 @@ import dto.ProductDTO;
 public class SmallCategoryPreviewPanel extends JPanel{
 	
 	MainFrame mainF;
-	static ProductDetailPanel pdp;
+	ProductDetailPanel pdp;
 	
 	public SmallCategoryPreviewPanel(ArrayList<ProductDTO> pds, MainFrame mainF) {
 		this.mainF = mainF;
@@ -39,15 +39,13 @@ public class SmallCategoryPreviewPanel extends JPanel{
 //        	System.out.println("product : " + pds);
         	// 판넬 생성
             PreviewPanel pp = new PreviewPanel(productDTO);
-            pdp = new ProductDetailPanel(productDTO, mainF);
             pp.setVisible(true);
             pp.setBounds(xOffset, yOffset, 300, 300); // 위치 설정
             // 판넬 추가
             add(pp);
             
          // 각 제품에 대해 새로운 ProductDetailPanel 생성
-            ProductDetailPanel pdp = new ProductDetailPanel(productDTO, mainF);
-            mainF.add(pdp);
+            pdp = new ProductDetailPanel(productDTO, mainF);
             mainF.add(pdp);
             
             pp.setVisible(true);
