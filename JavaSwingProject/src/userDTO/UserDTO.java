@@ -5,7 +5,7 @@ public class UserDTO {
 	private String id;
 	private String pwd;
 	private String email;
-	private String name;
+	private String name = "";
 	private String phoneNum;
 	private String address;
 	
@@ -60,4 +60,12 @@ public class UserDTO {
 		return null;
 	}
 
+	@Override
+	public String toString() {
+		return "UserDTO [id=" + id + ", pwd=" + pwd + ", email=" + email + ", name=" + name + ", phoneNum=" + phoneNum
+				+ ", address=" + address + "]";
+	}
+
+	
+	
 }

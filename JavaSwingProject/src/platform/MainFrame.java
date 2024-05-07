@@ -1,7 +1,9 @@
 package platform;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,16 +16,18 @@ import userDTO.UserDTO;
 
 public class MainFrame extends JFrame implements MainHeaderListener{
 
-	UserDTO user;
 	ShoppingCartPanel shoppingCartGUI = new ShoppingCartPanel();
 	MainHeader mainHeader = new MainHeader(this);
 	MainPreView mainPreView = new MainPreView(mainHeader, this);
+	LoginForm loginFrame = new LoginForm(this);
+	UserDTO user = LoginForm.getLoginUser();
 	private JScrollPane scrollPane;
 	
-	
-	LoginForm loginFrame = new LoginForm();
-	
-	
+
+
+
+
+
 	public MainFrame() {
 		
 		loginFrame.setVisible(false);
@@ -33,30 +37,33 @@ public class MainFrame extends JFrame implements MainHeaderListener{
 		add(mainPreView);
 		add(shoppingCartGUI);
 		
-//		scrollPane = new JScrollPane(mainPreView, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-//		mainPreView.setBounds(0, 200, 1270, 2000);
-//		scrollPane.setBounds(0, 200, 1270, 3000);
-//		add(scrollPane);		
+		scrollPane = new JScrollPane(mainPreView, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		mainPreView.setBounds(0, 0, 1280, 200);
+		mainPreView.setBounds(0, 1000, 1270, 760);
+		scrollPane.setBounds(0, 200, 1270, 760);
+		add(scrollPane);		
 		
 		shoppingCartGUI.setVisible(false);
 		
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		System.out.println(mainPreView.isVisible());
-		System.out.println(mainHeader.isVisible());
-	
+//		System.out.println(mainPreView.isVisible());
+//		System.out.println(mainHeader.isVisible());
+		System.out.println("메인프레임의 유저 : " + user);
 	}
 
 		
 	public void setMainFrame() {
-		setVisible(true);
+	    scrollPane.setVisible(true);
+	    mainPreView.setVisible(true);
 	}
 
 	@Override
 	public void onLogoClicked() {
 		hideVisiblePanelExceptHeader();
 	    setMainFrame(); // 메인 프레임 설정만 실행
+
 	}
 	
     public void showShoppingCartPanel() {
@@ -90,9 +97,18 @@ public class MainFrame extends JFrame implements MainHeaderListener{
                 // 현재 보여지는 패널을 숨깁니다.
                 visiblePanel.setVisible(false);
             }
+            scrollPane.setVisible(false);
         }
     }
 	
+    public MainHeader getMainHeader() {
+    	return mainHeader;
+    }
+    
+    
+    public void setMainHeader(MainHeader mainHeader) {
+    	this.mainHeader = mainHeader;
+    }
 				
 		
 	

@@ -151,7 +151,7 @@ public class ProductService {
 			product.setProductInfo(databaseData[i-2]);
 			product.setImgSrc(databaseData[i-1]);
 			product.setPrice(Integer.parseInt(databaseData[i]));
-			System.out.println(databaseData[i-3]);
+//			System.out.println(databaseData[i-3]);
 			products.add(product);
 			
 			
