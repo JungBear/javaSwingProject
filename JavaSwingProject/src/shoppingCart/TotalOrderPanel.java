@@ -3,6 +3,7 @@ package shoppingCart;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,7 +39,7 @@ private JLabel totalDeliveryPaymentLabel;
 		
 		
 		//폰트 사이즈 설정
-        Font font = new Font("Arial", Font.PLAIN, 16);
+        Font font = new Font("맑은 고딕", Font.PLAIN, 16);
         totalProductPaymentLabel.setFont(font);
         totalDeliveryPaymentLabel.setFont(font);
         totalPaymentLabel.setFont(font);
@@ -57,11 +58,12 @@ private JLabel totalDeliveryPaymentLabel;
 		JButton selectOrderbtn = new JButton("선택한 상품 주문");
 		JButton totalOrderbtn = new JButton("전체 상품 주문");
 		JPanel buttonPanel = new JPanel(); // 버튼을 담을 패널 생성
-        buttonPanel.add(selectOrderbtn);
-        buttonPanel.add(totalOrderbtn);
         add(buttonPanel, BorderLayout.SOUTH); // 하단에 버튼 패널 추가
         buttonPanel.setBackground(Color.WHITE);
-        buttonPanel.setPreferredSize(new Dimension(500, 50));
+        buttonPanel.setPreferredSize(new Dimension(400, 50));
+        buttonPanel.setLayout(new BorderLayout());//버튼 패널의 레이아웃 매니저 변경
+        buttonPanel.add(selectOrderbtn, BorderLayout.WEST);
+        buttonPanel.add(totalOrderbtn, BorderLayout.EAST);
 
 		
 		//선택한 상품 주문버튼 누를 때 작동하는 리스너 
@@ -122,12 +124,13 @@ private JLabel totalDeliveryPaymentLabel;
     public void updateSelectPayment(ArrayList<Orders> orders) {
         this.totalProductPayment = 0;
         for (Orders order : orders) {
-        	if(order.getSelect()) {
-        		totalProductPayment += order.getTotalPrice() * order.getQuantity();        	           		
+        	if(order.getSelect()) {      	           		
+        		totalProductPayment += order.getPrice() * order.getQuantity() ;        	           		
         	} 
         }
           
         totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + formatNumber(totalProductPayment)  + "원     +       ");
+     
         
         
         // 배송비 업데이트
@@ -138,7 +141,7 @@ private JLabel totalDeliveryPaymentLabel;
         }
         
         // 총 결제 금액 업데이트 
-        totalDeliveryPaymentLabel.setText("       배송비 : " + formatNumber(totalDeliveryPayment) + "원     =");
+        totalDeliveryPaymentLabel.setText("   배송비 : " + formatNumber(totalDeliveryPayment) + "원     =");
         totalPaymentLabel.setText("총 결제 금액 : " + formatNumber(totalProductPayment + totalDeliveryPayment) + "원"+"\n");
     }
     
@@ -146,8 +149,8 @@ private JLabel totalDeliveryPaymentLabel;
     public void updateTotalPayment(ArrayList<Orders> orders) {
     	this.totalProductPayment = 0;
     	for (Orders order : orders) {
- 
-    			totalProductPayment += order.getTotalPrice() * order.getQuantity();        	           		
+    			System.out.println(orders);
+    			totalProductPayment += order.getPrice() * order.getQuantity();        	           		
     	}
     	
     	totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + formatNumber(totalProductPayment) + "원     +");

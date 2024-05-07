@@ -164,6 +164,7 @@ public class ProductDetailPanel extends JPanel{
 	            // Add the order to the shopping cart
 //	        	System.out.println("추가전 장바구니 : " + shoppingListPanel.getOrders());
 	            shoppingListPanel.add(order);
+	            System.out.println("추가 할 때 order = " + order);
 
 	            // Update the table model to reflect the added order
 	            shoppingListPanel.tableModel.fireTableDataChanged();

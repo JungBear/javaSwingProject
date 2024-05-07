@@ -3,12 +3,12 @@ package shoppingCart;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import javax.swing.table.DefaultTableModel;
 
 public class QuantityComboBox extends DefaultCellEditor {
@@ -46,15 +46,24 @@ public class QuantityComboBox extends DefaultCellEditor {
                     orders.get(row).setQuantity(selectedQuantity);
                     // 총 금액 열 업데이트
                     int totalPrice = orders.get(row).getPrice() * selectedQuantity;
-                    System.out.println("totalPrice : " + totalPrice);
-                    tableModel.setValueAt(totalPrice, row, 4);
+                    tableModel.setValueAt(formatNumber(totalPrice), row, 4);
                     totalOrderPanel.updateSelectPayment(orders); // TotalOrderPanel의 결제 금액 업데이트
+                    
+                    
                
             }
 
         }});
         
+        
     }
+  //금액에 콤마를 찍어서 표시하게 하는 메서드
+  	private String formatNumber(int number) {
+          DecimalFormat formatter = new DecimalFormat("#,###");
+          return formatter.format(number);
+      }
+  	
+    
     
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
@@ -66,5 +75,8 @@ public class QuantityComboBox extends DefaultCellEditor {
     public Object getCellEditorValue() {
     	return comboBox.getSelectedItem();
     }
+    
+    
+
     
 }

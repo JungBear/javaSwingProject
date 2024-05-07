@@ -75,8 +75,8 @@ public class ShoppingListPanel extends JPanel {
     			//주문 데이터를 테이블에 추가 
     			for (Orders order : orders) {
     			    
-    				Object[] row = {order.getSelect(), order.getInfo(), order.getPrice(), order.getQuantity(),
-    						order.getTotalPrice(), order.getDelivery(), order.getDelete()};
+    				Object[] row = {order.getSelect(), order.getInfo(), formatNumber(order.getPrice()), order.getQuantity(),
+    						formatNumber(order.getTotalPrice()), formatNumber(order.getDelivery()), order.getDelete()};
     				tableModel.addRow(row);
     			}
     			
@@ -86,7 +86,7 @@ public class ShoppingListPanel extends JPanel {
 
     	    JTableHeader header = table.getTableHeader();
     	    header.setPreferredSize(new Dimension(header.getWidth(), 40)); // 헤더의 높이
-    	    Font headerFont = new Font("나눔고딕", Font.BOLD, 14); // 헤더의 폰트 설정
+    	    Font headerFont = new Font("맑은 고딕", Font.BOLD, 14); // 헤더의 폰트 설정
     	    header.setDefaultRenderer(new CenterHeaderRenderer(headerFont));
     	    header.setReorderingAllowed(false);
     	    
@@ -103,7 +103,7 @@ public class ShoppingListPanel extends JPanel {
 					 int row = table.getSelectedRow();
 				        boolean isSelected = (Boolean) table.getValueAt(row, 0);
 				        orders.get(row).setSelect(isSelected);
-				        System.out.println(orders);
+//				        System.out.println(orders);
 				        totalOrderPanel.updateSelectPayment(orders); // 선택 변경 후 총 결제 금액 업데이트
 					
 				}
@@ -164,7 +164,7 @@ public class ShoppingListPanel extends JPanel {
     		
     		for (Orders orders : orders) {
     			if(orders.getSelect()) {
-    				selectOrdersAdd += orders.getTotalPrice();
+    				selectOrdersAdd += orders.getPrice() * orders.getQuantity();
     			}
 			}
     		return selectOrdersAdd;
