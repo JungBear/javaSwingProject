@@ -32,10 +32,9 @@ public class TotalBtnFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();//팝업창 닫기
-				//주문한 전체 내역 orders 초기화 
-//				ShoppingListPanel.tableModel.setRowCount(0);
-				ShoppingListPanel.clear();
-				ShoppingListPanel.updateTable();
+				//주문한 전체 내역 orders 초기화 하는 내용 
+				ShoppingListPanel.clear(); //테이블의 orders Arraylist를 모두 지우고 
+				ShoppingListPanel.updateTable(); //지운 정보를 update
 				top.updateTotalPayment(top.getOrders());
 				
 				

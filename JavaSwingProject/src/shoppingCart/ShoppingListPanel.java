@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class ShoppingListPanel extends JPanel {
 	JTable table;//장바구니 헤더, 리스트를 담을 테이블 
@@ -40,14 +41,6 @@ public class ShoppingListPanel extends JPanel {
     	public ShoppingListPanel(TotalOrderPanel totalOrderPanel)    {   
     		//주문 정보를 담을 ArrayList생성 
     		orders = new ArrayList<>();
-
-	
-    		// 임의 데이터 
-//    		orders.add(new Orders(true, " 상품 1 ", 10000, 1, 5, false));
-//    		orders.add(new Orders(true, " 상품 2 ", 5000, 1, 5, false));
-//    		System.out.println(orders);
-    		
-    		
     		
     		//장바구니 컬럼명
     		String[] cartHeader = {"선택", "상품 정보", "금액", "수량", "전체 금액", "배송비", "삭제"};
@@ -75,11 +68,7 @@ public class ShoppingListPanel extends JPanel {
     			
     		};
     		
-    		
-    		
-    		
-    		
-    		
+
     			//order데이터가 있을 때 테이블 목록 생성
     			//주문 데이터를 테이블에 추가 
     			for (Orders order : orders) {
@@ -89,19 +78,19 @@ public class ShoppingListPanel extends JPanel {
     				tableModel.addRow(row);
     			}
     			
-    			
+    		table = new JTable(tableModel);//장바구니 table 생성
 
-    		
-    		
-    		
-    		
-    		//장바구니 table 생성
-    		table = new JTable(tableModel);
- 
+    	    JTableHeader header = table.getTableHeader();
+    	    header.setPreferredSize(new Dimension(header.getWidth(), 40)); // 헤더의 높이
+    	    header.setDefaultRenderer(new CenterHeaderRenderer());
+    	    
+    		table.setRowHeight(50);//각 행의 높이
+    			
     		//선택열 체크박스 생성 및 추가
-    		table.getColumnModel().getColumn(0).setCellRenderer(new CheckBoxRenderer());
-    		table.getColumnModel().getColumn(0).setCellEditor(new CheckBoxEditor());
-    		table.getColumnModel().getColumn(0).getCellEditor().addCellEditorListener(new CellEditorListener() {
+    		table.getColumnModel().getColumn(0).setPreferredWidth(5);//체크박스 열의 넓이
+    		table.getColumnModel().getColumn(0).setCellRenderer(new CheckBoxRenderer());//체크박스 렌더링
+    		table.getColumnModel().getColumn(0).setCellEditor(new CheckBoxEditor());//체크박스 에디터
+    		table.getColumnModel().getColumn(0).getCellEditor().addCellEditorListener(new CellEditorListener() {//체크박스 리스너
 				
 				@Override
 				public void editingStopped(ChangeEvent e) {
@@ -121,14 +110,31 @@ public class ShoppingListPanel extends JPanel {
 				}
 			});
     		
+    		//상품정보 열 
+    		table.getColumnModel().getColumn(3).setPreferredWidth(70);//상품정보 열의 넓이
+    		
+    		//금액열 
+    		table.getColumnModel().getColumn(3).setPreferredWidth(20);//금액 열의 넓이
     		
     		//수량에 콤보박스 추가 
     		table.getColumnModel().getColumn(3).setCellEditor(new QuantityComboBox(table, tableModel, orders, totalOrderPanel));
+    		table.getColumnModel().getColumn(3).setPreferredWidth(5);//수량 열의 넓이
+    		
+    		//전체금액열 
+    		table.getColumnModel().getColumn(5).setPreferredWidth(20);//금액 열의 넓이
+    		
+    		//배송비 열 
+    		table.getColumnModel().getColumn(6).setPreferredWidth(10);//금액 열의 넓이
+
     		
     		//삭제열에 삭제버튼 추가 
     		DeleteButton deleteButtonAction = new DeleteButton(table, 6, totalOrderPanel,orders);
+    		table.getColumnModel().getColumn(6).setPreferredWidth(10);//삭제버튼 열의 넓이
     		
-
+    		//모든 셀의 폰트는 중앙정렬
+    		for (int i = 0; i < table.getColumnCount(); i++) {
+    	        table.getColumnModel().getColumn(i).setCellRenderer(new CenterRenderer());
+    	    }
     		
     		// 스크롤에 테이블 추가
     		JScrollPane scrollPane = new JScrollPane(table);
@@ -137,8 +143,7 @@ public class ShoppingListPanel extends JPanel {
     		setBounds(0,0,1280,550);
     		add(scrollPane, BorderLayout.CENTER);
     		
-    		
-    		
+
 
     	}
     	
@@ -171,8 +176,16 @@ public class ShoppingListPanel extends JPanel {
             tableModel.fireTableDataChanged();
         }
         
+        //선택한 상품의 주문건은 테이블에서 삭제하기
+        public static void removeSelectedOrders() {
+            for (int i = orders.size() - 1; i >= 0; i--) {
+                if (orders.get(i).getSelect()) {
+                    tableModel.removeRow(i); // 테이블에서 삭제
+                    orders.remove(i); // 주문 목록에서 삭제
+                }
+            }
+        }
         
-
 		public JTable getTable() {
 			return table;
 		}

@@ -10,9 +10,11 @@ import javax.swing.JLabel;
 
 public class SelecBtnFrame extends JFrame{
 	private int value;
+	TotalOrderPanel top;
 	
-	public SelecBtnFrame(int value) {
+	public SelecBtnFrame(int value, TotalOrderPanel top) {
 		this.value = value;
+		this.top = top;
 		initialize();
 	}
 	
@@ -30,6 +32,11 @@ public class SelecBtnFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();//팝업창 닫기 
+				 // 선택된 주문건을 삭제하고 테이블을 업데이트
+				ShoppingListPanel.removeSelectedOrders();//주문이 완료된(선택된) 상품을 orders에서 지우고 
+				ShoppingListPanel.updateTable();//남은 정보만 update 
+				top.updateTotalPayment(top.getOrders());
+					
 				
 			}
 		});

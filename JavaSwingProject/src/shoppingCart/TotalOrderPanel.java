@@ -82,7 +82,7 @@ private JLabel totalDeliveryPaymentLabel;
 	
 	//선택 주문 누를 때 팝업창 띄우기
 	private void showSelectPopup(int value) {
-		SelecBtnFrame popup = new SelecBtnFrame(value);
+		SelecBtnFrame popup = new SelecBtnFrame(value, this);
         popup.setVisible(true);
         
     }
