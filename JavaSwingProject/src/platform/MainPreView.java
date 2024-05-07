@@ -34,11 +34,13 @@ public class MainPreView extends JPanel{
 //		setMaximumSize(new Dimension(1280, 1700));// 높이 조정 필요에 따라
 		setBounds(0, 200, 1280, 760);
 		setVisible(true);
+		setBackground(Color.white);
 		
 		
 		
 		// 판넬을 새로만들어서 거기에다가 스크롤과 내용 붙히기.
 		container = new JPanel();
+		container.setBackground(Color.white);
 		container.setLayout(null);
 		container.setPreferredSize(new Dimension(1280, 1700)); // 높이 조정 필요에 따라
 		container.setMaximumSize(new Dimension(1280, 1700));// 높이 조정 필요에 따라

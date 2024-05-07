@@ -66,25 +66,17 @@ public class ProductDetailPanel extends JPanel{
 		}
 		
 		JLabel productInfo = new JLabel("Product Info");
-		productInfo.setBounds(600, 200, 100, 100);
+		productInfo.setBounds(600, 160, 100, 100);
 		productInfo.setFont(font);
 		
 //		JLabel productInfoText = new JLabel(productDTO.getProductInfo());
 		JLabel productInfoText = new JLabel("<html>" + productDTO.getProductInfo() + "</html>");
-		productInfoText.setBounds(760, 240, 400, 200);
+		productInfoText.setBounds(760, 200, 400, 200);
 //		productInfoText.setPreferredSize(new Dimension(400, 300));
 		productInfoText.setVerticalAlignment(SwingConstants.TOP);
 		
-		JLabel count = new JLabel("구매 수량");
-		count.setBounds(600, 340, 100, 100);
-		count.setFont(new Font("나눔고딕", Font.BOLD, 15));
-		
-		Integer[] quantities = {1, 2, 3, 4, 5};
-		JComboBox<Integer> quantityComboBox = new JComboBox<>(quantities);
-		quantityComboBox.setBounds(760, 380, 100, 30);
-		
 		// 가로줄 추가
-        JLabel horizontalLine = new JLabel() {
+        JLabel horizontalLine1 = new JLabel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -92,8 +84,35 @@ public class ProductDetailPanel extends JPanel{
                 g.drawLine(600, 440, 1000, 440);
             }
         };
-        horizontalLine.setBounds(600, 380, 400, 5);
+        horizontalLine1.setBounds(600, 240, 560, 1);
+		
+		JLabel count = new JLabel("구매 수량");
+		count.setBounds(600, 240, 100, 100);
+		count.setFont(new Font("나눔고딕", Font.BOLD, 15));
+		
+		Integer[] quantities = {1, 2, 3, 4, 5};
+		JComboBox<Integer> quantityComboBox = new JComboBox<>(quantities);
+		quantityComboBox.setBounds(760, 280, 100, 30);
+		
+		// 가로줄 추가
+        JLabel horizontalLine2 = new JLabel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.setColor(Color.BLACK);
+                g.drawLine(600, 440, 1000, 440);
+            }
+        };
+        horizontalLine2.setBounds(600, 340, 560, 1);
 
+        JLabel PaymentLabel = new JLabel("가격");
+        PaymentLabel.setBounds(600, 340, 100, 100);
+        PaymentLabel.setFont(new Font("나눔고딕", Font.BOLD, 15));
+        
+        JLabel PaymentText = new JLabel((productDTO.getPrice() * (int) quantityComboBox.getSelectedItem()) + "원");
+        PaymentText.setBounds(760, 340, 100, 100);
+        PaymentText.setFont(new Font("나눔고딕", Font.BOLD, 15));
+        
 		
 		JButton cart = new JButton("장바구니에 넣기");
 		cart.setBounds(700,480,200,100);
@@ -107,13 +126,20 @@ public class ProductDetailPanel extends JPanel{
 			}
 		});
 //		cart.addActionListener(new );
+		horizontalLine1.setOpaque(true);
+		add(horizontalLine1);
+		
+		horizontalLine2.setOpaque(true);
+		add(horizontalLine2);
+		
 		add(productInfo);
 		add(productInfoText);
 		add(count);
 		add(quantityComboBox);
 		add(cart);
 		add(productName);
-		add(horizontalLine);
+		add(PaymentLabel);
+		add(PaymentText);
 		
 		
 	}
