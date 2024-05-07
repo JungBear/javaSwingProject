@@ -5,12 +5,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
@@ -79,6 +81,10 @@ public class ShoppingListPanel extends JPanel {
     			}
     			
     		table = new JTable(tableModel);//장바구니 table 생성
+    		
+    		 // 테이블에 테두리 설정
+            Border tableBorder = BorderFactory.createLineBorder(Color.BLACK); // 테두리 색을 검정색으로 설정
+            table.setBorder(tableBorder);
 
     	    JTableHeader header = table.getTableHeader();
     	    header.setPreferredSize(new Dimension(header.getWidth(), 40)); // 헤더의 높이
@@ -140,7 +146,7 @@ public class ShoppingListPanel extends JPanel {
     		JScrollPane scrollPane = new JScrollPane(table);
     		scrollPane.setPreferredSize(new Dimension(800,400));
     		setBackground(Color.blue);
-    		setBounds(0,0,1280,550);
+    		setBounds(0,0,1280,450);
     		add(scrollPane, BorderLayout.CENTER);
     		
 
@@ -185,6 +191,8 @@ public class ShoppingListPanel extends JPanel {
                 }
             }
         }
+        
+        
         
 		public JTable getTable() {
 			return table;
