@@ -2,6 +2,7 @@ package platform;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,11 +25,12 @@ public class MainHeader extends JPanel{
 	TopNavBtn cosmeticsBtn = new TopNavBtn("화장품",960, 20);
 	TopNavBtn shoesBtn = new TopNavBtn("신발",1020, 20);
 	TopNavBtn bagBtn = new TopNavBtn("가방",1080, 20);
-	TopNavBtn loginBtn = new TopNavBtn("로그인", 0, 150);
+	TopNavBtn loginBtn = new TopNavBtn("로그인", 20, 150);
 //	TopNavBtn loginedUser = new TopNavBtn(LoginForm.getLoginUser().getName()+"님", 0, 150);
 	TopNavBtn cartBtn = new TopNavBtn("장바구니",100, 150);
 	MainDownPanel clothDownPanel, cosmeticsDownPanel, shoesDownPanel, bagDownPanel;
 	private UserDTO user; // 로그인된 사용자 정보를 저장할 UserDTO 객체
+	Font font = new Font("맑은 고딕", Font.PLAIN, 15);
 
 
 	public MainHeader(MainFrame mainF) {
@@ -36,6 +38,19 @@ public class MainHeader extends JPanel{
 		cosmeticsDownPanel = new MainDownPanel("cosmetic", 960, 50,mainF);
 		shoesDownPanel = new MainDownPanel("shoes",1020, 50,mainF);
 		bagDownPanel = new MainDownPanel("bag",1080, 50,mainF);
+		
+		
+		// 버튼 폰트 설정
+		clothBtn.setFont(font);
+		cosmeticsBtn.setFont(font);
+		shoesBtn.setFont(font);
+		bagBtn.setFont(font);
+		loginBtn.setFont(font);
+		cartBtn.setFont(font);
+		
+		// 장바구니 버튼 사이즈 조절
+		cartBtn.setBounds(100,  150,  100, 30);
+		
 		
 		this.mainF = mainF;
 		setName("header");

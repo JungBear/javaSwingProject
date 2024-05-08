@@ -98,6 +98,17 @@ public class ProductDetailPanel extends JPanel{
 			quantities[i]= i+1;
 		}
 		JComboBox<Integer> quantityComboBox = new JComboBox<>(quantities);
+		
+		JLabel PaymentText = new JLabel((productDTO.getPrice()*(int) quantityComboBox.getSelectedItem())+"원");
+		
+		quantityComboBox.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        int selectedQuantity = (int) quantityComboBox.getSelectedItem();
+		        int totalPrice = productDTO.getPrice() * selectedQuantity;
+		        PaymentText.setText(totalPrice + "원");
+		    }
+		});
 		quantityComboBox.setBounds(760, 280, 100, 30);
 		
 		// 가로줄 추가
@@ -115,7 +126,8 @@ public class ProductDetailPanel extends JPanel{
         PaymentLabel.setBounds(600, 340, 100, 100);
         PaymentLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
         
-        JLabel PaymentText = new JLabel((productDTO.getPrice() * (int) quantityComboBox.getSelectedItem()) + "원");
+        
+        
         PaymentText.setBounds(760, 340, 100, 100);
         PaymentText.setFont(new Font("맑은 고딕", Font.BOLD, 15));
         
