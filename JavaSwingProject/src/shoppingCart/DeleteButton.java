@@ -2,6 +2,7 @@ package shoppingCart;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class DeleteButton extends AbstractCellEditor implements TableCellRendere
         editButton.setFocusPainted(false);
         editButton.addActionListener(this);
         editButton.setForeground(Color.BLACK); // 폰트 색상을 검정색으로 설정
+        editButton.setFont(new Font("맑은 고딕", Font.PLAIN, 15));//폰트 속성
 
         TableColumnModel columnModel = table.getColumnModel();
         columnModel.getColumn(column).setCellRenderer(this);

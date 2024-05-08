@@ -172,6 +172,9 @@ public class ShoppingListPanel extends JPanel {
 
     		add(scrollPane, BorderLayout.CENTER);
     		
+    		
+    		
+    		
 //    		//테이블 모델 변경 시마다 셀 렌더러를 다시 설정
 //    		tableModel.addTableModelListener(new TableModelListener() {
 //				
