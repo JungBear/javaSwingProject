@@ -1,6 +1,7 @@
 package shoppingCart;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +23,7 @@ public class SelecBtnFrame extends JFrame{
 	
 	private void initialize() {
 		  setTitle("주문 완료");
-	      setSize(500, 200);
+	      setSize(500, 250);
 	      setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 닫기 버튼을 누르면 창이 닫히도록 설정
 	      setLocationRelativeTo(null); // 화면 중앙에 위치하도록 설정
 
@@ -31,6 +32,7 @@ public class SelecBtnFrame extends JFrame{
 	      label.setVerticalAlignment(JLabel.CENTER); // 수직 정렬 설정
 	      label.setFont(new Font("맑은 고딕", Font.PLAIN, 15)); // 폰트 설정
 	      JButton closeButton = new JButton("닫기");
+	      closeButton.setPreferredSize(new Dimension(100, 30)); // 버튼의 크기 조정
 	      
 	      closeButton.addActionListener(new ActionListener() {
 			

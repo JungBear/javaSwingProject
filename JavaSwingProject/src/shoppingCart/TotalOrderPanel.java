@@ -47,7 +47,7 @@ private JLabel totalDeliveryPaymentLabel;
         
 		//totalOrderPanel의 영역 사이즈 설정
 		setBounds(325,551,650,100);
-		setBackground(Color.yellow);
+		//setBackground(Color.yellow);
 		setVisible(true);
 		setLayout(new BorderLayout());
 		add(totalProductPaymentLabel,BorderLayout.WEST);
@@ -57,11 +57,19 @@ private JLabel totalDeliveryPaymentLabel;
 		//선택한 상품 주문버튼, 전체 주문버튼 추가 
 		JButton selectOrderbtn = new JButton("선택한 상품 주문");
 		JButton totalOrderbtn = new JButton("전체 상품 주문");
+		selectOrderbtn.setPreferredSize(new Dimension(150, 50)); // 버튼의 크기 조정
+		totalOrderbtn.setPreferredSize(new Dimension(150, 50)); // 
+		// 버튼의 폰트 크기 조정
+		Font buttonFont = new Font("맑은 고딕", Font.BOLD, 14); //버튼 폰트 설정
+		selectOrderbtn.setFont(buttonFont);
+		totalOrderbtn.setFont(buttonFont);
+        selectOrderbtn.setForeground(Color.BLACK);//버튼의 폰트 색
+        totalOrderbtn.setForeground(Color.BLACK);
+		
 		JPanel buttonPanel = new JPanel(); // 버튼을 담을 패널 생성
         add(buttonPanel, BorderLayout.SOUTH); // 하단에 버튼 패널 추가
-        buttonPanel.setBackground(Color.WHITE);
-        buttonPanel.setPreferredSize(new Dimension(400, 50));
-        buttonPanel.setLayout(new BorderLayout());//버튼 패널의 레이아웃 매니저 변경
+       // buttonPanel.setBackground(Color.WHITE);
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 0)); // 버튼을 가운데 정렬 및 간격 추가
         buttonPanel.add(selectOrderbtn, BorderLayout.WEST);
         buttonPanel.add(totalOrderbtn, BorderLayout.EAST);
 

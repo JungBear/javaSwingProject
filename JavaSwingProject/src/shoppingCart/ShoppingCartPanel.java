@@ -36,10 +36,9 @@ public class ShoppingCartPanel extends JPanel{
 		add(shoppingListPanel);
 		add(totalOrderPanel);
 		
-		setBackground(Color.black);//장바구니panel전체 
+		//장바구니 패널 전체 영역 사이즈
 		setBounds(0,201,1280,760);
-	
-		
+
 		
 		
 		

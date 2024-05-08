@@ -15,6 +15,8 @@ import javax.swing.JTable;
 import javax.swing.border.Border;
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
@@ -82,7 +84,24 @@ public class ShoppingListPanel extends JPanel {
     			
     		table = new JTable(tableModel);//장바구니 table 생성
     		
+    		// CustomCellRenderer를 생성하고 각 열에 셀 렌더러로 설정
+    		CustomCellRenderer cellRenderer = new CustomCellRenderer(table.getDefaultRenderer(Object.class));
+
+    		// 각 열에 셀 렌더러 설정
+    		for (int i = 0; i < table.getColumnCount(); i++) {
+    		    table.getColumnModel().getColumn(i).setCellRenderer(cellRenderer);
+    		}
     		
+    		// 테이블 모델 변경 시마다 셀 렌더러를 다시 설정
+            tableModel.addTableModelListener(new TableModelListener() {
+                @Override
+                public void tableChanged(TableModelEvent e) {
+                    for (int i = 0; i < table.getRowCount(); i++) {
+                        table.prepareRenderer(table.getCellRenderer(i, 0), i, 0);
+                    }
+                }
+            });
+
 
     	    JTableHeader header = table.getTableHeader();
     	    header.setPreferredSize(new Dimension(header.getWidth(), 40)); // 헤더의 높이
@@ -147,15 +166,23 @@ public class ShoppingListPanel extends JPanel {
     		JScrollPane scrollPane = new JScrollPane(table);
     		scrollPane.setPreferredSize(new Dimension(900,500));// 테이블 사이즈
     		scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // JScrollPane에 테두리 설정
-    		setBackground(Color.blue);
+    		//setBackground(Color.blue);
     		setBounds(0,0,1280,550);//ShoppingList 영역 사이즈
-    		
-    		// JPanel에 테두리 설정
-    	    Border border = BorderFactory.createLineBorder(Color.BLACK);
-    	    setBorder(border);
-    	    
-    		add(scrollPane, BorderLayout.CENTER);
 
+
+    		add(scrollPane, BorderLayout.CENTER);
+    		
+//    		//테이블 모델 변경 시마다 셀 렌더러를 다시 설정
+//    		tableModel.addTableModelListener(new TableModelListener() {
+//				
+//				@Override
+//				public void tableChanged(TableModelEvent e) {
+//					for (int i = 0; i < table.getRowCount(); i++) {
+//			            table.prepareRenderer(table.getCellRenderer(i, 0), i, 0);
+//			        }
+//					
+//				}
+//			});
     	}
     	
 
