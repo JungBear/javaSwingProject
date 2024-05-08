@@ -22,7 +22,7 @@ public class TotalBtnFrame extends JFrame{
 	
 	public void initialize() {
 		  setTitle("주문 완료");
-	      setSize(400, 100);
+	      setSize(500, 200);
 	      setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // 닫기 버튼을 누르면 창이 닫히도록 설정
 	      setLocationRelativeTo(null); // 화면 중앙에 위치하도록 설정
 

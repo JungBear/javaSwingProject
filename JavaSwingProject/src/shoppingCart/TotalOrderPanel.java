@@ -31,9 +31,9 @@ private JLabel totalDeliveryPaymentLabel;
 
 		
 		//선택한 or 전체 상품의 금액을 표시하는 부분 생성 
-		totalProductPaymentLabel = new JLabel("선택한 상품의 결제 금액 : " + formatNumber(this.totalProductPayment) + "원     +       ");
+		totalProductPaymentLabel = new JLabel("선택한 상품의 결제 금액 : " + formatNumber(this.totalProductPayment) + "원  +   ");
 		//선택한 or 전체 상품의 금액에 대한 배송비를 표시하는 부분 생성 
-		totalDeliveryPaymentLabel = new JLabel("       배송비 : " + formatNumber(totalDeliveryPayment) + "원     =");
+		totalDeliveryPaymentLabel = new JLabel("   배송비 : " + formatNumber(totalDeliveryPayment) + "원    =");
 		// 총 결제 금액을 표시하는 부분 생성
 		totalPaymentLabel = new JLabel("총 결제 금액 : " + formatNumber(totalPayment) + "원"+"\n");
 		
@@ -46,7 +46,7 @@ private JLabel totalDeliveryPaymentLabel;
         
         
 		//totalOrderPanel의 영역 사이즈 설정
-		setBounds(350,551,600,100);
+		setBounds(325,551,650,100);
 		setBackground(Color.yellow);
 		setVisible(true);
 		setLayout(new BorderLayout());
@@ -129,7 +129,7 @@ private JLabel totalDeliveryPaymentLabel;
         	} 
         }
           
-        totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + formatNumber(totalProductPayment)  + "원     +       ");
+        totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + formatNumber(totalProductPayment)  + "원    +   ");
      
         
         
@@ -141,7 +141,7 @@ private JLabel totalDeliveryPaymentLabel;
         }
         
         // 총 결제 금액 업데이트 
-        totalDeliveryPaymentLabel.setText("   배송비 : " + formatNumber(totalDeliveryPayment) + "원     =");
+        totalDeliveryPaymentLabel.setText("   배송비 : " + formatNumber(totalDeliveryPayment) + "원    =");
         totalPaymentLabel.setText("총 결제 금액 : " + formatNumber(totalProductPayment + totalDeliveryPayment) + "원"+"\n");
     }
     
@@ -153,7 +153,7 @@ private JLabel totalDeliveryPaymentLabel;
     			totalProductPayment += order.getPrice() * order.getQuantity();        	           		
     	}
     	
-    	totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + formatNumber(totalProductPayment) + "원     +");
+    	totalProductPaymentLabel.setText("선택한 상품의 결제 금액 : " + formatNumber(totalProductPayment) + "원   +");
     	
     	
     	// 배송비 업데이트
@@ -164,7 +164,7 @@ private JLabel totalDeliveryPaymentLabel;
     	}
     	
     	// 총 결제 금액 업데이트 
-    	totalDeliveryPaymentLabel.setText("       배송비 : " + formatNumber(totalDeliveryPayment) + "원     =");
+    	totalDeliveryPaymentLabel.setText("    배송비 : " + formatNumber(totalDeliveryPayment) + "원    =");
     	totalPaymentLabel.setText("총 결제 금액 : " +formatNumber(totalProductPayment + totalDeliveryPayment) + "원"+"\n");
     }
 
