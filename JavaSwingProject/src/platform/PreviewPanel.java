@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.text.DecimalFormat;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -30,7 +31,7 @@ public class PreviewPanel extends JPanel{
 			JLabel productName = new JLabel(product.getProductName());
 			productName.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 			
-			JLabel productPrice = new JLabel(product.getPrice()+"원");
+			JLabel productPrice = new JLabel(formatNumber(product.getPrice())+"원");
 			productPrice.setFont(new Font("맑은 고딕", Font.BOLD, 12));
     	  
 			productImg.setBounds(0, 0, scaledLogoIcon.getIconWidth(), scaledLogoIcon.getIconHeight());
@@ -47,5 +48,9 @@ public class PreviewPanel extends JPanel{
 	      
 
 	}
+   	private static String formatNumber(int number) {
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return formatter.format(number);
+    }
 	
 }

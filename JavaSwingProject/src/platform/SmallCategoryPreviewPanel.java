@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
@@ -28,9 +29,10 @@ public class SmallCategoryPreviewPanel extends JPanel{
 
         // Small Category 라벨 생성
         JLabel smallCategory = new JLabel(pds.get(0).getCategory());
-        smallCategory.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24)); // 폰트 설정
+        smallCategory.setFont(new Font("맑은 고딕", Font.BOLD, 18)); // 폰트 설정
         smallCategory.setBounds(100, 00, 200, 100);
         add(smallCategory);
+ 
 		
 		int xOffset = 150; // 제품 미리보기 패널의 y축 위치 설정
 		int yOffset = 100;

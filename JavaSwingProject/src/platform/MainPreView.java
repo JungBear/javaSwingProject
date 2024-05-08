@@ -111,7 +111,7 @@ public class MainPreView extends JPanel{
         	
 //        	scrollPane.setViewportView(categoryPanel);
         	JLabel bigCategory = new JLabel(kinds[i]);
-        	bigCategory.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 18));
+        	bigCategory.setFont(new Font("맑은 고딕", Font.BOLD, 18));
         	bigCategory.setBounds(100, yOffsetOfLable, 900, 100); // 첫 번째 레이블을 (100, 100)에 위치시킵니다.
 
         	

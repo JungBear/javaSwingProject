@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -99,14 +100,14 @@ public class ProductDetailPanel extends JPanel{
 		}
 		JComboBox<Integer> quantityComboBox = new JComboBox<>(quantities);
 		
-		JLabel PaymentText = new JLabel((productDTO.getPrice()*(int) quantityComboBox.getSelectedItem())+"원");
+		JLabel PaymentText = new JLabel(formatNumber(productDTO.getPrice()*(int) quantityComboBox.getSelectedItem())+"원");
 		
 		quantityComboBox.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        int selectedQuantity = (int) quantityComboBox.getSelectedItem();
 		        int totalPrice = productDTO.getPrice() * selectedQuantity;
-		        PaymentText.setText(totalPrice + "원");
+		        PaymentText.setText(formatNumber(totalPrice) + "원");
 		    }
 		});
 		quantityComboBox.setBounds(760, 280, 100, 30);
@@ -202,7 +203,10 @@ public class ProductDetailPanel extends JPanel{
 		this.productDTO = productDTO;
 	}
 		 
-		
+	private static String formatNumber(int number) {
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return formatter.format(number);
+    }
 
 	   
 }

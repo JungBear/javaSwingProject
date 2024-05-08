@@ -1,6 +1,7 @@
 package platform;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,6 +15,7 @@ public class MainDownPanel extends JPanel{
 	ProductService productService = new ProductService();
 	SmallCategoryPreviewPanel scpp1, scpp2, scpp3, scpp4;
 	MainFrame mainF;
+	Font font = new Font("맑은 고딕", Font.PLAIN, 13);
 	
 	public MainDownPanel(String name, int x, int y, MainFrame mainF) {
 		this.mainF = mainF;
@@ -86,6 +88,11 @@ public class MainDownPanel extends JPanel{
 			scpp4 = new SmallCategoryPreviewPanel(productService.readData(name, smallCategoryBtn4.getText()), mainF);
 			break;
 		}
+		smallCategoryBtn1.setFont(font);
+		smallCategoryBtn2.setFont(font);
+		smallCategoryBtn3.setFont(font);
+		smallCategoryBtn4.setFont(font);
+		
 		add(smallCategoryBtn1);
 		add(smallCategoryBtn2);
 		add(smallCategoryBtn3);

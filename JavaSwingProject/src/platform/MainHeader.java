@@ -33,6 +33,7 @@ public class MainHeader extends JPanel{
 	Font font = new Font("맑은 고딕", Font.PLAIN, 15);
 
 
+
 	public MainHeader(MainFrame mainF) {
 		clothDownPanel = new MainDownPanel("cloth",900, 50, mainF);
 		cosmeticsDownPanel = new MainDownPanel("cosmetic", 960, 50,mainF);
