@@ -70,6 +70,8 @@ public class PwFinder extends JFrame {
                         JOptionPane.showMessageDialog(null, "가입 정보와 일치하지 않습니다.");
                     }
                 }
+        		nametf.setText("");
+        		idtf.setText("");
             }
         });
         

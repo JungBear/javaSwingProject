@@ -134,6 +134,13 @@ public class RegisterForm extends JFrame {
         registerbtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 createUserAccount();
+        		nametf.setText("");
+        		phonenumtf.setText("");
+        		idtf.setText("");
+        		emailtf.setText("");
+        		pwpf.setText("");
+        		pwcheckpf.setText("");
+        		addresstf.setText("");
             }
         });
 

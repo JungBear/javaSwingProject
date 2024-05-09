@@ -54,6 +54,8 @@ public class IdFinder extends JFrame {
                         JOptionPane.showMessageDialog(null, "가입 정보와 일치하지 않습니다.");
                     }
                 }
+        		nametf.setText("");
+        		emailtf.setText("");
             }
         });
 
@@ -77,6 +79,7 @@ public class IdFinder extends JFrame {
         		close();
         		pwFinder.PwFinderForm();
         		pwFinder.PwFinderFrame();
+
         	}
         });
         

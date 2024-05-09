@@ -47,9 +47,7 @@ public class QuantityComboBox extends DefaultCellEditor {
                     // 총 금액 열 업데이트
                     int totalPrice = orders.get(row).getPrice() * selectedQuantity;
                     tableModel.setValueAt(formatNumber(totalPrice), row, 4);
-                    totalOrderPanel.updateSelectPayment(orders); // TotalOrderPanel의 결제 금액 업데이트
-                    
-                    
+                    totalOrderPanel.updateSelectPayment(orders); // TotalOrderPanel의 결제 금액 업데이트                 
                
             }
 
