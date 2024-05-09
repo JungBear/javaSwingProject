@@ -134,13 +134,7 @@ public class RegisterForm extends JFrame {
         registerbtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 createUserAccount();
-        		nametf.setText("");
-        		phonenumtf.setText("");
-        		idtf.setText("");
-        		emailtf.setText("");
-        		pwpf.setText("");
-        		pwcheckpf.setText("");
-        		addresstf.setText("");
+
             }
         });
 
@@ -189,6 +183,8 @@ public class RegisterForm extends JFrame {
         // 아이디 입력확인
         if (id.isEmpty()) {
             JOptionPane.showMessageDialog(this, "아이디를 입력하세요.");
+
+    		idtf.setText("");
             return;
         }
         
@@ -201,24 +197,34 @@ public class RegisterForm extends JFrame {
         
         //비밀번호 입력 확인
         if (pwd.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "비밀번호를 입력하세요.");
+            JOptionPane.showMessageDialog(this, "비밀번호를 입력하세요.");        		
+    		pwpf.setText("");
+    		pwcheckpf.setText("");
+
+
             return;
         }
         
         // 비밀번호 숫자 영문 포함 6자 이상 확인
         if (!pwd.matches("^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$")) {
             JOptionPane.showMessageDialog(this, "비밀번호는 6자 이상의 영문자와 숫자를 포함해야 합니다.");
+
+            pwcheckpf.setText("");
+    		pwpf.setText("");
+
             return;
         }
         //비밀번호 확인 입력창 입력 확인
         if (pwd.isEmpty()) {
             JOptionPane.showMessageDialog(this, "비밀번호를 입력하세요.");
+            pwcheckpf.setText("");
             return;
         }
         
         // 비밀번호와 비밀번호 확인이 일치하는지 확인
         if (!pwd.equals(pwc)) {
             JOptionPane.showMessageDialog(this, "비밀번호가 일치하지 않습니다.");
+            pwcheckpf.setText("");
             return;
         }
 
@@ -226,12 +232,14 @@ public class RegisterForm extends JFrame {
         // 이메일 입력확인
         if (email.isEmpty()) {
             JOptionPane.showMessageDialog(this, "이메일을 입력하세요.");
+    		emailtf.setText("");
             return;
         }
         
         //이메일 @ .com 입력 확인
         if (!email.matches("[\\w.\\-]+@\\w+\\.com")) {
             JOptionPane.showMessageDialog(this, "이메일은 '@'와 '.com'을 포함해야 합니다.");
+    		emailtf.setText("");
             return;
         }
         
@@ -244,17 +252,20 @@ public class RegisterForm extends JFrame {
         // 이름 입력확인
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(this, "이름을 입력하세요.");
+    		nametf.setText("");
             return; 
         }
         // 연락처 입력확인
         if (phone.isEmpty()) {
             JOptionPane.showMessageDialog(this, "연락처를 입력하세요.");
+            phonenumtf.setText("");
             return;
         }
         
         // 연락처 숫자만 입력했는지 확인
         if (!phone.matches("\\d+")) {
             JOptionPane.showMessageDialog(this, "연락처는 번호만 입력하세요.");
+    		phonenumtf.setText("");
             return;
         }
         
@@ -268,6 +279,7 @@ public class RegisterForm extends JFrame {
         // 주소 입력 확인
         if (address.isEmpty()) {
             JOptionPane.showMessageDialog(this, "주소를 입력하세요.");
+    		addresstf.setText("");
             return;
         }
         
